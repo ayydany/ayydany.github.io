@@ -30,7 +30,7 @@ function genLinechart() {
         .y(function(d) { return yScale(d.value.TotalMedals); }) // set the y values for the line generator 
         .curve(d3.curveMonotoneX); // apply smoothing to the line
 
-    // tooltip function
+    // tooltip generator
     var tip = d3.tip()
         .attr('class', 'd3-tip')
         .offset([-10, 0])
@@ -75,7 +75,7 @@ function genLinechart() {
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
     
-        // initializa tooltip generator
+        // initialize tooltip generator
         svg.call(tip);
         
         // Call the x axis in a group tag

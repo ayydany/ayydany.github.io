@@ -8,8 +8,8 @@ function genBubblechart(update, isGoingLower) {
     
         var width = $("#bubblechart").width(),
             height = $("#bubblechart").height(),
-            minBubbleSize = 20,
-            maxBubbleSize = 65,
+            minBubbleSize = 23,
+            maxBubbleSize = 60,
             offsetBetweenBubbles = 5;
     
         // if its a update callback we don't want to create a new svg, so we just select it
@@ -41,7 +41,7 @@ function genBubblechart(update, isGoingLower) {
                     })
                 );
         
-        // tooltip function
+        // tooltip generator
         var tip = d3.tip()
         .attr('class', 'd3-tip')
         .offset([-10, 0])
@@ -232,7 +232,7 @@ function genBubblechart(update, isGoingLower) {
                     .enter().append("text")
                     .attr("class","label unselectable")
                     .text(function(d){ 
-                        if((radiusScale(d.TotalMedals) < 30 && d[currentFilterKeyword].length > 6) || d[currentFilterKeyword].length > 10){
+                        if((radiusScale(d.TotalMedals) < 30 && d[currentFilterKeyword].length > 6) || d[currentFilterKeyword].length > 15){
                             return  d[currentFilterKeyword].substring(0, 4) + "...";
                         } else
                             return d[currentFilterKeyword]; 
