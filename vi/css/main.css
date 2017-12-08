@@ -107,7 +107,7 @@ text {
 }
 
 #bubblechart #back-icon {
-        top: 7%;
+        top: 70px;
         left: 5px;
         width: 48px;
         position: absolute;
@@ -138,8 +138,7 @@ text {
 }
 
 #linechart #medal-icon {
-        bottom: 34%;
-        left: 8px;
+        bottom: 320px;
         width: 20px;
         position: absolute;
         float:bottom;

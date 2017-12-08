@@ -45,13 +45,15 @@ function genBubblechart(update, isGoingLower) {
             .append("svg")
             .attr("height", height)
             .attr("width", width)
-            .append("g");
+            .append("g")
+            .attr("transform", "translate(0,10)")
     } else
         var svg = d3.select("#bubblechart g");
 
     // set a automatic bubble scaler
     var radiusScale = d3.scaleSqrt();
     
+    // black hole kind of force to center the bubbles
     var center_force = d3.forceCenter(width / 2, height / 2);  
 
     // the simulation is a collection of forces
@@ -276,7 +278,6 @@ function genBubblechart(update, isGoingLower) {
                 .restart();
 
             function ticked()  {
-                console.log(width);
                 bubble
                     .attr("cx", function(d) { return d.x = Math.max(radiusScale(d.TotalMedals), Math.min(width - radiusScale(d.TotalMedals), d.x)); })
                     .attr("cy", function(d) { return d.y = Math.max(radiusScale(d.TotalMedals), Math.min(height - radiusScale(d.TotalMedals), d.y)); })
@@ -415,7 +416,7 @@ function genLinechart() {
     });
     updateLinechart();
 
-}
+};
 
 //updates linechart dots with a transition when called
 function updateLinechart(){
@@ -526,7 +527,7 @@ function updateLinechart(){
             })
             
     });
-}
+};
 
 //generates the timeSlider in the vis
 function genTimeSlider() {
@@ -584,7 +585,10 @@ function genTimeSlider() {
     var handle1 = slider.insert("circle", ".track-overlay")
         .attr("class", "handle")
         .attr("r", 8)
-        .attr("cx", xScale(0));
+        .attr("cx", xScale(0))
+        .on('mouseover', function(d){
+            console.log("HOVERING BOI");
+            });
 
     var handle2 = slider.insert("circle", ".track-overlay")
         .attr("class", "handle")
@@ -625,19 +629,19 @@ function genTimeSlider() {
         }
     return xScale;
     }
-}
+};
 
 // AUXILIARY FUNCTIONS //
 
 //function assumes we never use a year outside of year array
 function checkIfYearInInterval(year){
     return (year >= initialYearFilter && year <= endYearFilter);
-}
+};
 
 //function to get a CSS variable from the CSS
 function getCSSColor(variable){
     return getComputedStyle(document.body).getPropertyValue(variable);
-}
+};
 
 // descending filter compararation function
 function descending(a,b) { return a.key - b.key };
@@ -648,7 +652,7 @@ function changeCountry(country){
 
     genBubblechart(true, 0);
     updateLinechart();
-}
+};
 
 function changeTimeline(begin, end){
     //check if a update is necessary
@@ -659,5 +663,4 @@ function changeTimeline(begin, end){
         genBubblechart(true, 0);
         updateLinechart();
     }
-
-}
+};
