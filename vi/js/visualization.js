@@ -525,25 +525,26 @@ function updateLinechart(){
     });
 }
 
+//generates the timeSlider in the vis
 function genTimeSlider() {
-    var margin = {top: 20, right: 5, bottom: 5, left: 5}
+    var margin = {top: 10, right: 50, bottom: 10, left: 50}
         width = $("#timeSlider").width(),
         height = $("#timeSlider").height();
 
     var xScale = d3.scaleLinear()
         .domain([0, years.length-1])
-        .range([0, 800])
+        .range([0, width - margin.top - margin.left-25])
         .clamp(true);
 
 
-    //Make an SVG Container
+    // make an SVG Container
     var svg = d3.select("#timeSlider").append("svg")
         .attr("width", width - margin.top - margin.left)
         .attr("height", height);
 
     var slider = svg.append("g")
         .attr("class", "slider")
-        .attr("transform", "translate(50," + margin.top + ")");
+        .attr("transform", "translate(10,15)");
 
     slider.append("line")
         .attr("class", "track")
@@ -558,13 +559,14 @@ function genTimeSlider() {
                 moveBothHandles(xScale.invert(d3.mouse(this)[0]));
             }})
         .call(d3.drag()
+            .on("drag", function () { moveHandleDumb(xScale.invert(d3.event.x)); })
             .on("end", function () { 
                 //update global time variable
-                console.log(xScale.invert(handle.attr("cx")))
-                console.log(xScale.invert(handle2.attr("cx")))
-                changeTimeline(xScale.invert(handle.attr("cx")), xScale.invert(handle2.attr("cx")));
-             })
-            .on("drag", function () { moveHandleDumb(xScale.invert(d3.event.x)); }));
+                if(Math.round(handle1.attr("cx")) <= Math.round(handle2.attr("cx"))){
+                    changeTimeline(xScale.invert(handle1.attr("cx")), xScale.invert(handle2.attr("cx")));
+                } else 
+                    changeTimeline(xScale.invert(handle2.attr("cx")), xScale.invert(handle1.attr("cx")));
+             }));
 
     slider.insert("g", ".track-overlay")
         .attr("class", "ticks")
@@ -576,7 +578,7 @@ function genTimeSlider() {
         .attr("text-anchor", "middle")
         .text(function (d) { return years[d]; });
 
-    var handle = slider.insert("circle", ".track-overlay")
+    var handle1 = slider.insert("circle", ".track-overlay")
         .attr("class", "handle")
         .attr("r", 8)
         .attr("cx", xScale(0));
@@ -589,11 +591,10 @@ function genTimeSlider() {
     function moveHandleDumb(h){
         target = round(h);
         //select the closest handle to be the one moving
-        if(Math.abs(target - xScale.invert(handle.attr("cx"))) < Math.abs(target - xScale.invert(handle2.attr("cx")))){
-            handle.transition().duration(5)
+        if(Math.abs(target - xScale.invert(handle1.attr("cx"))) < Math.abs(target - xScale.invert(handle2.attr("cx")))){
+            handle1.transition().duration(5)
                 .ease(d3.easeElastic)
                 .attr("cx", xScale(target));
-                
         } else {
             handle2.transition().duration(5)
                 .ease(d3.easeElastic)
@@ -603,13 +604,13 @@ function genTimeSlider() {
 
     function moveBothHandles(h){
         target = round(h);
-        handle.transition().duration(500)
+        handle1.transition().duration(200)
             .ease(d3.easeElastic)
             .attr("cx", xScale(target));
 
-        handle2.transition().duration(500)
+        handle2.transition().duration(200)
             .ease(d3.easeElastic)
-            .attr("cx", xScale(target));    
+            .attr("cx", xScale(target));
     }
 
     function round(xScale) {
