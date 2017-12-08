@@ -1,0 +1,17 @@
+.country{
+        fill: #d0d0d0;   /* country colour */
+        stroke: #2A2C39; /* country border colour */
+        stroke-width: 1; /* country border width */
+      }
+      .country-on{
+        fill: #4B5358;   /* highlight colour for selected country */
+      }
+      .countryLabel{
+        display: none;   /* hide all country labels by default */
+      }
+      .countryName{
+        fill: rgb(224, 9, 9);   /* country label text colour */
+      }
+      .countryBg{
+        fill: transparent;   /* country label background colour */
+      }
