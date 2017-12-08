@@ -1,3 +1,11 @@
+#worldmap {  
+    width: 60%;
+    height: 55%;
+    float: left;
+    background: var(--main-bg-color); 
+}
+
+
 .country{
         fill: #d0d0d0;   /* country colour */
         stroke: #2A2C39; /* country border colour */
