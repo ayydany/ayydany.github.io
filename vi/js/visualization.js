@@ -45,20 +45,22 @@ function genBubblechart(update, isGoingLower) {
             .append("svg")
             .attr("height", height)
             .attr("width", width)
-            .append("g")
-            .attr("transform", "translate(" + width / 2 + "," + height /  2 + ")");
+            .append("g");
     } else
         var svg = d3.select("#bubblechart g");
 
     // set a automatic bubble scaler
     var radiusScale = d3.scaleSqrt();
     
+    var center_force = d3.forceCenter(width / 2, height / 2);  
+
     // the simulation is a collection of forces
     // about where we want our circles to go
     // and how we want our circles to react
     var simulation = d3.forceSimulation()
         .force("x", d3.forceX().strength(0.05))
         .force("y", d3.forceY().strength(0.05))
+        .force("center_force", center_force)
         .force("collide", d3.forceCollide(function(d){
                return radiusScale(d.TotalMedals) + offsetBetweenBubbles;
                 })
@@ -274,9 +276,10 @@ function genBubblechart(update, isGoingLower) {
                 .restart();
 
             function ticked()  {
+                console.log(width);
                 bubble
-                    .attr("cx", function(d) { return d.x; })
-                    .attr("cy", function(d) { return d.y; })
+                    .attr("cx", function(d) { return d.x = Math.max(radiusScale(d.TotalMedals), Math.min(width - radiusScale(d.TotalMedals), d.x)); })
+                    .attr("cy", function(d) { return d.y = Math.max(radiusScale(d.TotalMedals), Math.min(height - radiusScale(d.TotalMedals), d.y)); })
                     
                 labels
                     .attr("x", function(d) { return d.x; } )
