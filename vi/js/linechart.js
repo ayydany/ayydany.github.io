@@ -84,13 +84,23 @@ function genLinechart() {
             .attr("transform", "translate(0," + height + ")")
             .call(xAxis); // Create an axis component with d3.axisBottom
 
+        // text label for the x axis
+        svg.append("text")
+        .attr("class", "axislabel unselectable")
+        .attr("transform", "translate(" + (width / 2) + " ," + 
+                                (height + margin.top - 20) + ")")
+        .style("text-anchor", "middle")
+        .text("Years");
+
+
+        // generate Y axis
         svg.append("g")
             .attr("class", "yAxis unselectable")
             .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft
         
         // text label for the y axis
         svg.append("text")
-            .attr("class", "unselectable")
+            .attr("class", "axislabel unselectable")
             .attr("transform", "rotate(-90)")
             .attr("y", 0 - margin.left + 5)
             .attr("x",0 - (height / 2))

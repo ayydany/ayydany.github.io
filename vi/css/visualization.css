@@ -12,9 +12,12 @@
 
 html, body { 
         overflow: hidden;
+        text-rendering: optimizeLegibility;
+        image-rendering: crisp-edges;
+        shape-rendering: auto;
         font-family: 'Roboto', 'sans-serif';
         height: 100%; 
-        padding: 0; 
+        padding: 0;
         margin: 0;
         color: var(--main-dark-color);    
         background-color: var(--main-bg-color)!important;

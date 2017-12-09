@@ -19,6 +19,12 @@
 }
 
 /* Axis Variables */
+
+#linechart .axislabel {
+    font-family: 'Roboto', 'sans-serif';
+    font-size: 12px;
+}
+
 #linechart .dot {
     stroke: var(--main-dark-color); 
 }
