@@ -80,14 +80,24 @@ function genLinechart() {
         
         // Call the x axis in a group tag
         svg.append("g")
-            .attr("class", "xAxis")
+            .attr("class", "xAxis unselectable")
             .attr("transform", "translate(0," + height + ")")
             .call(xAxis); // Create an axis component with d3.axisBottom
 
         svg.append("g")
-            .attr("class", "yAxis")
+            .attr("class", "yAxis unselectable")
             .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft
         
+        // text label for the y axis
+        svg.append("text")
+            .attr("class", "unselectable")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 0 - margin.left + 5)
+            .attr("x",0 - (height / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Medals");  
+
         svg.append("path")
             .datum(processedData.get(countryFilter).entries().sort(descending)) // Binds data to the line 
             .attr("class", "line") // Assign a class for styling 
@@ -110,8 +120,7 @@ function genLinechart() {
                     .ease(d3.easeElastic)
                     .duration("500")
                     .attr("r", 10)
-                    .attr("stroke-width", 2)
-                    .style("cursor", "pointer");
+                    .attr("stroke-width", 2);
                 })
             .on('mouseout', function(d){
                 tip.hide(d);
@@ -121,14 +130,7 @@ function genLinechart() {
                     .attr("r", function(d){
                         return (checkIfYearInInterval(d.key) ? 8 : 4);
                     })
-                    .attr("stroke-width", 1)
-                    .style("cursor", "default"); 
-            })
-            .on("click", function(d){
-                initialYearFilter = d.key;
-                endYearFilter = d.key;
-                genBubblechart(true, 0);
-                updateLinechart();
+                    .attr("stroke-width", 1);
             });
     });
     updateLinechart();
