@@ -2,8 +2,10 @@
 //generates the timeSlider in the vis
 function genTimeSlider() {
     var margin = {top: 10, right: 50, bottom: 10, left: 50}
-        width = $("#timeSlider").width(),
-        height = $("#timeSlider").height();
+        width = $("#timeslider").width(),
+        height = $("#timeslider").height();
+
+    var selectedHandle = null;
 
     var xScale = d3.scaleLinear()
         .domain([0, years.length-1])
@@ -12,7 +14,7 @@ function genTimeSlider() {
 
 
     // make an SVG Container
-    var svg = d3.select("#timeSlider").append("svg")
+    var svg = d3.select("#timeslider").append("svg")
         .attr("width", width - margin.top - margin.left)
         .attr("height", height);
 
@@ -28,19 +30,37 @@ function genTimeSlider() {
         .attr("class", "track-inset")
         .select(function () { return this.parentNode.appendChild(this.cloneNode(true)); })
         .attr("class", "track-overlay")
-        .on("click", function() {
-            if (d3.event.shiftKey) {
-                moveBothHandles(xScale.invert(d3.mouse(this)[0]));
-            }})
         .call(d3.drag()
-            .on("drag", function () { moveHandleDumb(xScale.invert(d3.event.x)); })
-            .on("end", function () { 
-                //update global time variable
-                if(Math.round(handle1.attr("cx")) <= Math.round(handle2.attr("cx"))){
-                    changeTimeline(xScale.invert(handle1.attr("cx")), xScale.invert(handle2.attr("cx")));
-                } else 
-                    changeTimeline(xScale.invert(handle2.attr("cx")), xScale.invert(handle1.attr("cx")));
-             }));
+            .on("drag", function () { 
+                target = round(xScale.invert(d3.event.x));
+                if(selectedHandle === null){
+                    (Math.abs(target - xScale.invert(handle1.attr("cx"))) < Math.abs(target - xScale.invert(handle2.attr("cx"))) ?
+                        selectedHandle = handle1 :
+                        selectedHandle = handle2);
+                }
+                moveHandleDumb(target);
+            })
+            .on("end", function () {
+                
+                // reset radius of selected handle
+                handle1.attr("r", 8);
+                handle2.attr("r", 8);
+                
+                // if both handles are the same year make them bigger
+                if(handle1.attr("cx") == handle2.attr("cx")){
+                    handle1.attr("r", 10);
+                    handle2.attr("r", 10);
+                }
+
+                selectedHandle = null;
+
+                // update global time variable
+                (Math.round(handle1.attr("cx")) <= Math.round(handle2.attr("cx")) ?
+                    changeTimeline(xScale.invert(handle1.attr("cx")), xScale.invert(handle2.attr("cx"))) :
+                    changeTimeline(xScale.invert(handle2.attr("cx")), xScale.invert(handle1.attr("cx")))
+                );
+            })
+        );
 
     slider.insert("g", ".track-overlay")
         .attr("class", "ticks")
@@ -55,38 +75,15 @@ function genTimeSlider() {
     var handle1 = slider.insert("circle", ".track-overlay")
         .attr("class", "handle")
         .attr("r", 8)
-        .attr("cx", xScale(0))
-        .on('mouseover', function(d){
-            console.log("HOVERING BOI");
-            });
+        .attr("cx", xScale(0));
 
     var handle2 = slider.insert("circle", ".track-overlay")
         .attr("class", "handle")
         .attr("r", 8)
         .attr("cx", xScale(27));
 
-    function moveHandleDumb(h){
-        target = round(h);
-        //select the closest handle to be the one moving
-        if(Math.abs(target - xScale.invert(handle1.attr("cx"))) < Math.abs(target - xScale.invert(handle2.attr("cx")))){
-            handle1.transition().duration(5)
-                .ease(d3.easeElastic)
-                .attr("cx", xScale(target));
-        } else {
-            handle2.transition().duration(5)
-                .ease(d3.easeElastic)
-                .attr("cx", xScale(target));
-        }
-    }
-
-    function moveBothHandles(h){
-        target = round(h);
-        handle1.transition().duration(200)
-            .ease(d3.easeElastic)
-            .attr("cx", xScale(target));
-
-        handle2.transition().duration(200)
-            .ease(d3.easeElastic)
+    function moveHandleDumb(target){
+        selectedHandle.attr("r", 10)
             .attr("cx", xScale(target));
     }
 
