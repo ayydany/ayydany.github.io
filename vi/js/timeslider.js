@@ -1,7 +1,7 @@
 
-//generates the timeSlider in the vis
+// generates the timeSlider in the vis
 function genTimeSlider() {
-    var margin = {top: 10, right: 50, bottom: 10, left: 50}
+    var margin = {top: 10, right: 50, bottom: 10, left: 25}
         width = $("#timeslider").width(),
         height = $("#timeslider").height();
 
@@ -9,13 +9,12 @@ function genTimeSlider() {
 
     var xScale = d3.scaleLinear()
         .domain([0, years.length-1])
-        .range([0, width - margin.top - margin.left-25])
+        .range([0, width-margin.left])
         .clamp(true);
-
 
     // make an SVG Container
     var svg = d3.select("#timeslider").append("svg")
-        .attr("width", width - margin.top - margin.left)
+        .attr("width", width)
         .attr("height", height);
 
     var slider = svg.append("g")
@@ -41,7 +40,6 @@ function genTimeSlider() {
                 moveHandleDumb(target);
             })
             .on("end", function () {
-                
                 // reset radius of selected handle
                 handle1.attr("r", 8);
                 handle2.attr("r", 8);
@@ -63,7 +61,7 @@ function genTimeSlider() {
         );
 
     slider.insert("g", ".track-overlay")
-        .attr("class", "ticks")
+        .attr("class", "ticks unselectable")
         .attr("transform", "translate(0," + 18 + ")")
         .selectAll("text")
         .data(xScale.ticks(years.length-1))
@@ -88,12 +86,7 @@ function genTimeSlider() {
     }
 
     function round(xScale) {
-        if (xScale % 1 >= 0.5) {
-            xScale = Math.ceil(xScale);
-        }
-        else {
-            xScale = Math.floor(xScale);
-        }
+        (xScale % 1 >= 0.5 ? xScale = Math.ceil(xScale) : xScale = Math.floor(xScale))
     return xScale;
     }
 };

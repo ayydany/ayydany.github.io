@@ -1,12 +1,11 @@
 #timeslider {
     position: absolute;
-    width: 850px;
+    width: 40%;
     height: 50px;
     left: 40%;
     top: 10px;
     margin: 2px 2px 2px 2px;
 }
-
 
 #timeslider .ticks {
     font: 10px 'Roboto', sans-serif;
