@@ -86,9 +86,6 @@ function genScatterplot(update) {
             .key(function(d) { return d.CountryCode; })
             .map(population);
 
-
-        console.log(processedPopulation);
-
         // calculate population average from the interval years
         processedPopulation.each(function(value,key) {
             var populationTotal = 0;
