@@ -3,7 +3,7 @@ function genWorldMap(){
     d3.select(window).on("resize", throttle);
     
     var zoom = d3.zoom()
-        .scaleExtent([4, 9])
+        .scaleExtent([1, 9])
         .on("zoom", move);
     
     var c = document.getElementById('worldmap');
