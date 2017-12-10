@@ -130,7 +130,7 @@ function genLinechart() {
                 tip.show(d);
                 d3.select(this).transition()
                     .ease(d3.easeElastic)
-                    .duration("500")
+                    .duration(animationTime)
                     .attr("r", 10)
                     .attr("stroke-width", 2);
                 })
@@ -138,7 +138,7 @@ function genLinechart() {
                 tip.hide(d);
                 d3.select(this).transition()
                     .ease(d3.easeElastic)
-                    .duration("500")
+                    .duration(animationTime)
                     .attr("r", function(d){
                         return (checkIfYearInInterval(d.key) ? 8 : 4);
                     })
@@ -218,21 +218,22 @@ function updateLinechart(){
         var svg = d3.select("#linechart");
             
         svg.select(".yAxis")
-            .transition()
-            .duration(750)
+            .transition().duration(animationTime)
+            .ease(d3.easeElastic)
             .call(d3.axisLeft(YScale)); // Create an axis component with d3.axisLeft
 
         svg.select(".line")
             .datum(processedData.get(countryFilter).entries().sort(descending)) // Binds data to the line
-            .transition()
-            .duration(750)
+            .transition().duration(animationTime)
+            .ease(d3.easeElastic)
             .attr("d", lineGenerator); // Calls the line generator 
 
         var dots = svg.selectAll(".dot")
             .data(processedData.get(countryFilter).entries().sort(descending));
 
         dots.transition()
-            .duration(750)
+            .duration(animationTime)
+            .ease(d3.easeElastic)
             .attr("cy", function(d) {
                 return YScale(d.value.TotalMedals)
             })

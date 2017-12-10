@@ -195,7 +195,7 @@ function genBubblechart(update, isGoingLower) {
                     .attr("stroke-width", "2")
                     .on('mouseover', function(d){
                         tip.show(d);
-                        d3.select(this).transition().duration(500)                  
+                        d3.select(this).transition().duration(animationTime)                  
                             .ease(d3.easeElastic)
                             .attr("stroke", function() { return getCSSColor('--main-white-color') })
                             .attr("r", function(d){
@@ -205,7 +205,7 @@ function genBubblechart(update, isGoingLower) {
                         })
                     .on('mouseout', function(d){
                         tip.hide(d);
-                        d3.select(this).transition().duration(300)
+                        d3.select(this).transition().duration(animationTime)
                             .ease(d3.easeElastic)    
                             .attr("stroke", function() { return getCSSColor('--main-dark-color') })
                             .attr("r", function(d){

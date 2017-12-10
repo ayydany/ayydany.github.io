@@ -19,6 +19,9 @@ var color = d3.scaleOrdinal(d3.schemeSet3),
 // years in which olympics occored
 var years = [1896, 1900, 1904, 1908, 1912, 1920, 1924, 1928, 1932, 1936, 1948, 1952, 1956, 1960, 1964, 1968, 1972, 1976, 1980, 1984, 1988, 1992, 1996, 2000, 2004, 2008, 2012]
 
+// animation variables
+var animationTime = 750;
+
 //set a reload function on window resize
 window.onresize = function(){ location.reload(); }
 
@@ -80,6 +83,10 @@ function changeTimeline(begin, end){
         genScatterplot(true);
     }
 };
+
+function checkIfTimelineIsBetween(begin, end){
+    return (begin <= initialYearFilter && end >= initialYearFilter && begin <= endYearFilter &&  end >= endYearFilter);
+}
 
 //function assumes we never use a year outside of year array
 function checkIfYearInInterval(year){

@@ -25,7 +25,7 @@ function genScatterplot(update) {
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function(d) {
-        return "<strong>" + convertIOCCodeToName(d.key) + "</strong> with a population of" + d.value[0];
+        return "<strong>" + convertIOCCodeToName(d.key) + "</strong> with <strong>" + d.value[1] + "</strong>";
     });
 
     var zoom = d3.zoom()
@@ -37,12 +37,18 @@ function genScatterplot(update) {
     // appends a 'group' element to 'svg'
     // moves the 'group' element to the top left margin
     if(update){
+
+        if(checkIfTimelineIsBetween(1896, 1960)){
+            alert("You tried picking an interval in which there is no Demographic information, Scatterplot will not update with this interval");
+            return;
+        }
+
         var svg = d3.select("#scatterplot");
     } else {
         var svg = d3.select("#scatterplot").append("svg")
             .attr("width", width + margin.right + 20)
             .attr("height", height + margin.top + margin.bottom)
-            .call(zoom)
+  //          .call(zoom)
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -80,12 +86,15 @@ function genScatterplot(update) {
             .key(function(d) { return d.CountryCode; })
             .map(population);
 
+
+        console.log(processedPopulation);
+
         // calculate population average from the interval years
         processedPopulation.each(function(value,key) {
             var populationTotal = 0;
             var counter = 1;
             Object.keys(value[0]).map(e => {
-                if(checkIfYearInInterval(e) && !(isNaN(+value[0][e])) ){
+                if((!isNaN(e)) && checkIfYearInInterval(e) && !(isNaN(value[0][e]))){
                     populationTotal = populationTotal + (+value[0][e] - populationTotal) / counter;
                     processedPopulation.set(key, Math.round(populationTotal));
                     counter++;
@@ -129,8 +138,6 @@ function genScatterplot(update) {
                 })
             .map(countries);
 
-        console.log(processedCountries);
-
         processedData = d3.map();
         processedPopulation.each(function(value,key) {
             processedData.set(String(key), [value, processedCountries.get(String(key)).TotalMedals]);
@@ -163,7 +170,7 @@ function genScatterplot(update) {
             .attr("class", "yAxis unselectable")
             .call(yAxis)
         
-            // text label for the y axis
+        // text label for the y axis
         svg.append("text")
            .attr("class", "axislabel unselectable")
            .attr("transform", "rotate(-90)")
@@ -196,15 +203,16 @@ function genScatterplot(update) {
         yScale.domain(d3.extent(processedData.entries(), function(d) { return d.value[1]; })).nice();
 
         svg.select(".yAxis")
-            .transition()
-            .duration(750)
+            .transition().duration(animationTime)
+            .ease(d3.easeElastic)
             .call(yAxis); // Create an axis component with d3.axisLeft
 
         var dots = svg.selectAll(".dot")
             .data(processedData.entries())
 
         dots.transition()
-            .duration(750)
+            .duration(animationTime)
+            .ease(d3.easeElastic)
             .attr("cx", function(d) { return xScale(d.value[0]); })
             .attr("cy", function(d) { return yScale(d.value[1]); });
     };
