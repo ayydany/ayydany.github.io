@@ -16,8 +16,7 @@ function genBubblechart(update, isGoingLower) {
                 .append("svg")
                 .attr("height", height)
                 .attr("width", width)
-                .append("g")
-                .attr("transform", "translate(0,10)")
+                .append("g");
         } else
             var svg = d3.select("#bubblechart g");
     
@@ -54,7 +53,6 @@ function genBubblechart(update, isGoingLower) {
         // isGoingLower is a bool that defines if we're going into a
         // lower or upper level and node is a variable set on click element
         function drawBubbles(isGoingLower) {
-            var datasetToUse;
                 
             //update current Level to new wanted level
             switch(isGoingLower){
@@ -87,7 +85,6 @@ function genBubblechart(update, isGoingLower) {
             // and also update css global variables
             switch(currentLevel) {
                 case 1:
-                    datasetToUse = "csv/summer_year_country_sport.csv";
                     sportFilter = "All";
                     currentFilterKeyword = "Sport";
                     $('#statelabel').html("<strong>" + countryName 
@@ -96,7 +93,6 @@ function genBubblechart(update, isGoingLower) {
                     $('#back-icon').hide(250);
                     break;
                 case 2:
-                    datasetToUse = "csv/summer_year_country_discipline.csv";
                     sportFilter = selectedNode.Sport;
                     currentFilterKeyword = "Discipline";
                     $('#statelabel').html("<strong>" + countryName + "</strong> on <strong>" 
@@ -105,7 +101,6 @@ function genBubblechart(update, isGoingLower) {
                     $('#back-icon').show(250);
                     break;
                 case 3:
-                    datasetToUse = "csv/summer_year_country_event.csv";
                     disciplineFilter = selectedNode.Discipline;
                     currentFilterKeyword = "Event";
                     $('#statelabel').html("<strong>" + countryName + "</strong> on <strong>" 
@@ -117,10 +112,13 @@ function genBubblechart(update, isGoingLower) {
     
             // cleanup view
             svg.selectAll(".bubble").remove();
-            svg.selectAll(".label").remove();
-    
+            
+            svg.call(tip);
+
             // create new bubbles as necessary
-            d3.csv(datasetToUse, function(error, data) {
+            d3.csv("csv/summer_year_country_event.csv", function(error, data) {
+                if (error) throw error;
+
                 data.forEach(function(d){
                     d.Year = +d.Year;
                     d.GoldCount = +d.GoldCount;
@@ -178,14 +176,15 @@ function genBubblechart(update, isGoingLower) {
                 radiusScale
                     .domain([1, (d3.max(processedData, function(d){ return +d.TotalMedals + 5; }) )])
                     .range([minBubbleSize, maxBubbleSize - (processedData.length / 2)]);
-                
-                svg.call(tip);
 
-                // a bubble will be drawn for each datapoint
-                var bubble = svg.selectAll(".bubble")
+                // a container for bubble stuff
+                var bubbleGroup = svg.selectAll(".bubble")
                     .data(processedData)
-                    .enter().append("circle")
-                    .attr("class", "bubble")
+                    .enter().append("g")
+                    .attr("class", "bubble");
+
+                // the bubble object
+                var bubble = bubbleGroup.append("circle")
                     .attr("r", function(d){
                         return radiusScale(d.TotalMedals);
                     })
@@ -221,13 +220,11 @@ function genBubblechart(update, isGoingLower) {
     
                         drawBubbles(-1); //going deeper
                         updateLinechart();
+                        genScatterplot(true);
                     });
     
-                    
                 // text labels that appear on top of the bubbles
-                var labels = svg.selectAll(".label")
-                    .data(processedData)
-                    .enter().append("text")
+                var labels = bubbleGroup.append("text")
                     .attr("class","label unselectable")
                     .text(function(d){ 
                         if((radiusScale(d.TotalMedals) < 30 && d[currentFilterKeyword].length > 6) || d[currentFilterKeyword].length > 15){
@@ -247,13 +244,15 @@ function genBubblechart(update, isGoingLower) {
                             .style("cursor", "default"); 
                     })
                     .on("click", function(d){
-                        drawBubbles(1); //going up
+                        drawBubbles(1);
                         updateLinechart();
+                        genScatterplot(true);
                     })
     
-                //restart the animation with a new alpha value
+                // restart the animation with a new alpha value
                 simulation.nodes(processedData)
                     .alpha(1)
+                    .alphaDecay(0.6)
                     .on('tick', ticked)
                     .restart();
     

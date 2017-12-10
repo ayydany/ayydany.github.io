@@ -10,8 +10,8 @@
     border-radius: 1px;
 }
 
-#worldmap .country:hover{
-    stroke: var(--main-white-color);
+#worldmap .country {
+    stroke: var(--main-dark-color);
     stroke-width: 1.5px;
 }
 

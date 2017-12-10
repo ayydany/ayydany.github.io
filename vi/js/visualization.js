@@ -30,25 +30,14 @@ $(document).ready(function() {
     genBubblechart(false, -1);
     genLinechart();
     genWorldMap();
+    genScatterplot();
 });
 
 // AUXILIARY FUNCTIONS //
-
-//function assumes we never use a year outside of year array
-function checkIfYearInInterval(year){
-    return (year >= initialYearFilter && year <= endYearFilter);
-};
-
-//function to get a CSS variable from the CSS
-function getCSSColor(variable){
-    return getComputedStyle(document.body).getPropertyValue(variable);
-};
-
-// descending filter compararation function
-function descending(a,b) { return a.key - b.key };
-
 function loadDictionary(){
     d3.csv("csv/dictionary.csv", function(error, data){
+        if (error) throw error;
+        
         dictionary = data;
     })
 };
@@ -88,5 +77,19 @@ function changeTimeline(begin, end){
     
         genBubblechart(true, 0);
         updateLinechart();
+        genScatterplot(true);
     }
 };
+
+//function assumes we never use a year outside of year array
+function checkIfYearInInterval(year){
+    return (year >= initialYearFilter && year <= endYearFilter);
+};
+
+//function to get a CSS variable from the CSS
+function getCSSColor(variable){
+    return getComputedStyle(document.body).getPropertyValue(variable);
+};
+
+// descending filter compararation function
+function descending(a,b) { return a.key - b.key };

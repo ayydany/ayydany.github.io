@@ -20,7 +20,6 @@ function genWorldMap(){
         svg,
         g;
     
-    
     var graticule = d3.geoGraticule();
     
     var tooltip = d3.select("#worldmap").append("div").attr("class", "tooltip hidden");

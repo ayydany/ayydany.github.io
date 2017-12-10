@@ -40,6 +40,8 @@ function genLinechart() {
 
     // start drawing the Linechart from the csv
     d3.csv("csv/summer_year_country_event.csv", function(error, data) {
+        if (error) throw error;
+
         data.forEach(function(d){
             d.Year = +d.Year;
             d.TotalMedals = (+d.GoldCount + +d.SilverCount + +d.BronzeCount);
@@ -194,12 +196,12 @@ function updateLinechart(){
             })
             .map(data);
             
-            //fill blank spaces in array with zeroes (for years in which a country didn't won any medals)
-            for(var i = 0; i < years.length; i++){
-                if(!(processedData.get(countryFilter).has(years[i]))){
-                    processedData.get(countryFilter).set(years[i], { TotalMedals:0 });
-                }
+        // fill blank spaces in array with zeroes (for years in which a country didn't won any medals)
+        for(var i = 0; i < years.length; i++){
+            if(!(processedData.get(countryFilter).has(years[i]))){
+                processedData.get(countryFilter).set(years[i], { TotalMedals:0 });
             }
+        }
 
         // adjust y axis component
         var YScale = d3.scaleLinear()
@@ -212,7 +214,7 @@ function updateLinechart(){
             .y(function(d) { return YScale(d.value.TotalMedals); }) // set the y values for the line generator 
             .curve(d3.curveMonotoneX) // apply smoothing to the line
 
-        //update linechart in vis
+        // update linechart in vis
         var svg = d3.select("#linechart");
             
         svg.select(".yAxis")
@@ -228,8 +230,6 @@ function updateLinechart(){
 
         var dots = svg.selectAll(".dot")
             .data(processedData.get(countryFilter).entries().sort(descending));
-        
-        dots.selectAll("title.label").remove();
 
         dots.transition()
             .duration(750)
@@ -237,7 +237,8 @@ function updateLinechart(){
                 return YScale(d.value.TotalMedals)
             })
             .attr("fill", function(d){
-                return (checkIfYearInInterval(d.key) ? getCSSColor('--linechart-dot-highlight-color') 
+                return (checkIfYearInInterval(d.key) ? 
+                    getCSSColor('--linechart-dot-highlight-color') 
                     : getCSSColor('--linechart-dot-color'));
             })
             .attr("opacity",function(d){
@@ -245,6 +246,6 @@ function updateLinechart(){
             })
             .attr("r", function(d){
                 return (checkIfYearInInterval(d.key) ? 8 : 4);
-            });       
+            });
     });
 };
