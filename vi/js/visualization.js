@@ -3,12 +3,14 @@
 var selectedNode = null,
     currentLevel = 1,   // defines the deepness we're seeing in the vis (Sport = 1; Discipline = 2; Event = 3)
     countryFilter = "USA",
+    countryName = "United States"
     sportFilter = "All",
     disciplineFilter = "All",
     eventFilter = "All",
     initialYearFilter = 1896,
     endYearFilter = 2012,
-    currentFilterKeyword = "Sport";
+    currentFilterKeyword = "Sport"
+    dictionary = null;
 
 // colors used throughout the visualization
 var color = d3.scaleOrdinal(d3.schemeSet3),
@@ -22,9 +24,12 @@ window.onresize = function(){ location.reload(); }
 
 // call first vis drawing
 $(document).ready(function() {
+    loadDictionary();
+
     genTimeSlider();
     genBubblechart(false, -1);
     genLinechart();
+    genWorldMap();
 });
 
 // AUXILIARY FUNCTIONS //
@@ -42,8 +47,34 @@ function getCSSColor(variable){
 // descending filter compararation function
 function descending(a,b) { return a.key - b.key };
 
+function loadDictionary(){
+    d3.csv("csv/dictionary.csv", function(error, data){
+        dictionary = data;
+    })
+};
+
+// return the country ID if it exists in the dictionary
+// -1 if it doesn't exit
+function getCountryIDinDB(countryName){
+    return dictionary.findIndex(i => i.CountryName === countryName);
+}
+
+function getCountryIDinDBByCode(iocCode){
+    return dictionary.findIndex(i => i.CountryCode === iocCode);
+}
+
+// converts a country name to the IOC code
+function convertNameToIOCCode(countryName){
+    return dictionary[getCountryIDinDB(countryName)].CountryCode;
+}
+// converts a IOC code to the country name
+function convertIOCCodeToName(iocCode){
+    return dictionary[getCountryIDinDBByCode(iocCode)].CountryName;
+}
+
 function changeCountry(country){
     countryFilter = String(country);
+    countryName = convertIOCCodeToName(country);
 
     genBubblechart(true, 0);
     updateLinechart();

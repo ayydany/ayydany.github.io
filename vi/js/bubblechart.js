@@ -1,5 +1,3 @@
-
-
 // generates a new bubblechart. 
 // the update flag must be set to true if its an update of an old bubblechart, false otherwise
 // isGoingLower determines the if we're going in a deeper level (-1), staying on the same level (0)
@@ -92,7 +90,7 @@ function genBubblechart(update, isGoingLower) {
                     datasetToUse = "csv/summer_year_country_sport.csv";
                     sportFilter = "All";
                     currentFilterKeyword = "Sport";
-                    $('#statelabel').html("<strong>" + countryFilter 
+                    $('#statelabel').html("<strong>" + countryName 
                         + "</strong> on <strong> every Event </strong> from <strong>" + initialYearFilter 
                         + "</strong> to <strong>" + endYearFilter + "</strong>");
                     $('#back-icon').hide(250);
@@ -101,7 +99,7 @@ function genBubblechart(update, isGoingLower) {
                     datasetToUse = "csv/summer_year_country_discipline.csv";
                     sportFilter = selectedNode.Sport;
                     currentFilterKeyword = "Discipline";
-                    $('#statelabel').html("<strong>" + countryFilter + "</strong> on <strong>" 
+                    $('#statelabel').html("<strong>" + countryName + "</strong> on <strong>" 
                         + sportFilter + "</strong> from <strong>" 
                         + initialYearFilter + "</strong> to <strong>" + endYearFilter+ "</strong>");
                     $('#back-icon').show(250);
@@ -110,7 +108,7 @@ function genBubblechart(update, isGoingLower) {
                     datasetToUse = "csv/summer_year_country_event.csv";
                     disciplineFilter = selectedNode.Discipline;
                     currentFilterKeyword = "Event";
-                    $('#statelabel').html("<strong>" + countryFilter + "</strong> on <strong>" 
+                    $('#statelabel').html("<strong>" + countryName + "</strong> on <strong>" 
                         + disciplineFilter + "</strong> from <strong>" + initialYearFilter 
                         + "</strong> to <strong>" + endYearFilter+ "</strong>");
                     $('#back-icon').show(250);
