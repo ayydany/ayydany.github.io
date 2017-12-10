@@ -201,7 +201,7 @@ function genScatterplot(update) {
 
         svg.select(".yAxis")
             .transition().duration(animationTime)
-            .ease(d3.easeElastic)
+            .ease(d3.easeExp)
             .call(yAxis); // Create an axis component with d3.axisLeft
 
         var dots = svg.selectAll(".dot")
@@ -209,7 +209,7 @@ function genScatterplot(update) {
 
         dots.transition()
             .duration(animationTime)
-            .ease(d3.easeElastic)
+            .ease(d3.easeExp)
             .attr("cx", function(d) { return xScale(d.value[0]); })
             .attr("cy", function(d) { return yScale(d.value[1]); });
     };
