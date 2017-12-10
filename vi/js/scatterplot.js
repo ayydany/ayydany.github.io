@@ -119,7 +119,7 @@ function genScatterplot(update) {
                         case 3:
                             return {
                                 "TotalMedals" : d3.sum(leaves, function(d) {
-                                    if(checkIfYearInInterval(+d.Year) && d.Event == eventFilter){
+                                    if(checkIfYearInInterval(+d.Year) && d.Discipline == disciplineFilter){
                                         return(+d.BronzeCount + +d.SilverCount + +d.GoldCount)
                                     }
                                 })
