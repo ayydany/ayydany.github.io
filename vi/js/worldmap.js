@@ -3,7 +3,7 @@ function genWorldMap(){
     d3.select(window).on("resize", throttle);
     
     var zoom = d3.zoom()
-        .scaleExtent([1, 9])
+        .scaleExtent([4, 9])
         .on("zoom", move);
     
     var c = document.getElementById('worldmap');
@@ -36,14 +36,11 @@ function genWorldMap(){
         
         svg = d3.select("#worldmap").append("svg")
             .attr("width", width-20)
-            .attr("height", height-20)
+            .attr("height", height-40)
             .call(zoom)
-            .on("click", click)
             .append("g");
         
-        g = svg.append("g")
-                .on("click", click);
-    
+        g = svg.append("g");
     }
     
     d3.json("js/worldmap/world-topo-min.json", function(error, world) {
@@ -76,6 +73,8 @@ function genWorldMap(){
             .attr("d", path)
             .attr("id", function(d,i) { return d.id; })
             .attr("title", function(d,i) { return d.properties.name; })
+            .style("stroke", function() {return getCSSColor('--main-dark-color'); } )
+            .style("stroke-width", "1px")
             .style("fill", function(d, i) { 
                 if(getCountryIDinDB(d.properties.name) != -1)
                     return color(d.properties.name); 
@@ -86,6 +85,7 @@ function genWorldMap(){
                 if(getCountryIDinDB(d.properties.name) != -1)
                     changeCountry(convertNameToIOCCode(d.properties.name));
             });
+
     }
     
     
@@ -107,7 +107,7 @@ function genWorldMap(){
     
         t[0] = Math.min(
             (width/height)  * (s - 1), 
-            Math.max( width * (1 - s), t[0] )
+            Math.max(width * (1 - s), t[0])
         );
         
         t[1] = Math.min(
