@@ -129,7 +129,7 @@ function genLinechart() {
             .on('mouseover', function(d){
                 tip.show(d);
                 d3.select(this).transition()
-                    .ease(d3.easeExp)
+                    .ease(d3.easeElastic)
                     .duration(animationTime)
                     .attr("r", 10)
                     .attr("stroke-width", 2);
@@ -137,7 +137,7 @@ function genLinechart() {
             .on('mouseout', function(d){
                 tip.hide(d);
                 d3.select(this).transition()
-                    .ease(d3.easeExp)
+                    .ease(d3.easeElastic)
                     .duration(animationTime)
                     .attr("r", function(d){
                         return (checkIfYearInInterval(d.key) ? 8 : 4);

@@ -70,6 +70,7 @@ function changeCountry(country){
 
     genBubblechart(true, 0);
     updateLinechart();
+    genScatterplot(true);
 };
 
 function changeTimeline(begin, end){

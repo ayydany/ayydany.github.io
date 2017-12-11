@@ -25,7 +25,7 @@ function genScatterplot(update) {
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function(d) {
-        return "<strong>" + convertIOCCodeToName(d.key) + "</strong> with <strong>" + d.value[1] + "</strong>";
+        return "<strong>" + convertIOCCodeToName(d.key) + "</strong> with <strong>" + d.value[1] + "</strong> Medals";
     });
 
     var zoom = d3.zoom()
@@ -159,7 +159,7 @@ function genScatterplot(update) {
         svg.append("text")
             .attr("class", "axislabel unselectable")
             .attr("transform", "translate(" + (width / 2) + " ," + 
-                                    (height + margin.top - 20) + ")")
+                                    (height + margin.top - 15) + ")")
             .style("text-anchor", "middle")
             .text("Population");
     
@@ -181,15 +181,27 @@ function genScatterplot(update) {
             .data(processedData.entries())
             .enter().append("circle")
             .attr("class", "dot") // Assign a class for styling
-            .attr("r", 5)
+            .attr("r", function(d) { return (d.key == countryFilter ? 10 : 5)})
+            .attr("opacity", function(d) { return (d.key == countryFilter ? 1 : 0.3)})
             .attr("cx", function(d) { return xScale(d.value[0]); })
             .attr("cy", function(d) { return yScale(d.value[1]); })
             .style("fill", function(d) { return color(d.key); })
             .on('mouseover', function(d){
                 tip.show(d);
+                this.parentElement.appendChild(this); //make it be on top
+                d3.select(this).transition()
+                    .ease(d3.easeElastic)
+                    .duration(animationTime)
+                    .attr("r", function(d) { return (d.key == countryFilter ? 15 : 8)})
+                    .attr("stroke-width", 2);
             })
             .on('mouseout', function(d){
                 tip.hide(d);
+                d3.select(this).transition()
+                .ease(d3.easeElastic)
+                .duration(animationTime)
+                .attr("r", function(d) { return (d.key == countryFilter ? 10 : 5)})
+                .attr("stroke-width", 1);
             });
 
     };
@@ -204,12 +216,24 @@ function genScatterplot(update) {
             .ease(d3.easeExp)
             .call(yAxis); // Create an axis component with d3.axisLeft
 
+        svg.select(".xAxis")
+            .transition().duration(animationTime)
+            .ease(d3.easeExp)
+            .call(xAxis); // Create an axis component with d3.axisLeft
+
         var dots = svg.selectAll(".dot")
             .data(processedData.entries())
 
         dots.transition()
             .duration(animationTime)
             .ease(d3.easeExp)
+            .on("end", function(d){
+                if(d.key == countryFilter){
+                    this.parentElement.appendChild(this);
+                }
+            })
+            .attr("r", function(d) { return (d.key == countryFilter ? 10 : 5)})
+            .attr("opacity", function(d) { return (d.key == countryFilter ? 1 : 0.3)})
             .attr("cx", function(d) { return xScale(d.value[0]); })
             .attr("cy", function(d) { return yScale(d.value[1]); });
     };
