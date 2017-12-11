@@ -1,7 +1,7 @@
 
 // global variables
 var selectedNode = null,
-    currentLevel = 1,   // defines the deepness we're seeing in the vis (Sport = 1; Discipline = 2; Event = 3)
+    currentLevel = 0,   // defines the deepness we're seeing in the vis (All = 0, Sport = 1; Discipline = 2; Event = 3)
     countryFilter = "USA",
     countryName = "United States"
     sportFilter = "All",
