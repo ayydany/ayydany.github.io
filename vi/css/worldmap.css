@@ -11,17 +11,7 @@
 }
 
 #worldmap .country {
-    stroke: var(--main-dark-color);
-    stroke-width: 1.5px;
-}
-
-#container {
-    margin:10px 10%;
-    border:2px solid #000;
-    border-radius: 5px;
-    height:100%;
-    overflow:hidden;
-    background: #F0F8FF;
+    stroke-width: 1px;
 }
 
 #worldmap .hidden { 
