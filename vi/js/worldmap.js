@@ -178,7 +178,7 @@ function genWorldMap() {
                                 currentSelectedCountriesNumber++;
                                 addCountryToSelection(convertNameToIOCCode(d.properties.name_long));
                             } else {
-                                alert("Maximum number of countries selected reached!");
+                                alert("Maximum number of countries selected reached!\nTo start a new group try Control + Left Click!");
                             }
                         }
                     }
