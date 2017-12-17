@@ -1,1 +1,0 @@
-Please use a python server to run as shown in the first lab class. Thanks!
