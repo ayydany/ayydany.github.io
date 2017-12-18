@@ -1,6 +1,21 @@
 @font-face {
 	font-family: 'proggy';
-	src: url('resources/ProggySmall.ttf');
+	src: url('res/ProggySmall.ttf');
+}
+
+:root {
+	--main-dark-color: #040004;
+	--main-grey-color: #413D3D;
+	--main-hover-color: rgba(75,0,15,0.4);
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 * {
@@ -8,41 +23,59 @@
 }
 
 html {
-	background: url('resources/bg2.jpg') no-repeat center center fixed;
+	background: url('res/backgrounds/bg1.jpg') no-repeat center center fixed;
 	background-size: cover;
 }
 
-#main {
-	font-family: 'proggy'; font-size: 16px;
+img{
+	max-width:100%;
+	max-height:100%;
+	width: auto;
+	height: auto;
+}
+
+#main_container {
+	display:inline-flex;
+}
+
+#image {
+	object-fit: cover;
+	pointer-events: none;
+	width: 300px;
+	height: 500px;
+}
+
+#links {
+	font-family: 'proggy'; 
+	font-size: 16px;
 	margin-left: 2%; margin-top: 2%;
 	width: 200px; height: 800px;
 }
 
 .title {
-	font-size: 16px;
+	font-weight: bold;
 	margin-top: 3%; margin-bottom: 3%;
 }
 
 a {
-	font-size: 15px;
 	text-decoration: none;
-	color: black;
+	color: var(--main-gray-color);
 	transition: .2s;
 }
 
 a:hover {
-	color: rgb(127,127,127);
+	color: var(--main-dark-color);
 }
 
 li {
 	padding-left: 9px;
-	border-left: 2px solid rgba(40,40,40,0.4);
+	border-left: 2px solid var(--main-hover-color);
 	transition: .2s;
 	line-height: 14px;
 }
 
 li:hover {
-	border-left: 8px solid rgba(40,40,40,0.4);
+	border-left: 8px solid var(--main-hover-color);
 }
 
 ul {
