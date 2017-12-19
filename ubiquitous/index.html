@@ -2,12 +2,14 @@
 
 	<head>
 		<link rel='stylesheet' href='style.css' />
+		<link rel="icon" type="image/png" href="favicon.png">
 		<title>im here</title>
 
 		<script src="res/lib/jquery-3.2.1.min.js"></script>
+		<script src="random.js"></script>
 	</head>
 
-	<body style="overflow:hidden;">
+	<body>
 		<div id='main_container' class='unselectable'>
 				<img id='image' src="res/images/img1.jpg" alt="cute" border="5">
 				<div id='links'>
@@ -46,5 +48,10 @@
 		</div>
 	</body>
 
-	<script src="random.js"></script>
+	<script>
+		$(document).ready(function() {
+			randomizeBackground();
+			randomizeImage();
+		});
+	</script>
 </html>
