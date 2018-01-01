@@ -1,28 +1,27 @@
 :root {
-	--main-dark-color: #444444;
-	--main-white-color: #EEEEDD;
-	--main-bg-color: #EEEEDD;
-}
+    --main-title-color: #333333;
 
-.unselectable {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    --main-dark-color: #333333;
+    --main-darker-color: #444444;
+    --main-white-color: #EEEEDD;
+    
+	--main-bg-color: #FFFDF0;
 }
 
 body {
-    background-color: var(--main-bg-color)!important;
+    background-color: var(--main-bg-color) !important;
     overflow: scroll;
+
+    user-select: none;
 }
+
 span {
     font-family: 'Open Sans', sans-serif;
     color: var(--main-dark-color);
 }
 
 a {
+    font-family: 'Open Sans', sans-serif;
     color: var(--main-dark-color);
     text-decoration: none;
 }
@@ -33,57 +32,63 @@ a {
     flex-direction: column;
 }
 
-#header .subtitle {
-    font-size: 1.5vw;
-    margin: 10px 10px 10px 10px;
-}
-
-#title {
+#header .title {
     width: 100%;
-    margin: 10px 10px 10px 10px;
-    font-size: 3vw;
+    margin-left: 1rem;
+
+    color: var(--main-title-color);
+
+    font-family: 'Open Sans Condensed', sans-serif; 
+    font-size: 3rem;
     font-weight: bold;
 }
 
-.image {
-    border: 1px;
+#header .subtitle {
+    margin-left: 1.5rem;
+
+    font-size: 0.7rem;
 }
 
-.main_container {
+.container {
     display: flex;
     flex-direction: column;
 }
 
-.main_container .subtitle {
-    margin: 10px 10px 10px 10px;
-    font-size: 1.5vw;
+.container .title {  
+    margin-left: 2rem;
+
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 2.5rem;
 }
 
-.container{
+.subcontainer{
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
-.subcontainer {
+.element {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-.subcontainer .subtitle {
-    margin: 10px 10px 10px 10px;
-    align-self: center;
-    font-size: 2vw;
-}
+.element .title {
+    margin: 0.5rem 0rem 0.5rem 0rem;
 
-.subcontainer .description {
-    font-size: 1vw;
-    align-self: center;
+    font-style: normal;
+    font-size: 2rem;
+}
+    
+.element .description {
     flex-wrap: wrap;
+
+    font-size: 1rem;
 }
 
-.subcontainer .image {
-    max-height:432px;
+.element .image {
+    max-height: 432px;
+    border: 1px solid var(--main-dark-color);
     width: auto;
     height: auto;
     object-fit: cover;
