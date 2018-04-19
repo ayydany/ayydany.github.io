@@ -179,7 +179,7 @@ function removeCountryFromSelection(countryName){
 
 	for(i = 0; i < countrySelection.length; i++){
         if(countrySelection[i] === iocCode){
-			countrySelection[i] = NULL;
+			countrySelection[i] = null;
 			break;
         }
 	}
