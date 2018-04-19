@@ -299,6 +299,7 @@ function hideLine(lineID){
       .classed("hidden", true);
 
     d3.selectAll("#linechart .dot.id" + lineID)
+      .transition()
       .attr("cy", function(d) { return 0; })
       .attr("fill", function(d){ return d3.color("white"); })
       .classed("hidden", true);
