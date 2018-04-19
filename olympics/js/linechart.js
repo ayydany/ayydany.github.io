@@ -293,15 +293,8 @@ function updateLinechart(forceRefresh = false){
 };
 
 function hideLine(lineID){
-    d3.select("#linechart .line.id" + lineID)
-      .attr("stroke", function(d) { return d3.color("white"); })
-      .attr("d", resetLineGenerator)
-      .classed("hidden", true);
-
-    d3.selectAll("#linechart .dot.id" + lineID)
-      .attr("cy", function(d) { return 0; })
-      .attr("fill", function(d){ return d3.color("white"); })
-      .classed("hidden", true);
+    d3.select("#linechart .line.id" + lineID).classed("hidden", true);
+    d3.selectAll("#linechart .dot.id" + lineID).classed("hidden", true);
 }
 
 function showLine(lineID){
