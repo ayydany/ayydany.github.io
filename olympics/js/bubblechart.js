@@ -137,7 +137,7 @@ function genBubblechart(update, isGoingLower) {
     
                 // filter the data, first by year and then by Country
                 var filteredData = data.filter(function(d, i){
-                    if(country.includes(d["Country"]) && initialYearFilter <= d["Year"] && d["Year"] <= endYearFilter){
+                    if(countrySelection.includes(d["Country"]) && initialYearFilter <= d["Year"] && d["Year"] <= endYearFilter){
                         switch(currentLevel){
                             case 0: //all information
                                 return d;
