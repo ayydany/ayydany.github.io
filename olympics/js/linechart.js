@@ -249,10 +249,10 @@ function updateLinechart(forceRefresh = false){
             //if element doesn't exist add it to the next open value
             if(forceRefresh){
                 clearLineIDArray();
-                setNextFreeLineID(element);
+                var line = setNextFreeLineID(element);
             } 
             else if(getLineID(element) == -1){
-                setNextFreeLineID(element);
+                var line = setNextFreeLineID(element);
             }
 
             var currentCountryID = getLineID(element);
@@ -284,32 +284,16 @@ function updateLinechart(forceRefresh = false){
                 .attr("r", function(d){
                     return (checkIfYearInInterval(d.key) ? 8 : 4);
                 });
-
+            
+            showLine(line);
         });
     }) 
 };
 
-var xScale = d3.scaleLinear()
-.domain([0, n-1]) // input
-.range([0, width]); // output
-
-
-var resetLineGenerator = d3.line()
-.x(function(d, i) { return xScale(i); }) // set the x values for the line generator
-.y(function(d) { return 0 }) // set the y values for the line generator 
-.curve(d3.curveMonotoneX) // apply smoothing to the line
-
 function hideLine(lineID){
-    d3.select("#linechart .line.id" + lineID)
-      .attr("stroke", function(d) { return d3.color("white"); })
-      .attr("d", resetLineGenerator)
-      .classed("hidden", true);
+    d3.select("#linechart .line.id" + lineID).classed("hidden", true);
 
-    d3.selectAll("#linechart .dot.id" + lineID)
-      .transition()
-      .attr("cy", function(d) { return 0; })
-      .attr("fill", function(d){ return d3.color("white"); })
-      .classed("hidden", true);
+    d3.selectAll("#linechart .dot.id" + lineID).classed("hidden", true);
 }
 
 function showLine(lineID){

@@ -144,7 +144,6 @@ function setNextFreeLineID(country){
     for(i = 0; i < countryLineIdentifier.length; i++){
         if(countryLineIdentifier[i][0] === null){
             setLineID(country, i);
-            showLine(i);
             return i;
         }
     }
