@@ -2,7 +2,7 @@
 // global variables
 var selectedNode = null,
     currentLevel = 0,   // defines the deepness we're seeing in the vis (All = 0, Sport = 1; Discipline = 2; Event = 3)
-    countrySelection = ["FRA"],
+    countrySelection = ["FRA", null, null, null],
     countryName = "France",
     countryLineIdentifier = [["FRA" , 0],[null , 1],[null , 2],[null , 3]],
     sportFilter = "All",
@@ -88,6 +88,16 @@ function convertNameToIOCCode(countryName){
  */
 function convertIOCCodeToName(code){
     return dictionary[getCountryIDByCode(code)].CountryName;
+}
+
+function getNumberOfCountriesInSelection(){
+	var number = 0;
+	countrySelection.forEach(function(element){
+		if(element === null)
+		number++;	
+	})
+
+	return number - countrySelection.length;
 }
 
 /** 
