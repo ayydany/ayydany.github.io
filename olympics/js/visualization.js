@@ -130,7 +130,7 @@ function countrySelectionToString(){
     if(dictionary === null)
         return "France";
 		
-	var arrayCountries;
+	var arrayCountries = [];
 
 	countrySelection.forEach(function(element){
 		if(element === null)
