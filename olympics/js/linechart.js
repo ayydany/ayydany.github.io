@@ -264,6 +264,8 @@ function updateLinechart(forceRefresh = false){
 
             var currentCountryID = getLineID(element);
 
+            console.log(element);
+
             svg.select(".line.id" + currentCountryID)
                 .datum(processedData.get(element).entries().sort(descending)) // Binds data to the line
                 .transition().duration(animationTime)
