@@ -297,6 +297,13 @@ function hideLine(lineID){
 }
 
 function showLine(lineID){
-    d3.select("#linechart .line.id" + lineID).classed("hidden", false)
-    d3.selectAll("#linechart .dot.id" + lineID).classed("hidden", false);
+    d3.select("#linechart .line.id" + lineID).transition()
+    .duration(animationTime)
+    .ease(d3.easeExp)
+    .classed("hidden", false);
+
+    d3.selectAll("#linechart .dot.id" + lineID).transition()
+    .duration(animationTime)
+    .ease(d3.easeExp)
+    .classed("hidden", false);
 }
