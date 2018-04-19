@@ -238,10 +238,7 @@ function updateLinechart(forceRefresh = false){
             .y(function(d) { return yScale(d.value.TotalMedals); }) // set the y values for the line generator 
             .curve(d3.curveMonotoneX) // apply smoothing to the line
 
-        var resetLineGenerator = d3.line()
-            .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
-            .y(function(d) { return 0 }) // set the y values for the line generator 
-            .curve(d3.curveMonotoneX) // apply smoothing to the line
+
             
         svg.select(".yAxis")
             .transition().duration(animationTime)
@@ -291,6 +288,11 @@ function updateLinechart(forceRefresh = false){
         });
     }) 
 };
+
+var resetLineGenerator = d3.line()
+.x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+.y(function(d) { return 0 }) // set the y values for the line generator 
+.curve(d3.curveMonotoneX) // apply smoothing to the line
 
 function hideLine(lineID){
     d3.select("#linechart .line.id" + lineID)
