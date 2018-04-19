@@ -97,8 +97,8 @@ function convertIOCCodeToName(code){
 function getNumberOfCountriesInSelection(){
 	var number = 0;
 	countrySelection.forEach(function(element){
-		if(element === null)
-		number++;	
+		if(element[0] === null)
+			number++;	
 	})
 
 	return number - countrySelection.length;
