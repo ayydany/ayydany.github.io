@@ -189,7 +189,7 @@ function clearLineIDArray(){
  */
 function getLineID(iocCode){
     for(i = 0; i < countryLineIdentifier.length; i++){
-        if(countryLineIdentifier[i][0] === iocCode){
+        if(countryLineIdentifier[i] === iocCode){
             return i;
         }
     }
@@ -216,11 +216,11 @@ function setNextFreeLineID(iocCode){
 
 function removeLineID(country){
     hideLine(getLineID(country));
-    countryLineIdentifier[getLineID(country)][0] = null;
+    countryLineIdentifier[getLineID(country)] = null;
 }
 
 function setLineID(country, id){
-    countryLineIdentifier[id] = [country, id]
+    countryLineIdentifier[id] = [country]
 }
 
 function changeTimeline(begin, end){
