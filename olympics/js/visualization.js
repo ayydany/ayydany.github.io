@@ -2,7 +2,7 @@
 // global variables
 var selectedNode = null,
     currentLevel = 0,   // defines the "deepness" we're filtering by in the vis (All = 0, Sport = 1; Discipline = 2; Event = 3)
-    countrySelection = ["FRA", , ,] //max 4 countries selected
+    countrySelection = ["FRA", null, null, null] //max 4 countries selected
     countryName = "France"
     countryLineIdentifier = ["FRA", null, null, null]
     sportFilter = "All",
@@ -139,7 +139,7 @@ function getNumberOfCountriesInSelection(){
 function changeSelectedCountry(countryName){
 	var iocCode = convertNameToIOCCode(countryName);
 
-    countrySelection = [String(iocCode), , ,];
+    countrySelection = [String(iocCode), null, null, null];
 
 	// call all the draw methods to redraw dashboard components
     genBubblechart(true, 0);
