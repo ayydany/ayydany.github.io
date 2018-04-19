@@ -107,10 +107,10 @@ function countrySelectionToString(){
 	var empties = countrySelection.length - countrySelection.filter(String).length;
 
 	if(empties == 1)
-		return convertIOCCodeToName(countryFilter[0]);
+		return convertIOCCodeToName(countrySelection[0]);
 
     for(i = 0; i < countrySelection.length; i++){
-        result += convertIOCCodeToName(countryFilter[i])
+        result += convertIOCCodeToName(countrySelection[i])
 
         if(countrySelection.length - i == 2){
            result += " and "
