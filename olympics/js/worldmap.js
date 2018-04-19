@@ -156,7 +156,7 @@ function genWorldMap() {
                             })
                             currentSelectedCountriesNumber = 1;
                             boxZoom(path.bounds(d), path.centroid(d), 20);
-                            changeCountry(convertNameToIOCCode(d.properties.name_long));
+                            changeSelectedCountry(d.properties.name_long);
                             isZoomed = true;
                         }
                     }
@@ -167,7 +167,7 @@ function genWorldMap() {
                                 return NOT_SELECTED_COUNTRY_COLOR;
                             })
                             currentSelectedCountriesNumber--;
-                            removeCountryFromSelection(convertNameToIOCCode(d.properties.name_long));
+                            removeCountryFromSelection(d.properties.name_long);
                         }
                         else {
                             if (currentSelectedCountriesNumber < MAX_SELECTED_COUNTRIES) {
@@ -176,7 +176,7 @@ function genWorldMap() {
                                     return color(convertNameToIOCCode(d.properties.name_long));
                                 })
                                 currentSelectedCountriesNumber++;
-                                addCountryToSelection(convertNameToIOCCode(d.properties.name_long));
+                                addCountryToSelection(d.properties.name_long);
                             } else {
                                 alert("Maximum number of countries selected is 4\nTo start a new group try Control + Left Click");
                             }
