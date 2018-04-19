@@ -1,16 +1,16 @@
 
 // global variables
 var selectedNode = null,
-    currentLevel = 0,   // defines the "deepness" we're filtering by in the vis (All = 0, Sport = 1; Discipline = 2; Event = 3)
-    countrySelection = ["FRA", null, null, null] //max 4 countries selected
-    countryName = "France"
-    countryLineIdentifier = ["FRA", null, null, null]
+    currentLevel = 0,   // defines the deepness we're seeing in the vis (All = 0, Sport = 1; Discipline = 2; Event = 3)
+    countrySelection = ["FRA"],
+    countryName = "France",
+    countryLineIdentifier = [["FRA" , 0],[null , 1],[null , 2],[null , 3]],
     sportFilter = "All",
     disciplineFilter = "All",
     eventFilter = "All",
     initialYearFilter = 1896,
     endYearFilter = 2012,
-    currentFilterKeyword = "Sport"
+    currentFilterKeyword = "Sport",
     dictionary = null;
 
 // colors used throughout the visualization
@@ -100,12 +100,12 @@ function convertIOCCodeToName(code){
 function countrySelectionToString(){
     var result = "";
 
-	// small hack to ensure correct initial behaviour
+	// small hack to ensure correct first behaviour
     if(dictionary === null)
         return "France";
 
-	if(getNumberOfCountriesInSelection() == 1)
-		return convertIOCCodeToName(countrySelection[0]);
+    if(countrySelection.length == 1)
+        return convertIOCCodeToName(countrySelection[0]);
 
     for(i = 0; i < countrySelection.length; i++){
         result += convertIOCCodeToName(countrySelection[i])
@@ -123,15 +123,6 @@ function countrySelectionToString(){
 }
 
 /** 
- * Returns the number of not-empty countries in current selection
- * 
- * @returns {number} number of not empty countries
- */
-function getNumberOfCountriesInSelection(){
-	return countrySelection.filter(String).length;
-}
-
-/** 
  * Changes the currently selected country to a new one
  * 
  * @param {string} countryName - Name of the new country
@@ -139,7 +130,8 @@ function getNumberOfCountriesInSelection(){
 function changeSelectedCountry(countryName){
 	var iocCode = convertNameToIOCCode(countryName);
 
-    countrySelection = [String(iocCode), null, null, null];
+    countrySelection = [String(iocCode)];
+    countryName = convertIOCCodeToName(iocCode);
 
 	// call all the draw methods to redraw dashboard components
     genBubblechart(true, 0);
@@ -153,15 +145,7 @@ function changeSelectedCountry(countryName){
  * @param {string} countryName - Name of the country to be added
  */
 function addCountryToSelection(countryName){
-
-	for(i = 0; i < countrySelection.length; i++){
-		if(countrySelection[i] === null){
-			countrySelection[i] = String(convertNameToIOCCode(countryName));
-			break;
-		}
-	}
-	
-	//todo line logic
+    countrySelection.push(String(convertNameToIOCCode(countryName)));
 
 	// call all the draw methods to redraw dashboard components
     genBubblechart(true, 0);
@@ -177,14 +161,8 @@ function addCountryToSelection(countryName){
 function removeCountryFromSelection(countryName){
 	var iocCode = convertNameToIOCCode(countryName);
 
-	for(i = 0; i < countrySelection.length; i++){
-        if(countrySelection[i] === iocCode){
-			countrySelection[i] = null;
-			break;
-        }
-	}
-	
-    //removeLineID(iocCode);
+    countrySelection.splice(countrySelection.indexOf(String(iocCode)), 1);
+    removeLineID(iocCode);
 
     genBubblechart(true, 0);
     updateLinechart();
@@ -198,7 +176,7 @@ function removeCountryFromSelection(countryName){
  */
 function clearLineIDArray(){
     for(i = 0; i < countryLineIdentifier.length; i++){
-        countryLineIdentifier[i] = null;
+        countryLineIdentifier[i][0] = null;
         hideLine(i);
     }
 }
@@ -211,7 +189,7 @@ function clearLineIDArray(){
  */
 function getLineID(iocCode){
     for(i = 0; i < countryLineIdentifier.length; i++){
-        if(countryLineIdentifier[i] === iocCode){
+        if(countryLineIdentifier[i][0] === iocCode){
             return i;
         }
     }
@@ -228,7 +206,7 @@ function getLineID(iocCode){
  */
 function setNextFreeLineID(iocCode){
     for(i = 0; i < countryLineIdentifier.length; i++){
-        if(countryLineIdentifier[i] === null){
+        if(countryLineIdentifier[i][0] === null){
             setLineID(iocCode, i);
             return i;
         }
@@ -238,11 +216,11 @@ function setNextFreeLineID(iocCode){
 
 function removeLineID(country){
     hideLine(getLineID(country));
-    countryLineIdentifier[getLineID(country)] = null;
+    countryLineIdentifier[getLineID(country)][0] = null;
 }
 
 function setLineID(country, id){
-    countryLineIdentifier[id] = [country]
+    countryLineIdentifier[id] = [country, id]
 }
 
 function changeTimeline(begin, end){

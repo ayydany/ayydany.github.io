@@ -160,7 +160,7 @@ function genWorldMap() {
                             isZoomed = true;
                         }
                     }
-                    if (!(getNumberOfCountriesInSelection == 1 && countryFilter.includes(convertNameToIOCCode(d.properties.name_long)))) {
+                    if (!(countrySelection.length == 1 && countrySelection.includes(convertNameToIOCCode(d.properties.name_long)))) {
                         if (d3.select(this).classed("country-on")) {
                             d3.select(this).classed("country-on", false);
                             d3.select(this).attr("fill", function(d){
