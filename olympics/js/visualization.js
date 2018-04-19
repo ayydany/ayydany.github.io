@@ -130,22 +130,31 @@ function countrySelectionToString(){
     if(dictionary === null)
         return "France";
 		
+	var arrayCountries;
+
+	countrySelection.forEach(function(element){
+		if(element === null)
+			return;
+		else
+			arrayCountries.push(element);
+	})
+
 	switch(getNumberOfCountriesInSelection()){
 		case 1:
-			return convertIOCCodeToName(countrySelection[0]);
+			return convertIOCCodeToName(arrayCountries[0]);
 			break;
 
 		case 2:
-			return convertIOCCodeToName(countrySelection[0]) + " and " + convertIOCCodeToName(countrySelection[1]);
+			return convertIOCCodeToName(arrayCountries[0]) + " and " + convertIOCCodeToName(arrayCountries[1]);
 			break;
 		
 		case 3:
-			return convertIOCCodeToName(countrySelection[0]) + ", " + convertIOCCodeToName(countrySelection[1])
-			+ " and " + convertIOCCodeToName(countrySelection[2]);
+			return convertIOCCodeToName(arrayCountries[0]) + ", " + convertIOCCodeToName(arrayCountries[1])
+			+ " and " + convertIOCCodeToName(arrayCountries[2]);
 			break;
 		case 4:
-			return convertIOCCodeToName(countrySelection[0]) + ", " + convertIOCCodeToName(countrySelection[1])
-			+ ", " + convertIOCCodeToName(countrySelection[2]) + " and " + convertIOCCodeToName(countrySelection[3]);
+			return convertIOCCodeToName(arrayCountries[0]) + ", " + convertIOCCodeToName(arrayCountries[1])
+			+ ", " + convertIOCCodeToName(arrayCountries[2]) + " and " + convertIOCCodeToName(arrayCountries[3]);
 			break;
 	}
 }
