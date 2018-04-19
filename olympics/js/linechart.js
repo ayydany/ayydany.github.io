@@ -283,9 +283,9 @@ function updateLinechart(forceRefresh = false){
                 })
                 .attr("r", function(d){
                     return (checkIfYearInInterval(d.key) ? 8 : 4);
-                });
-            
-            showLine(currentCountryID);
+                })
+                .on("end", showLine(currentCountryID));
+
         });
     }) 
 };
