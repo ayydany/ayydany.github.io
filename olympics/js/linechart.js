@@ -60,6 +60,7 @@ function genLinechart() {
 
         //fill blank spaces in array with zeroes (for years in which a country didn't won any medals)
         for(var i = 0; i < years.length; i++){
+            console.log(countrySelection);
             if(!(processedData.get(countrySelection).has(years[i]))){
                 processedData.get(countrySelection).set(years[i], { TotalMedals:0 });
             }
