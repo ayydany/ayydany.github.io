@@ -253,6 +253,10 @@ function updateLinechart(forceRefresh = false){
             .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft
 
         countrySelection.forEach(function(element){
+             // we don't do anything to null element
+             if(element === null)
+                return;
+
             //if element doesn't exist add it to the next open value
             if(forceRefresh){
                 clearLineIDArray();
