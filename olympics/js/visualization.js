@@ -129,27 +129,25 @@ function countrySelectionToString(){
 	// small hack to ensure correct first behaviour
     if(dictionary === null)
         return "France";
-
-    if(getNumberOfCountriesInSelection() == 1)
-        return convertIOCCodeToName(countrySelection[0]);
-
-    for(i = 0; i < countrySelection.length; i++){
 		
-		if(countrySelection[i] === null)
-			continue;
+	switch(getNumberOfCountriesInSelection()){
+		case 1:
+			return convertIOCCodeToName(countrySelection[0]);
+			break;
 
-        result += convertIOCCodeToName(countrySelection[i])
-
-        if(countrySelection.length - i == 2){
-           result += " and "
-        } 
-        else if(countrySelection.length - i == 1){
-            result += ""
-        } else {
-            result += ", "
-        }
-    }
-    return result;
+		case 2:
+			return convertIOCCodeToName(countrySelection[0]) + " and " + convertIOCCodeToName(countrySelection[1]);
+			break;
+		
+		case 3:
+			return convertIOCCodeToName(countrySelection[0]) + ", " + convertIOCCodeToName(countrySelection[1])
+			+ " and " + convertIOCCodeToName(countrySelection[2]);
+			break;
+		case 4:
+			return convertIOCCodeToName(countrySelection[0]) + ", " + convertIOCCodeToName(countrySelection[1])
+			+ ", " + convertIOCCodeToName(countrySelection[2]) + " and " + convertIOCCodeToName(countrySelection[3]);
+			break;
+	}
 }
 
 /** 
