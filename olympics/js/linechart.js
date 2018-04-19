@@ -219,6 +219,10 @@ function updateLinechart(forceRefresh = false){
             
         // fill blank spaces in array with zeroes (for years in which a country didn't won any medals)
         countrySelection.forEach(function(element){
+            // we don't do anything to null element
+            if(element === null)
+                return;
+
             for(var i = 0; i < years.length; i++){
                 if(!(processedData.get(element).has(years[i]))){
                     processedData.get(element).set(years[i], { TotalMedals:0 });
