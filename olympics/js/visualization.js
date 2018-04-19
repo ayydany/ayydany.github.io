@@ -46,27 +46,41 @@ function loadDictionary(){
 
         dictionary = data;
     })
-
-
 };
 
-// return the country ID if it exists in the dictionary
-// -1 if it doesn't exit
-function getCountryIDinDB(countryName){
+/** 
+ * Gets the country ID if it exists in the dictionary by name
+ * @param {string} countryName - name of the country
+ * @returns {number} Country ID or -1 if it doesn't exist
+ */
+function getCountryID(countryName){
     return dictionary.findIndex(i => i.CountryName === countryName);
 }
 
-function getCountryIDinDBByCode(iocCode){
-    return dictionary.findIndex(i => i.CountryCode === iocCode);
+/** 
+ * Gets the country ID if it exists in the dictionary
+ * @param {string} code - IOC Code of the country
+ * @returns {number} Country ID or -1 if it doesn't exist
+ */
+function getCountryIDByCode(code){
+    return dictionary.findIndex(i => i.CountryCode === code);
 }
 
-// converts a country name to the IOC code
+/** 
+ * Converts a country name to the IOC code 
+ * @param {string} countryName - Name to be converted to a IOC Code
+ * @returns {string} IOC Code
+ */
 function convertNameToIOCCode(countryName){
-    return dictionary[getCountryIDinDB(countryName)].CountryCode;
+    return dictionary[getCountryID(countryName)].CountryCode;
 }
-// converts a IOC code to the country name
-function convertIOCCodeToName(iocCode){
-    return dictionary[getCountryIDinDBByCode(iocCode)].CountryName;
+/** 
+ * converts a IOC code to the country name 
+ * @param {string} code - IOC Code to be converted into a country name
+ * @returns {string} Country Name
+ */
+function convertIOCCodeToName(code){
+    return dictionary[getCountryIDByCode(code)].CountryName;
 }
 
 function countryFilterToString(){
@@ -140,6 +154,11 @@ function getLineID(country){
     return -1;
 }
 
+/** 
+ * Updates the variable countryLineIdentifier
+ * @param {string} country - Country to be set in the next free position
+ * 
+ */
 function setNextFreeLineID(country){
     for(i = 0; i < countryLineIdentifier.length; i++){
         if(countryLineIdentifier[i][0] === null){

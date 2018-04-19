@@ -232,67 +232,68 @@ function updateLinechart(forceRefresh = false){
             }
         });
 
-        // update line generator for new values
+        // update line generator for the new values
         var lineGenerator = d3.line()
             .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
             .y(function(d) { return yScale(d.value.TotalMedals); }) // set the y values for the line generator 
-            .curve(d3.curveMonotoneX) // apply smoothing to the line
+            .curve(d3.curveMonotoneX); // apply smoothing to the line
 
-
-            
+        // update the yAxis
         svg.select(".yAxis")
             .transition().duration(animationTime)
             .ease(d3.easeExp)
-            .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft
+            .call(d3.axisLeft(yScale)); 
 
-        countryFilter.forEach(function(element){
-            //if element doesn't exist add it to the next open value
-            if(forceRefresh){
-                clearLineIDArray();
-                setNextFreeLineID(element);
-            } 
-            else if(getLineID(element) == -1){
-                setNextFreeLineID(element);
+        
+        countryFilter.forEach(
+            function(element){
+                //if element doesn't exist add it to the next open value
+                if(forceRefresh){
+                    clearLineIDArray();
+                    setNextFreeLineID(element);
+                } 
+                else if(getLineID(element) == -1){
+                    setNextFreeLineID(element);
+                }
+
+                var currentCountryID = getLineID(element);
+
+                svg.select(".line.id" + currentCountryID)
+                    .datum(processedData.get(element).entries().sort(descending)) // Binds data to the line
+                    .transition().duration(animationTime)
+                    .ease(d3.easeExp)
+                    .attr("stroke", function(d) { return color(element)} )
+                    .attr("d", lineGenerator); // Calls the line generator 
+
+                var dots = svg.selectAll(".dot.id" + currentCountryID)
+                    .data(processedData.get(element).entries().sort(descending));
+
+                dots.transition()
+                    .duration(animationTime)
+                    .ease(d3.easeExp)
+                    .attr("cy", function(d) {
+                        return yScale(d.value.TotalMedals)
+                    })
+                    .attr("fill", function(d){
+                        return (checkIfYearInInterval(d.key) ? 
+                            d3.rgb(color(element))
+                            :  d3.rgb(color(element)).brighter());
+                    })
+                    .attr("opacity",function(d){
+                        return (checkIfYearInInterval(d.key) ? 1 : 0.6);
+                    })
+                    .attr("r", function(d){
+                        return (checkIfYearInInterval(d.key) ? 8 : 4);
+                    })
+                    .on("end", showLine(currentCountryID));
+
             }
-
-            var currentCountryID = getLineID(element);
-
-            svg.select(".line.id" + currentCountryID)
-                .datum(processedData.get(element).entries().sort(descending)) // Binds data to the line
-                .transition().duration(animationTime)
-                .ease(d3.easeExp)
-                .attr("stroke", function(d) { return color(element)} )
-                .attr("d", lineGenerator); // Calls the line generator 
-
-            var dots = svg.selectAll(".dot.id" + currentCountryID)
-                .data(processedData.get(element).entries().sort(descending));
-
-            dots.transition()
-                .duration(animationTime)
-                .ease(d3.easeExp)
-                .attr("cy", function(d) {
-                    return yScale(d.value.TotalMedals)
-                })
-                .attr("fill", function(d){
-                    return (checkIfYearInInterval(d.key) ? 
-                        d3.rgb(color(element))
-                        :  d3.rgb(color(element)).brighter());
-                })
-                .attr("opacity",function(d){
-                    return (checkIfYearInInterval(d.key) ? 1 : 0.6);
-                })
-                .attr("r", function(d){
-                    return (checkIfYearInInterval(d.key) ? 8 : 4);
-                })
-                .on("end", showLine(currentCountryID));
-
-        });
+        );
     }) 
 };
 
 function hideLine(lineID){
     d3.select("#linechart .line.id" + lineID).classed("hidden", true);
-
     d3.selectAll("#linechart .dot.id" + lineID).classed("hidden", true);
 }
 
