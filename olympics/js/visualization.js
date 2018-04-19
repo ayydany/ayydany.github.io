@@ -1,8 +1,8 @@
 
 // global variables
 var selectedNode = null,
-    currentLevel = 0,   // defines the deepness we're seeing in the vis (All = 0, Sport = 1; Discipline = 2; Event = 3)
-    countryFilter = ["FRA"],
+    currentLevel = 0,   // defines the "deepness" we're filtering by in the vis (All = 0, Sport = 1; Discipline = 2; Event = 3)
+    countrySelection = ["FRA", , ,] //max 4 countries selected
     countryName = "France"
     countryLineIdentifier = ["FRA", null, null, null]
     sportFilter = "All",
@@ -91,29 +91,31 @@ function convertIOCCodeToName(code){
 }
 
 /** 
- * Converts the countryFilter variable to something like
+ * Converts the countrySelection variable to something like
  * 
  * *"country1, country2 and country3"*
  * 
  * @returns {string} String
  */
-function countryFilterToString(){
+function countrySelectionToString(){
     var result = "";
 
-	// small hack to ensure correct first behaviour
+	// small hack to ensure correct initial behaviour
     if(dictionary === null)
         return "France";
+	
+	var empties = countrySelection.length - countrySelection.filter(String).length;
 
-    if(countryFilter.length == 1)
-        return convertIOCCodeToName(countryFilter[0]);
+	if(empties == 1)
+		return convertIOCCodeToName(countryFilter[0]);
 
-    for(i = 0; i < countryFilter.length; i++){
+    for(i = 0; i < countrySelection.length; i++){
         result += convertIOCCodeToName(countryFilter[i])
 
-        if(countryFilter.length - i == 2){
+        if(countrySelection.length - i == 2){
            result += " and "
         } 
-        else if(countryFilter.length - i == 1){
+        else if(countrySelection.length - i == 1){
             result += ""
         } else {
             result += ", "
@@ -130,8 +132,7 @@ function countryFilterToString(){
 function changeSelectedCountry(countryName){
 	var iocCode = convertNameToIOCCode(countryName);
 
-    countryFilter = [String(iocCode)];
-    countryName = convertIOCCodeToName(iocCode);
+    countrySelection = [String(iocCode), , , ];
 
 	// call all the draw methods to redraw dashboard components
     genBubblechart(true, 0);
@@ -145,7 +146,15 @@ function changeSelectedCountry(countryName){
  * @param {string} countryName - Name of the country to be added
  */
 function addCountryToSelection(countryName){
-    countryFilter.push(String(convertNameToIOCCode(countryName)));
+
+	for(i = 0; i < countrySelection.length; i++){
+		if(countrySelection[i] === NULL){
+			countrySelection[i] = String(convertNameToIOCCode(countryName));
+			break;
+		}
+	}
+	
+	//todo line logic
 
 	// call all the draw methods to redraw dashboard components
     genBubblechart(true, 0);
@@ -161,8 +170,14 @@ function addCountryToSelection(countryName){
 function removeCountryFromSelection(countryName){
 	var iocCode = convertNameToIOCCode(countryName);
 
-    countryFilter.splice(countryFilter.indexOf(String(iocCode)), 1);
-    removeLineID(iocCode);
+	for(i = 0; i < countrySelection.length; i++){
+        if(countrySelection[i] === iocCode){
+			countrySelection[i] = NULL;
+			break;
+        }
+	}
+	
+    //removeLineID(iocCode);
 
     genBubblechart(true, 0);
     updateLinechart();
