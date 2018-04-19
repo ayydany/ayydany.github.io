@@ -155,7 +155,7 @@ function changeSelectedCountry(countryName){
 function addCountryToSelection(countryName){
 
 	for(i = 0; i < countrySelection.length; i++){
-		if(countrySelection[i] === NULL){
+		if(countrySelection[i] === null){
 			countrySelection[i] = String(convertNameToIOCCode(countryName));
 			break;
 		}
