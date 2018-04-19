@@ -103,10 +103,8 @@ function countrySelectionToString(){
 	// small hack to ensure correct initial behaviour
     if(dictionary === null)
         return "France";
-	
-	var empties = countrySelection.length - countrySelection.filter(String).length;
 
-	if(empties == 1)
+	if(getNumberOfCountriesInSelection() == 1)
 		return convertIOCCodeToName(countrySelection[0]);
 
     for(i = 0; i < countrySelection.length; i++){
@@ -125,6 +123,15 @@ function countrySelectionToString(){
 }
 
 /** 
+ * Returns the number of not-empty countries in current selection
+ * 
+ * @returns {number} number of not empty countries
+ */
+function getNumberOfCountriesInSelection(){
+	return countrySelection.filter(String).length;
+}
+
+/** 
  * Changes the currently selected country to a new one
  * 
  * @param {string} countryName - Name of the new country
@@ -132,7 +139,7 @@ function countrySelectionToString(){
 function changeSelectedCountry(countryName){
 	var iocCode = convertNameToIOCCode(countryName);
 
-    countrySelection = [String(iocCode), , , ];
+    countrySelection = [String(iocCode), , ,];
 
 	// call all the draw methods to redraw dashboard components
     genBubblechart(true, 0);
