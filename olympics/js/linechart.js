@@ -60,14 +60,13 @@ function genLinechart() {
 
         //fill blank spaces in array with zeroes (for years in which a country didn't won any medals)
         for(var i = 0; i < years.length; i++){
-            console.log(countrySelection);
-            if(!(processedData.get(countrySelection).has(years[i]))){
-                processedData.get(countrySelection).set(years[i], { TotalMedals:0 });
+            if(!(processedData.get(countrySelection[0]).has(years[i]))){
+                processedData.get(countrySelection[0]).set(years[i], { TotalMedals:0 });
             }
         }
         
         // automatically resize yScale according to max value of linechart
-        yScale.domain([0, (d3.max(processedData.get(countrySelection).entries(), function (d) { return d.value.TotalMedals + 10; }))]);
+        yScale.domain([0, (d3.max(processedData.get(countrySelection[0]).entries(), function (d) { return d.value.TotalMedals + 10; }))]);
 
         var svg = d3.select("#linechart")
             .append("svg")
@@ -112,21 +111,21 @@ function genLinechart() {
         // cicle to create the multiple lines/dots 
         for(i = 0; i < 4; i++){
             svg.append("path")
-                .datum(processedData.get(countrySelection).entries().sort(descending)) // Binds data to the line 
+                .datum(processedData.get(countrySelection[0]).entries().sort(descending)) // Binds data to the line 
                 .attr("class", function(d){
                     return (i == 0 ? "line id"+i : "line id" + i +" hidden");
                 })
-                .attr("stroke", function(d) {return color(countrySelection)})
+                .attr("stroke", function(d) {return color(countrySelection[0])})
                 .attr("d", line); // Calls the line generator 
 
             // Appends a circle for each datapoint 
             svg.selectAll(".dot id" + i)
-                .data(processedData.get(countrySelection).entries().sort(descending))
+                .data(processedData.get(countrySelection[0]).entries().sort(descending))
                 .enter().append("circle") // Uses the enter().append() method
                 .attr("class", function(d){
                     return (i == 0 ? "dot id"+i : "dot id" + i +" hidden");
                 })
-                .attr("fill", function(d){ return d3.rgb(color(countrySelection)) })
+                .attr("fill", function(d){ return d3.rgb(color(countrySelection[0])) })
                 .attr("cx", function(d, i) { return xScale(i) })
                 .attr("cy", function(d) { 
                     return yScale(d.value.TotalMedals) })
