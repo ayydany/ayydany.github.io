@@ -134,6 +134,10 @@ function countrySelectionToString(){
         return convertIOCCodeToName(countrySelection[0]);
 
     for(i = 0; i < countrySelection.length; i++){
+		
+		if(countrySelection[i] === null)
+			continue;
+
         result += convertIOCCodeToName(countrySelection[i])
 
         if(countrySelection.length - i == 2){
@@ -188,7 +192,7 @@ function addCountryToSelection(countryName){
 function removeCountryFromSelection(countryName){
 	var iocCode = convertNameToIOCCode(countryName);
 	countrySelection[countrySelection.indexOf(String(iocCode))] = null;
-	
+
     removeLineID(iocCode);
 
     genBubblechart(true, 0);
