@@ -249,10 +249,10 @@ function updateLinechart(forceRefresh = false){
             //if element doesn't exist add it to the next open value
             if(forceRefresh){
                 clearLineIDArray();
-                var line = setNextFreeLineID(element);
+                setNextFreeLineID(element);
             } 
             else if(getLineID(element) == -1){
-                var line = setNextFreeLineID(element);
+                setNextFreeLineID(element);
             }
 
             var currentCountryID = getLineID(element);
@@ -285,7 +285,7 @@ function updateLinechart(forceRefresh = false){
                     return (checkIfYearInInterval(d.key) ? 8 : 4);
                 });
             
-            showLine(line);
+            showLine(currentCountryID);
         });
     }) 
 };
@@ -297,13 +297,6 @@ function hideLine(lineID){
 }
 
 function showLine(lineID){
-    d3.select("#linechart .line.id" + lineID).transition()
-    .duration(animationTime)
-    .ease(d3.easeExp)
-    .classed("hidden", false);
-
-    d3.selectAll("#linechart .dot.id" + lineID).transition()
-    .duration(animationTime)
-    .ease(d3.easeExp)
-    .classed("hidden", false);
+    d3.select("#linechart .line.id" + lineID).classed("hidden", false)
+    d3.selectAll("#linechart .dot.id" + lineID).classed("hidden", false);
 }
