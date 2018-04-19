@@ -237,6 +237,11 @@ function updateLinechart(forceRefresh = false){
             .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
             .y(function(d) { return yScale(d.value.TotalMedals); }) // set the y values for the line generator 
             .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+        var resetLineGenerator = d3.line()
+            .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+            .y(function(d) { return 0 }) // set the y values for the line generator 
+            .curve(d3.curveMonotoneX) // apply smoothing to the line
             
         svg.select(".yAxis")
             .transition().duration(animationTime)
@@ -288,8 +293,13 @@ function updateLinechart(forceRefresh = false){
 };
 
 function hideLine(lineID){
-    d3.select("#linechart .line.id" + lineID).classed("hidden", true);
-    d3.selectAll("#linechart .dot.id" + lineID).classed("hidden", true);
+    d3.select("#linechart .line.id" + lineID).classed("hidden", true)
+      .attr("stroke", function(d) { return d3.color("white"); })
+      .attr("d", resetLineGenerator);
+
+    d3.selectAll("#linechart .dot.id" + lineID).classed("hidden", true)
+      .attr("cy", function(d) { return 0; })
+      .attr("fill", function(d){ return d3.color("white"); });
 }
 
 function showLine(lineID){
