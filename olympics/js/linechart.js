@@ -289,6 +289,11 @@ function updateLinechart(forceRefresh = false){
     }) 
 };
 
+var xScale = d3.scaleLinear()
+.domain([0, n-1]) // input
+.range([0, width]); // output
+
+
 var resetLineGenerator = d3.line()
 .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
 .y(function(d) { return 0 }) // set the y values for the line generator 
