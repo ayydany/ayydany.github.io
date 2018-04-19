@@ -129,16 +129,8 @@ function countrySelectionToString(){
 	// small hack to ensure correct first behaviour
     if(dictionary === null)
 		return "France";
-		
-	var countriesArray = [];
 
-	countrySelection.forEach(function(element){
-		if(element === null)
-			return;
-		else
-			countriesArray.push(element);
-	})
-
+		//todo fix this method
     if(getNumberOfCountriesInSelection() == 1)
         return convertIOCCodeToName(countrySelection[0]);
 
