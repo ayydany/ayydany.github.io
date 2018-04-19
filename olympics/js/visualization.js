@@ -109,7 +109,7 @@ function getNumberOfCountriesInSelection(){
  * @returns {number} Open Position or -1 if there is none
  */
 function getFirstOpenPositionInSelection(){
-	for(i = 0; i<countrySelection; i++){
+	for(i = 0; i<countrySelection.length; i++){
 		if(countrySelection[i] === null)
 			return i;
 	}
