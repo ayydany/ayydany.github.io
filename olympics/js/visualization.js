@@ -207,7 +207,8 @@ function getLineID(iocCode){
 function setNextFreeLineID(iocCode){
     for(i = 0; i < countryLineIdentifier.length; i++){
         if(countryLineIdentifier[i][0] === null){
-            setLineID(iocCode, i);
+			setLineID(iocCode, i);
+			showLine(i);
             return i;
         }
     }
