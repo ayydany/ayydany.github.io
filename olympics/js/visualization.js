@@ -2,7 +2,7 @@
 // global variables
 var selectedNode = null,
     currentLevel = 0,   // defines the deepness we're seeing in the vis (All = 0, Sport = 1; Discipline = 2; Event = 3)
-    countrySelection = [["FRA"], [null], [null], [null]],
+    countrySelection = ["FRA", null, null, null],
     countryName = "France",
     countryLineIdentifier = [["FRA" , 0],[null , 1],[null , 2],[null , 3]],
     sportFilter = "All",
@@ -97,13 +97,25 @@ function convertIOCCodeToName(code){
 function getNumberOfCountriesInSelection(){
 	var number = 0;
 	countrySelection.forEach(function(element){
-		if(element[0] === null)
-			number++;	
+		if(element === null)
+		number++;	
 	})
 
 	return number - countrySelection.length;
 }
 
+/** 
+ * Returns the first free position in the countrySelection array
+ * @returns {number} Open Position or -1 if there is none
+ */
+function getFirstOpenPositionInSelection(){
+	for(i = 0; i<countrySelection; i++){
+		if(countrySelection[i] === null)
+			return i;
+	}
+
+	return -1;
+}
 /** 
  * Converts the countrySelection variable to something like
  * 
@@ -144,7 +156,7 @@ function countrySelectionToString(){
 function changeSelectedCountry(countryName){
 	var iocCode = convertNameToIOCCode(countryName);
 
-    countrySelection = [String(iocCode)];
+    countrySelection = [String(iocCode), null, null, null];
     countryName = convertIOCCodeToName(iocCode);
 
 	// call all the draw methods to redraw dashboard components
@@ -159,7 +171,8 @@ function changeSelectedCountry(countryName){
  * @param {string} countryName - Name of the country to be added
  */
 function addCountryToSelection(countryName){
-    countrySelection.push(String(convertNameToIOCCode(countryName)));
+
+	countrySelection[getFirstOpenPositionInSelection()] = String(convertNameToIOCCode(countryName));
 
 	// call all the draw methods to redraw dashboard components
     genBubblechart(true, 0);
@@ -174,8 +187,8 @@ function addCountryToSelection(countryName){
  */
 function removeCountryFromSelection(countryName){
 	var iocCode = convertNameToIOCCode(countryName);
-
-    countrySelection.splice(countrySelection.indexOf(String(iocCode)), 1);
+	countrySelection[countrySelection.indexOf(String(iocCode))] = null;
+	
     removeLineID(iocCode);
 
     genBubblechart(true, 0);
