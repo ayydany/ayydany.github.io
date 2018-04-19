@@ -4,7 +4,7 @@ var selectedNode = null,
     currentLevel = 0,   // defines the deepness we're seeing in the vis (All = 0, Sport = 1; Discipline = 2; Event = 3)
     countryFilter = ["FRA"],
     countryName = "France"
-    countryLineIdentifier = [["FRA" , 0],[null , 1],[null , 2],[null , 3]]
+    countryLineIdentifier = ["FRA", null, null, null]
     sportFilter = "All",
     disciplineFilter = "All",
     eventFilter = "All",
@@ -125,7 +125,7 @@ function countryFilterToString(){
 /** 
  * Changes the currently selected country to a new one
  * 
- * @param {string} countryName - Country Name of the new country
+ * @param {string} countryName - Name of the new country
  */
 function changeSelectedCountry(countryName){
 	var iocCode = convertNameToIOCCode(countryName);
@@ -142,7 +142,7 @@ function changeSelectedCountry(countryName){
 /** 
  * Adds a new country to the current selection
  * 
- * @param {string} countryName - IOC code of the country to be added
+ * @param {string} countryName - Name of the country to be added
  */
 function addCountryToSelection(countryName){
     countryFilter.push(String(convertNameToIOCCode(countryName)));
@@ -156,11 +156,11 @@ function addCountryToSelection(countryName){
 /** 
  * Removes a country to the current selection
  * 
- * @param {string} countryName - IOC code of the country to be removed
+ * @param {string} countryName - Name of the country to be removed
  */
 function removeCountryFromSelection(countryName){
 	var iocCode = convertNameToIOCCode(countryName);
-	
+
     countryFilter.splice(countryFilter.indexOf(String(iocCode)), 1);
     removeLineID(iocCode);
 
@@ -170,16 +170,26 @@ function removeCountryFromSelection(countryName){
 
 }
 
+/** 
+ * Clears the array of LineIDs (for the linechart),
+ * and also hides all the lines
+ */
 function clearLineIDArray(){
     for(i = 0; i < countryLineIdentifier.length; i++){
-        countryLineIdentifier[i][0] = null;
+        countryLineIdentifier[i] = null;
         hideLine(i);
     }
 }
 
-function getLineID(country){
+/** 
+ * Gets the lineID of the country with the given IOC Code
+ * 
+ * @param {string} iocCode - Code of the country to search for
+ * @return {number} ID or -1 if it doesn't find the country with the given IOC code
+ */
+function getLineID(iocCode){
     for(i = 0; i < countryLineIdentifier.length; i++){
-        if(countryLineIdentifier[i][0] === country){
+        if(countryLineIdentifier[i][0] === iocCode){
             return i;
         }
     }
@@ -187,14 +197,17 @@ function getLineID(country){
 }
 
 /** 
- * Updates the variable countryLineIdentifier
- * @param {string} country - Country to be set in the next free position
+ * Sets the country with the give IOC Code in the first 
+ * free open position in the array that controls linechart lines
+ * @param {string} iocCode - IOC Code of the country
+ * 
+ * @return {number} position that was set or -1 if array was full (and wasn't modified)
  * 
  */
-function setNextFreeLineID(country){
+function setNextFreeLineID(iocCode){
     for(i = 0; i < countryLineIdentifier.length; i++){
-        if(countryLineIdentifier[i][0] === null){
-            setLineID(country, i);
+        if(countryLineIdentifier[i] === null){
+            setLineID(iocCode, i);
             return i;
         }
     }
