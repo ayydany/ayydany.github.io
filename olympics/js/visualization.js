@@ -38,9 +38,8 @@ $(document).ready(function() {
 
 function updateDashboardState(nextState, initialUpdate = false) {
 
+    //semi asynchrinous call, this method has to wait for the initialization to end
     if(!dictionariesInitialized){
-        //todo use deferreds probably
-        dictionariesINitialized = true;
         setTimeout(updateDashboardState(0, true), 250);
     }
 
@@ -72,9 +71,7 @@ function updateDashboardState(nextState, initialUpdate = false) {
         return;
     }
     //redraw the dashboard
-    if(initialUpdate){
-
-
+    if(initialUpdate) {
         genTimeSlider();
         genBubblechart();
         genLinechart();
@@ -172,6 +169,8 @@ function loadDictionary(){
         }
 
         randomizeInitialCountry(null, "FRA"); //Initial debugging country
+
+        dicitonariesINitialized = true;
 	})
 };
 
