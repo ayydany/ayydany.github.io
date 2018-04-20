@@ -110,7 +110,6 @@ function genWorldMap() {
                 if(convertNameToIOCCode(d.properties.name_long) == -1) 
                     return "non-selectable-country";
                 else {
-                    console.log(countrySelection);
                     if(convertNameToIOCCode(d.properties.name_long) == countrySelection[0]) {
                         return "country country-on";
                     } else {
