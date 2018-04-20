@@ -128,8 +128,9 @@ function genWorldMap() {
             })
             // add a mouseover action to show name label for feature/country
             .on("mouseover", function (d) {
-                d3.select(this).attr("stroke", function() { return getCSSColor('--main-white-color') });
-
+                d3.select(this).attr("stroke", function() { return getCSSColor('--main-white-color') })
+                    .style("cursor", "pointer");
+                
                 this.parentElement.appendChild(this);
 
                 var mouse = d3.mouse(svg.node()).map( function(d) { 
@@ -142,7 +143,8 @@ function genWorldMap() {
             })
             .on("mouseout", function (d) {
                 d3.select(this).attr("stroke", function() { return getCSSColor('--main-dark-color') });
-                tooltip.classed("hidden", true);
+                tooltip.classed("hidden", true)
+                .style("cursor", "default");
             })
             .on("click", function (d) {
                 if (d3.select(this).classed("country")) {
