@@ -40,12 +40,12 @@ function genBubblechart(update, isGoingLower) {
         
         // tooltip generator
         var tip = d3.tip()
-        .attr('class', 'd3-tip')
-        .offset([-10, 0])
-        .html(function(d) {
-            return "<strong>" + d.GoldCount + "</strong> Gold // <strong>" + d.SilverCount + "</strong> Silver // <strong>" 
-            + d.BronzeCount + "</strong> Bronze on <strong>" + d[currentFilterKeyword] + "</strong>";
-        });
+            .attr('class', 'd3-tip')
+            .offset([-10, 0])
+            .html(function(d) {
+                return "<strong>" + d.GoldCount + "</strong> Gold // <strong>" + d.SilverCount + "</strong> Silver // <strong>" 
+                + d.BronzeCount + "</strong> Bronze on <strong>" + d[currentFilterKeyword] + "</strong>";
+            });
         
         drawBubbles(0);
     
@@ -82,22 +82,22 @@ function genBubblechart(update, isGoingLower) {
             }
     
             // and also update css global variables
-            var yearsText = (endYearFilter == initialYearFilter ? " in <strong>" + initialYearFilter + "</strong>" : 
+            let yearsText = (endYearFilter == initialYearFilter ? " in <strong>" + initialYearFilter + "</strong>" : 
             " from <strong>" +  initialYearFilter + "</strong> to <strong>" + endYearFilter + "</strong>");
-            countryName = countrySelectionToString();
+            let countriesSection = countrySelectionToString();
             
             switch(currentLevel) {
                 case 0:
                     sportFilter = "All";
                     currentFilterKeyword = "Sport";
-                    $('#statelabel').html("<strong>" + countryName
-                        + "</strong> on <strong> every Event </strong>" + yearsText);
+                    $('#statelabel').html(countriesSection
+                        + " on <strong> every Event </strong>" + yearsText);
                     $('#back-icon-container').hide();
                     break;
                 case 1:
                     sportFilter = selectedNode.Sport;
                     currentFilterKeyword = "Discipline";
-                    $('#statelabel').html("<strong>" + countryName  + "</strong> on <strong>" 
+                    $('#statelabel').html(countriesSection  + " on <strong>" 
                         + sportFilter + "</strong>" + yearsText);
                     $('#back-icon-container').show();
                     $('#back-subtitle').text("All");
@@ -105,14 +105,14 @@ function genBubblechart(update, isGoingLower) {
                 case 2:
                     disciplineFilter = selectedNode.Discipline;
                     currentFilterKeyword = "Event";
-                    $('#statelabel').html("<strong>" + countryName  + "</strong> on <strong>" 
+                    $('#statelabel').html(countriesSection  + " on <strong>" 
                         + disciplineFilter + "</strong>" + yearsText);
                     $('#back-subtitle').text(sportFilter);
                     break;
                 case 3:
                     eventFilter = selectedNode.Event;
                     currentFilterKeyword = "Event";
-                    $('#statelabel').html("<strong>" + countryName  + "</strong> on <strong>" 
+                    $('#statelabel').html(countriesSection  + " on <strong>" 
                         + eventFilter + "</strong>" + yearsText);
                     $('#back-subtitle').text(disciplineFilter);
                     break;

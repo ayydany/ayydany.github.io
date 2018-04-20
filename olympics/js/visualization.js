@@ -120,7 +120,7 @@ function getFirstOpenPositionInSelection() {
 
 /** 
  * Converts the countrySelection variable to something a 
- * human can read, example:
+ * human can read, with some html marking
  * 
  * *"country1, country2 and country3"*
  * 
@@ -146,7 +146,7 @@ function countrySelectionToString() {
             continue;
         }
 
-        result += convertIOCCodeToName(countrySelection[i])
+        result += "<strong>" + convertIOCCodeToName(countrySelection[i]) + "</strong>";
 
         if(getNumberOfCountriesInSelection() - i == 2) {
            result += " and "
