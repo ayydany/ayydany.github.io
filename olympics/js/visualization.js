@@ -30,10 +30,17 @@ window.onresize = function(){ location.reload(); }
 
 // call first vis drawing
 $(document).ready(function() {
-    loadDictionary(() => updateDashboardState(0, true));
+    loadDictionary();
+
+    updateDashboardState(0, true);
 });
 
 function updateDashboardState(nextState, initialUpdate = false) {
+
+    if(initialUpdate){
+        //todo use deferreds probably
+        setTimeout(updateDashboardState(0), 250);
+    }
 
     //update current Level to new wanted level
     switch(nextState){
@@ -64,6 +71,8 @@ function updateDashboardState(nextState, initialUpdate = false) {
     }
     //redraw the dashboard
     if(initialUpdate){
+
+
         genTimeSlider();
         genBubblechart();
         genLinechart();
