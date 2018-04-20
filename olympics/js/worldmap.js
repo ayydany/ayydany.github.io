@@ -129,7 +129,13 @@ function genWorldMap() {
             // add a mouseover action to show name label for feature/country
             .on("mouseover", function (d) {
                 d3.select(this).attr("stroke", function() { return getCSSColor('--main-white-color') })
-                    .style("cursor", "pointer");
+                    .style("cursor", function(d) {
+                        if(d3.select(this).classed("non-selectable-country")) {
+                            return "default";
+                        } else {
+                            return "pointer";
+                        }
+                    })
                 
                 this.parentElement.appendChild(this);
 
