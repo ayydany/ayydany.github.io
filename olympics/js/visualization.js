@@ -65,6 +65,11 @@ function loadDictionary(){
  * @returns {string} IOC Code
  */
 function convertNameToIOCCode(countryName) {
+    if(countryNameDictionary[countryName]) {
+        console.log("hello");
+    } else {
+        console.log("boop");
+    }
     return countryNameDictionary[countryName];
 }
 /** 
