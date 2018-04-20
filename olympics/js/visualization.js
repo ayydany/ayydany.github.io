@@ -1,9 +1,7 @@
-
 // global variables
 var selectedNode = null,
     currentState = 0,   // defines the deepness we're seeing in the vis (All = 0, Sport = 1; Discipline = 2; Event = 3)
     countrySelection = [null, null, null, null],
-    countryName = "",
     countryLineIdentifier = [[null, 0], [null, 1], [null, 2], [null, 3]],
     sportFilter = "All",
     disciplineFilter = "All",
@@ -144,7 +142,6 @@ function randomizeInitialCountry(array, initialCountryCode = null) {
     }
 
     countrySelection = [randomCountryCode, null, null, null];
-    countryName = convertIOCCodeToName(randomCountryCode);
     countryLineIdentifier = [[randomCountryCode, 0], [null, 1], [null, 2], [null, 3]];
 
 }
@@ -286,9 +283,7 @@ function addCountryToSelection(countryName){
 	countrySelection[getFirstOpenPositionInSelection()] = String(convertNameToIOCCode(countryName));
 
 	// call all the draw methods to redraw dashboard components
-    genBubblechart(true, 0);
-    updateLinechart(false);
-    genScatterplot(true);
+    updateDashboardState(0);
 }
 
 /** 
@@ -302,9 +297,7 @@ function removeCountryFromSelection(countryName){
 
     removeLineID(iocCode);
 
-    genBubblechart(true, 0);
-    updateLinechart();
-    genScatterplot(true);
+    updateDashboardState(0);
 
 }
 
@@ -368,9 +361,7 @@ function changeTimeline(begin, end){
         initialYearFilter = years[Math.round(begin)];
         endYearFilter = years[Math.round(end)];
     
-        genBubblechart(true, 0);
-        updateLinechart();
-        genScatterplot(true);
+        updateDashboardState(0);
     }
 };
 
