@@ -41,6 +41,97 @@ $(document).ready(function() {
     genScatterplot();
 });
 
+function updateDashboardState(nextState) {
+    //update current Level to new wanted level
+    switch(nextState){
+        case -1:
+            currentState = currentState+1;
+            break;
+        case 0:
+            currentState = currentState;
+            break;
+        case 1:
+            currentState = currentState-1;
+            break;
+    }
+
+    //check if currentState is possible [1,3]
+    //early exit if not possible, and set the currentState to regular values
+    if(0 > currentState || currentState > 3) {
+        switch(currentState) {
+            case -1:
+                currentState = 0;
+                break;
+
+            case 4:
+                currentState = 3;
+                break;
+        }
+        return;
+    }
+
+    // Update dashboard state
+    let yearsText = 
+        (endYearFilter == initialYearFilter ? 
+            " in <strong>" + initialYearFilter + "</strong>" :
+            " from <strong>" +  initialYearFilter + "</strong> to <strong>" + endYearFilter + "</strong>"
+        );
+    let countriesSection = countrySelectionToString();
+    
+    switch(currentState) {
+        case 0:
+            sportFilter = "All";
+            currentFilterKeyword = "Sport";
+            $('#statelabel').html(
+                countriesSection + " on <strong> every Event </strong>" + yearsText
+            );
+            $('#back-icon-container').hide();
+            break;
+
+        case 1:
+            sportFilter = selectedNode.Sport;
+            currentFilterKeyword = "Discipline";
+            $('#statelabel').html(
+                countriesSection  + " on <strong>" + sportFilter + "</strong>" + yearsText
+            );
+            $('#back-icon-container').show();
+            $('#back-subtitle').text("All");
+            break;
+
+        case 2:
+            disciplineFilter = selectedNode.Discipline;
+            currentFilterKeyword = "Event";
+            $('#statelabel').html(
+                countriesSection  + " on <strong>" + disciplineFilter + "</strong>" + yearsText
+            );
+            $('#back-subtitle').text(sportFilter);
+            break;
+
+        case 3:
+            eventFilter = selectedNode.Event;
+            currentFilterKeyword = "Event";
+            $('#statelabel').html(
+                countriesSection  + " on <strong>" + eventFilter + "</strong>" + yearsText
+            );
+            $('#back-subtitle').text(disciplineFilter);
+            break;
+    }
+
+    //redraw the dashboard
+    drawBubbles(); 
+    updateLinechart();
+    genScatterplot(true);
+
+}
+
+/** 
+ * Selects a random country to be the initial active one 
+ * 
+ * @param {array} array - Array containing a CountryName <-> CountryCode relationship
+ * (see loadDictionary())
+ * @param {array} initialCountryCode - IOC Code of the country to be the initial one,
+ * optional paramenter defaults to null
+ */
 function randomizeInitialCountry(array, initialCountryCode = null) {
     if(initialCountryCode === null){
         let randomCountryCode = array[Math.floor(Math.random() * array.length)].CountryCode;
@@ -70,7 +161,6 @@ function loadDictionary(){
         }
 
         randomizeInitialCountry(null, "FRA"); //Initial debugging country
-
 	})
 };
 
@@ -138,8 +228,8 @@ function getFirstOpenPositionInSelection() {
  */
 function countrySelectionToString() {
     
-    let result = "";            
-    let counter = 0;
+    let result = "",            
+        counter = 0;
 
     for(let i = 0; i < countrySelection.length; i++) {
 		if(countrySelection[i] === null) {
