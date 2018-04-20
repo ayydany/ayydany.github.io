@@ -254,7 +254,7 @@ function countrySelectionToString() {
                 break;
         }
     }
-    console.log("returning as country: " + result);
+    console.log("returning as country: " + result + " with country selection as: " + countrySelection);
     return result;
 }
 
