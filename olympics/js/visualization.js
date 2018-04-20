@@ -63,7 +63,7 @@ function loadDictionary(){
             iocCodeDictionary[data[i].CountryCode] = data[i].CountryName;
         }
 
-        let rand = countryNameDictionary[Math.floor(Math.random() * data.length)];
+        let rand = data[Math.floor(Math.random() * data.length)];
 
         countrySelection = [rand, null, null, null];
         countryName = convertIOCCodeToName(rand);
