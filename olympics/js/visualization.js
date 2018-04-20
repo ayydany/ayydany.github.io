@@ -2,9 +2,9 @@
 // global variables
 var selectedNode = null,
     currentState = 0,   // defines the deepness we're seeing in the vis (All = 0, Sport = 1; Discipline = 2; Event = 3)
-    countrySelection = ["FRA", null, null, null],
-    countryName = "France",
-    countryLineIdentifier = [["FRA" , 0],[null , 1],[null , 2],[null , 3]],
+    countrySelection = [null, null, null, null],
+    countryName = "",
+    countryLineIdentifier = [[null, 0], [null, 1], [null, 2], [null, 3]],
     sportFilter = "All",
     disciplineFilter = "All",
     eventFilter = "All",
@@ -34,12 +34,23 @@ window.onresize = function(){ location.reload(); }
 $(document).ready(function() {
     loadDictionary();
 
+    randomizeInitialCountry();
+
     genTimeSlider();
     genBubblechart(false, -1);
     genLinechart();
     genWorldMap();
     genScatterplot();
 });
+
+
+function randomizeInitialCountry(array) {
+    let rand = countryNameDictionary[Math.floor(Math.random() * array.length)];
+
+    countrySelection = [rand, null, null, null];
+    countryName = convertIOCCodeToName(rand);
+    countryLineIdentifier = [[rand, 0], [null, 1], [null, 2], [null, 3]];
+}
 
 /** 
  * Loads the dictionary into memory (var dictionary, JSON Object)
@@ -55,6 +66,8 @@ function loadDictionary(){
         for (let i = 0; i < data.length; i++) {
             iocCodeDictionary[data[i].CountryCode] = data[i].CountryName;
         }
+
+        randomizeInitialCountry(data);
 	})
 };
 
@@ -159,7 +172,6 @@ function changeSelectedCountry(countryName){
 	var iocCode = convertNameToIOCCode(countryName);
 
     countrySelection = [String(iocCode), null, null, null];
-    countryName = convertIOCCodeToName(iocCode);
 
 	// call all the draw methods to redraw dashboard components
     genBubblechart(true, 0);
