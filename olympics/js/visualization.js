@@ -73,7 +73,7 @@ function updateDashboardState(nextState, initialUpdate = false, linechartRefresh
         genScatterplot();
     } else {
         updateBubblechart();
-        updateLinechart();
+        updateLinechart(linechartRefresh);
         genScatterplot(true);
     }
 
