@@ -1,8 +1,5 @@
 
-var radiusScale,
-    center_force,
-    simulation,
-    tip,
+var tip,
     minBubbleSize = 23,
     maxBubbleSize = 60,
     offsetBetweenBubbles = 5;
@@ -15,33 +12,12 @@ function genBubblechart(update) {
     
     let width = $("#bubblechart").width(),
         height = $("#bubblechart").height();
-
-    var svg = d3.select("#bubblechart")
+    let svg = d3.select("#bubblechart")
         .append("svg")
         .attr("height", height)
         .attr("width", width)
         .append("g");
 
-    //initialize one time global variables
-
-    // set a automatic bubble scaler
-    radiusScale = d3.scaleSqrt();
-    
-    // black hole kind of force to center the bubbles
-    center_force = d3.forceCenter(width / 2, height / 2);  
-
-    // the simulation is a collection of forces
-    // about where we want our circles to go
-    // and how we want our circles to react
-    simulation = d3.forceSimulation()
-        //.force("x", d3.forceX().strength(0.05))
-        //.force("y", d3.forceY().strength(0.05))
-        .force("center_force", center_force)
-        .force("collide", d3.forceCollide(function(d){
-                return radiusScale(d.TotalMedals) + offsetBetweenBubbles;
-                })
-            );
-    
     // tooltip generator
     tip = d3.tip()
         .attr('class', 'd3-tip')
@@ -59,7 +35,28 @@ function genBubblechart(update) {
 //drawing update function
 function updateBubblechart() {
     
-    var svg = d3.select("#bubblechart g");
+    let width = $("#bubblechart").width(),
+        height = $("#bubblechart").height();
+
+    // set a automatic bubble scaler
+    let radiusScale = d3.scaleSqrt();
+    
+    // black hole kind of force to center the bubbles
+    let centerForce = d3.forceCenter(width / 2, height / 2);  
+
+    // the simulation is a collection of forces
+    // about where we want our circles to go
+    // and how we want our circles to react
+    let simulation = d3.forceSimulation()
+        //.force("x", d3.forceX().strength(0.05))
+        //.force("y", d3.forceY().strength(0.05))
+        .force("center_force", centerForce)
+        .force("collide", d3.forceCollide(function(d){
+            return radiusScale(d.TotalMedals) + offsetBetweenBubbles;
+            })
+        );
+
+    let svg = d3.select("#bubblechart g");
     
     // delete all old bubbles in view
     svg.selectAll(".bubble").remove();
