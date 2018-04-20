@@ -1,5 +1,5 @@
 // global variables
-var dictionariesInitialized = false;
+var dictionariesInitialized = false,
     selectedNode = null,
     currentState = 0,   // defines the deepness we're seeing in the vis (All = 0, Sport = 1; Discipline = 2; Event = 3)
     countrySelection = [null, null, null, null],
