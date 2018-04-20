@@ -111,7 +111,7 @@ function genWorldMap() {
                     return "non-selectable-country";
                 else {
                     console.log(countrySelection);
-                    if(d.properties.name_long == countryName) {
+                    if(convertNameToIOCCode(d.properties.name_long) == countrySelection[0]) {
                         return "country country-on";
                     } else {
                         return "country";
@@ -119,14 +119,12 @@ function genWorldMap() {
                 }
             })
             .attr("fill", function(d) {
-                if(d.properties.name_long == countryName) {
-                    return color(convertNameToIOCCode(d.properties.name_long));
-                }
-                if (d3.select(this).classed("country")){
-                    return NOT_SELECTED_COUNTRY_COLOR;
-                }
-                else {
+                if (d3.select(this).classed("non-selectable-country")) {
                     return "url(#diagonalHatch)";
+                } if (d3.select(this).classed("country")) {
+                    return NOT_SELECTED_COUNTRY_COLOR;
+                } else {
+                    return color(convertNameToIOCCode(d.properties.name_long));
                 }
             })
             // add a mouseover action to show name label for feature/country
