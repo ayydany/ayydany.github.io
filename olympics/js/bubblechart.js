@@ -1,4 +1,3 @@
-
 var tip,
     minBubbleSize = 23,
     maxBubbleSize = 60,
@@ -8,10 +7,11 @@ var tip,
 // the update flag must be set to true if its an update of an old bubblechart, false otherwise
 // isGoingLower determines the if we're going in a deeper level (-1), staying on the same level (0)
 // or going up a level (1)
-function genBubblechart(update) {
+function genBubblechart() {
     
     let width = $("#bubblechart").width(),
         height = $("#bubblechart").height();
+    
     let svg = d3.select("#bubblechart")
         .append("svg")
         .attr("height", height)
@@ -59,7 +59,7 @@ function updateBubblechart() {
     let svg = d3.select("#bubblechart g");
     
     // delete all old bubbles in view
-    svg.selectAll(".bubble").remove();
+    //svg.selectAll(".bubble").remove();
     
     //initialize tooltip viewer
     svg.call(tip);
