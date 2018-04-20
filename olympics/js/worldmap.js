@@ -107,7 +107,7 @@ function genWorldMap() {
             .attr("d", path)
             .attr("stroke", function() { return getCSSColor('--main-dark-color') })
             .attr("class", function (d) {
-                if(convertNameToIOCCode(d.properties.name_long))
+                if(convertNameToIOCCode(d.properties.name_long) == -1) 
                     return "non-selectable-country";
                 else {
                     if(d.properties.name_long == "France") { //ugly hack for the initial state

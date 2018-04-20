@@ -62,23 +62,26 @@ function loadDictionary(){
  * Converts a country name to the IOC code 
  * 
  * @param {string} countryName - Name to be converted to a IOC Code
- * @returns {string} IOC Code
+ * @returns {string} IOC Code or -1 if name doesn't exist in dictionary
  */
 function convertNameToIOCCode(countryName) {
     if(countryNameDictionary[countryName]) {
-        console.log("hello");
+        return countryNameDictionary[countryName];
     } else {
-        console.log("boop");
+        return -1;
     }
-    return countryNameDictionary[countryName];
 }
 /** 
  * converts a IOC code to the country name 
  * @param {string} code - IOC Code to be converted into a country name
- * @returns {string} Country Name
+ * @returns {string} Country Name or -1 if code doesn't exist in dictionary
  */
 function convertIOCCodeToName(code) {
-    return iocCodeDictionary[code];
+    if(iocCodeDictionary[code]) {
+        return iocCodeDictionary[code]; 
+    } else {
+        return -1;
+    }
 }
 
 /** 
