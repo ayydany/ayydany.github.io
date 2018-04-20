@@ -4,7 +4,7 @@
 // or going up a level (1)
 function genBubblechart(update, isGoingLower) {
     
-        var width = $("#bubblechart").width(),
+        let width = $("#bubblechart").width(),
             height = $("#bubblechart").height(),
             minBubbleSize = 23,
             maxBubbleSize = 60,
@@ -12,24 +12,24 @@ function genBubblechart(update, isGoingLower) {
     
         // if its a update callback we don't want to create a new svg, so we just select it
         if(!update){
-            var svg = d3.select("#bubblechart")
+            let svg = d3.select("#bubblechart")
                 .append("svg")
                 .attr("height", height)
                 .attr("width", width)
                 .append("g");
         } else
-            var svg = d3.select("#bubblechart g");
+            let svg = d3.select("#bubblechart g");
     
         // set a automatic bubble scaler
-        var radiusScale = d3.scaleSqrt();
+        let radiusScale = d3.scaleSqrt();
         
         // black hole kind of force to center the bubbles
-        var center_force = d3.forceCenter(width / 2, height / 2);  
+        let center_force = d3.forceCenter(width / 2, height / 2);  
     
         // the simulation is a collection of forces
         // about where we want our circles to go
         // and how we want our circles to react
-        var simulation = d3.forceSimulation()
+        let simulation = d3.forceSimulation()
             //.force("x", d3.forceX().strength(0.05))
             //.force("y", d3.forceY().strength(0.05))
             .force("center_force", center_force)
@@ -39,7 +39,7 @@ function genBubblechart(update, isGoingLower) {
                 );
         
         // tooltip generator
-        var tip = d3.tip()
+        let tip = d3.tip()
             .attr('class', 'd3-tip')
             .offset([-10, 0])
             .html(function(d) {
@@ -90,7 +90,6 @@ function genBubblechart(update, isGoingLower) {
             let countriesSection = countrySelectionToString();
             
             switch(currentState) {
-                // Dashboard currently showing everything
                 case 0:
                     sportFilter = "All";
                     currentFilterKeyword = "Sport";
@@ -100,7 +99,6 @@ function genBubblechart(update, isGoingLower) {
                     $('#back-icon-container').hide();
                     break;
 
-                //Dashboard
                 case 1:
                     sportFilter = selectedNode.Sport;
                     currentFilterKeyword = "Discipline";
@@ -110,6 +108,7 @@ function genBubblechart(update, isGoingLower) {
                     $('#back-icon-container').show();
                     $('#back-subtitle').text("All");
                     break;
+
                 case 2:
                     disciplineFilter = selectedNode.Discipline;
                     currentFilterKeyword = "Event";
@@ -118,6 +117,7 @@ function genBubblechart(update, isGoingLower) {
                     );
                     $('#back-subtitle').text(sportFilter);
                     break;
+
                 case 3:
                     eventFilter = selectedNode.Event;
                     currentFilterKeyword = "Event";
@@ -128,9 +128,10 @@ function genBubblechart(update, isGoingLower) {
                     break;
             }
     
-            // cleanup view
+            // delete all old bubbles in view
             svg.selectAll(".bubble").remove();
             
+            //initialize tooltip viewer
             svg.call(tip);
 
             // create new bubbles as necessary
@@ -146,7 +147,7 @@ function genBubblechart(update, isGoingLower) {
                 });
     
                 // filter the data, first by year and then by Country
-                var filteredData = data.filter(function(d, i){
+                let filteredData = data.filter(function(d, i){
                     if(countrySelection.includes(d["Country"]) && initialYearFilter <= d["Year"] && d["Year"] <= endYearFilter){
                         switch(currentState){
                             case 0: //all information
@@ -169,7 +170,7 @@ function genBubblechart(update, isGoingLower) {
                 })
 
                 // create a new array with adding up information from different years of the olympics using a specified filter
-                var processedData = [];
+                let processedData = [];
                 filteredData.forEach(function(d, i, filteredData){
                     //if the data doesn't exist in the processed array, create it
                     if(processedData.findIndex(x => x[currentFilterKeyword] === d[currentFilterKeyword]) == -1){
@@ -200,13 +201,13 @@ function genBubblechart(update, isGoingLower) {
                     .range([minBubbleSize, maxBubbleSize - (processedData.length / 2)]);
 
                 // a container for bubble stuff
-                var bubbleGroup = svg.selectAll(".bubble")
+                let bubbleGroup = svg.selectAll(".bubble")
                     .data(processedData)
                     .enter().append("g")
                     .attr("class", "bubble");
 
                 // the bubble object
-                var bubble = bubbleGroup.append("circle")
+                let bubble = bubbleGroup.append("circle")
                     .attr("r", function(d){
                         return radiusScale(d.TotalMedals);
                     })
@@ -237,10 +238,10 @@ function genBubblechart(update, isGoingLower) {
                     })
                     .on("click", function(d){
                         tip.hide(d);
-                        // update global variable
+
                         selectedNode = d;
                         
-                        if(currentState != 3){
+                        if(currentState != 3) {
                             drawBubbles(-1); //going deeper
                             updateLinechart();
                             genScatterplot(true);
@@ -248,7 +249,7 @@ function genBubblechart(update, isGoingLower) {
                     });
 
                 // text labels that appear on top of the bubbles
-                var labels = bubbleGroup.append("text")
+                let labels = bubbleGroup.append("text")
                     .attr("class","label unselectable")
                     .text(function(d){  // function to rename long sport names to something digestable 
                         if((radiusScale(d.TotalMedals) < 32 && d[currentFilterKeyword].length > 6) 

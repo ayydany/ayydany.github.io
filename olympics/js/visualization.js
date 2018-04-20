@@ -39,8 +39,6 @@ $(document).ready(function() {
     genScatterplot();
 });
 
-// AUXILIARY FUNCTIONS //
-
 /** 
  * Loads the dictionary into memory (var dictionary, JSON Object)
  */
@@ -137,7 +135,7 @@ function countrySelectionToString() {
 
 	// if its a single country just return it
     if(getNumberOfCountriesInSelection() == 1) {
-        return convertIOCCodeToName(countrySelection[0]);
+        return "<strong>" + convertIOCCodeToName(countrySelection[0] + "</strong>");
     }
 
     for(let i = 0; i < getNumberOfCountriesInSelection(); i++) {
