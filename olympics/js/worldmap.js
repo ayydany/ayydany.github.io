@@ -110,7 +110,7 @@ function genWorldMap() {
                 if(convertNameToIOCCode(d.properties.name_long) == -1) 
                     return "non-selectable-country";
                 else {
-                    if(d.properties.name_long == "France") { //ugly hack for the initial state
+                    if(d.properties.name_long == countryName) { //ugly hack for the initial state
                         return "country country-on";
                     } else {
                         return "country";
@@ -118,7 +118,7 @@ function genWorldMap() {
                 }
             })
             .attr("fill", function(d) {
-                if(d.properties.name_long == "France") { //ugly hack for the initial state
+                if(d.properties.name_long == countryName) { //ugly hack for the initial state
                     return color(convertNameToIOCCode(d.properties.name_long));
                 }
                 if (d3.select(this).classed("country")){
