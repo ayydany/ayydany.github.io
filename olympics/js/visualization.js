@@ -11,7 +11,9 @@ var selectedNode = null,
     initialYearFilter = 1896,
     endYearFilter = 2012,
     currentFilterKeyword = "Sport",
-    dictionary = {};
+    countryNameDictionary = {},
+    iocCodeDictionary = {};
+
 
 // colors used throughout the visualization
 var color_old,
@@ -47,30 +49,14 @@ function loadDictionary(){
         if (error) throw error;
 
         for (let i = 0; i < data.length; i++) {
-            dictionary[data[i].CountryName] = data[i].CountryCode;
+            countryNameDictionary[data[i].CountryName] = data[i].CountryCode;
+        }
+
+        for (let i = 0; i < data.length; i++) {
+            iocCodeDictionary[data[i].CountryCode] = data[i].CountryName;
         }
 	})
 };
-
-/** 
- * Gets the country ID if it exists in the dictionary by name
- * 
- * @param {string} countryName - name of the country
- * @returns {number} Country ID or -1 if it doesn't exist
- */
-function getCountryID(countryName) {
-    return dictionary.findIndex(i => i.CountryName === countryName);
-}
-
-/** 
- * Gets the country ID if it exists in the dictionary
- * 
- * @param {string} code - IOC Code of the country
- * @returns {number} Country ID or -1 if it doesn't exist
- */
-function getCountryIDByCode(code) {
-    return dictionary.findIndex(i => i.CountryCode === code);
-}
 
 /** 
  * Converts a country name to the IOC code 
@@ -79,7 +65,7 @@ function getCountryIDByCode(code) {
  * @returns {string} IOC Code
  */
 function convertNameToIOCCode(countryName) {
-    return dictionary[getCountryID(countryName)].CountryCode;
+    return countryNameDictionary.countryName;
 }
 /** 
  * converts a IOC code to the country name 
@@ -87,7 +73,7 @@ function convertNameToIOCCode(countryName) {
  * @returns {string} Country Name
  */
 function convertIOCCodeToName(code) {
-    return dictionary[getCountryIDByCode(code)].CountryName;
+    return iocCodeDictionary.code;
 }
 
 /** 
