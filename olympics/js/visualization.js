@@ -34,14 +34,11 @@ window.onresize = function(){ location.reload(); }
 $(document).ready(function() {
     loadDictionary();
 
-    genTimeSlider();
-    genBubblechart(false, -1);
-    genLinechart();
-    genWorldMap();
-    genScatterplot();
+    updateDashboardState(-1, true);
 });
 
-function updateDashboardState(nextState) {
+function updateDashboardState(nextState, initialUpdate = false) {
+
     //update current Level to new wanted level
     switch(nextState){
         case -1:
@@ -118,10 +115,17 @@ function updateDashboardState(nextState) {
     }
 
     //redraw the dashboard
-    drawBubbles(); 
-    updateLinechart();
-    genScatterplot(true);
-
+    if(initialUpdate){
+        genTimeSlider();
+        genBubblechart();
+        genLinechart();
+        genWorldMap();
+        genScatterplot();
+    } else {
+        updateBubblechart();
+        updateLinechart();
+        genScatterplot(true);
+    }
 }
 
 /** 
