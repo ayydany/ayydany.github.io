@@ -1,6 +1,5 @@
 // global variables
-var dictionariesInitialized = false,
-    selectedNode = null,
+var selectedNode = null,
     currentState = 0,   // defines the deepness we're seeing in the vis (All = 0, Sport = 1; Discipline = 2; Event = 3)
     countrySelection = [null, null, null, null],
     countryLineIdentifier = [[null, 0], [null, 1], [null, 2], [null, 3]],
@@ -38,11 +37,6 @@ $(document).ready(function() {
 
 function updateDashboardState(nextState, initialUpdate = false) {
 
-    //semi asynchrinous call, this method has to wait for the initialization to end
-    if(dictionariesInitialized != true){
-        setTimeout(updateDashboardState(0, true), 250);
-    }
-
     //update current Level to new wanted level
     switch(nextState){
         case -1:
@@ -71,7 +65,7 @@ function updateDashboardState(nextState, initialUpdate = false) {
         return;
     }
     //redraw the dashboard
-    if(initialUpdate) {
+    if(initialUpdate){
         genTimeSlider();
         genBubblechart();
         genLinechart();
@@ -169,8 +163,6 @@ function loadDictionary(){
         }
 
         randomizeInitialCountry(null, "FRA"); //Initial debugging country
-
-        dictionariesInitialized = true;
 	})
 };
 
