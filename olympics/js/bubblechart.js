@@ -1,6 +1,6 @@
 
 var radiusScale,
-    centerForce,
+    center_force,
     simulation,
     tip,
     minBubbleSize = 23,
@@ -28,7 +28,7 @@ function genBubblechart(update) {
     radiusScale = d3.scaleSqrt();
     
     // black hole kind of force to center the bubbles
-    centerForce = d3.forceCenter(width / 2, height / 2);  
+    center_force = d3.forceCenter(width / 2, height / 2);  
 
     // the simulation is a collection of forces
     // about where we want our circles to go
@@ -36,7 +36,7 @@ function genBubblechart(update) {
     simulation = d3.forceSimulation()
         //.force("x", d3.forceX().strength(0.05))
         //.force("y", d3.forceY().strength(0.05))
-        .force("center_force", centerForce)
+        .force("center_force", center_force)
         .force("collide", d3.forceCollide(function(d){
                 return radiusScale(d.TotalMedals) + offsetBetweenBubbles;
                 })
