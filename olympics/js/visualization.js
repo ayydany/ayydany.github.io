@@ -170,7 +170,7 @@ function loadDictionary(){
 
         randomizeInitialCountry(null, "FRA"); //Initial debugging country
 
-        dicitonariesINitialized = true;
+        dictionariesInitialized = true;
 	})
 };
 
