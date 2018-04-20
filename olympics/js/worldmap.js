@@ -121,10 +121,10 @@ function genWorldMap() {
             .attr("fill", function(d) {
                 if (d3.select(this).classed("non-selectable-country")) {
                     return "url(#diagonalHatch)";
-                } if (d3.select(this).classed("country")) {
-                    return NOT_SELECTED_COUNTRY_COLOR;
-                } else if(d3.select(this).classed("country country-on")) {
+                } if (d3.select(this).classed("country country-on")) {
                     return color(convertNameToIOCCode(d.properties.name_long));
+                } else {
+                    return NOT_SELECTED_COUNTRY_COLOR;
                 }
             })
             // add a mouseover action to show name label for feature/country
