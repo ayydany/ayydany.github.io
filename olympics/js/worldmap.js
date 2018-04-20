@@ -80,8 +80,8 @@ function genWorldMap() {
     function getTextBox(selection) {
         selection.each(function (d) { d.bbox = this.getBBox(); })
     }
-
-
+    
+    //diagonal patten (for non-selectable countries)
     svg.append('defs')
         .append('pattern')
         .attr('id', 'diagonalHatch')
@@ -100,8 +100,7 @@ function genWorldMap() {
             .attr("id", "map");
 
         // draw a path for each feature/country
-        countries = countriesGroup
-            .selectAll("path")
+        countries = countriesGroup.selectAll("path")
             .data(json.features).enter()
             .append("path")
             .attr("d", path)
@@ -139,18 +138,21 @@ function genWorldMap() {
                 
                 this.parentElement.appendChild(this);
 
-                var mouse = d3.mouse(svg.node()).map( function(d) { 
+                var mouseCoordinates = d3.mouse(svg.node()).map(function(d) { 
                     return parseInt(d); 
                 });
                 
                 tooltip.classed("hidden", false)
-                    .attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+offsetT)+"px")
+                    .attr("style", "left:"+(mouseCoordinates[0]+offsetL)+"px;top:"+(mouseCoordinates[1]+offsetT)+"px")
                     .html(this.__data__.properties.name);
             })
             .on("mouseout", function (d) {
-                d3.select(this).attr("stroke", function() { return getCSSColor('--main-dark-color') });
+                d3.select(this).attr("stroke", function() 
+                    { return getCSSColor('--main-dark-color') 
+                });
+
                 tooltip.classed("hidden", true)
-                .style("cursor", "default");
+                    .style("cursor", "default");
             })
             .on("click", function (d) {
                 if (d3.select(this).classed("country")) {
@@ -160,36 +162,42 @@ function genWorldMap() {
                             isZoomed = false;
                         }
                         else {
-                            d3.selectAll(".country").classed("country-on", false);
-                            d3.selectAll(".country").attr("fill", function(d) {
+                            d3.selectAll(".country").classed("country-on", false)
+                                .attr("fill", function(d) {
                                 return NOT_SELECTED_COUNTRY_COLOR;
-                            })
-                            d3.select(this).classed("country-on", true);
-                            d3.select(this).attr("fill", function(d) {
+                            });
+
+                            d3.select(this).classed("country-on", true)
+                                .attr("fill", function(d) {
                                 return color(convertNameToIOCCode(d.properties.name_long));
-                            })
-                            currentSelectedCountriesNumber = 1;
+                            });
+
+                            
                             boxZoom(path.bounds(d), path.centroid(d), 20);
-                            changeSelectedCountry(d.properties.name_long);
                             isZoomed = true;
+
+                            currentSelectedCountriesNumber = 1;
+                            changeSelectedCountry(d.properties.name_long);
                         }
                     }
                     if (!(getNumberOfCountriesInSelection() == 1 
                       && countrySelection.includes(convertNameToIOCCode(d.properties.name_long)))) {
-                        if (d3.select(this).classed("country-on")) {
-                            d3.select(this).classed("country-on", false);
-                            d3.select(this).attr("fill", function(d) {
+                        if(d3.select(this).classed("country-on")) {
+                            d3.select(this).classed("country-on", false)
+                                .attr("fill", function(d) {
                                 return NOT_SELECTED_COUNTRY_COLOR;
-                            })
+                            });
+
                             currentSelectedCountriesNumber--;
                             removeCountryFromSelection(d.properties.name_long);
                         }
                         else {
                             if (currentSelectedCountriesNumber < MAX_SELECTED_COUNTRIES) {
-                                d3.select(this).classed("country-on", true);
-                                d3.select(this).attr("fill", function(d){
+                                d3.select(this).classed("country-on", true)
+                                    .attr("fill", function(d){
                                     return color(convertNameToIOCCode(d.properties.name_long));
-                                })
+                                });
+
                                 currentSelectedCountriesNumber++;
                                 addCountryToSelection(d.properties.name_long);
                             } else {
