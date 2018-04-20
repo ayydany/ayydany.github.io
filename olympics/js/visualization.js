@@ -58,7 +58,7 @@ function loadDictionary(){
  * @param {string} countryName - name of the country
  * @returns {number} Country ID or -1 if it doesn't exist
  */
-function getCountryID(countryName){
+function getCountryID(countryName) {
     return dictionary.findIndex(i => i.CountryName === countryName);
 }
 
@@ -68,7 +68,7 @@ function getCountryID(countryName){
  * @param {string} code - IOC Code of the country
  * @returns {number} Country ID or -1 if it doesn't exist
  */
-function getCountryIDByCode(code){
+function getCountryIDByCode(code) {
     return dictionary.findIndex(i => i.CountryCode === code);
 }
 
@@ -78,7 +78,7 @@ function getCountryIDByCode(code){
  * @param {string} countryName - Name to be converted to a IOC Code
  * @returns {string} IOC Code
  */
-function convertNameToIOCCode(countryName){
+function convertNameToIOCCode(countryName) {
     return dictionary[getCountryID(countryName)].CountryCode;
 }
 /** 
@@ -86,36 +86,38 @@ function convertNameToIOCCode(countryName){
  * @param {string} code - IOC Code to be converted into a country name
  * @returns {string} Country Name
  */
-function convertIOCCodeToName(code){
+function convertIOCCodeToName(code) {
     return dictionary[getCountryIDByCode(code)].CountryName;
 }
 
 /** 
  * Returns the number of countries currently in the selection
+ * (basically not null values)
  * @returns {number} Number of countries (from 1 to 4)
  */
-function getNumberOfCountriesInSelection(){
-	var number = 0;
-	countrySelection.forEach(function(element){
-		if(element === null)
-		number++;	
+function getNumberOfCountriesInSelection() {
+	let number = 0;
+	countrySelection.forEach(function(element) {
+		if(element === null) {
+            number++;
+        }	
 	})
-
-	return number - countrySelection.length;
+	return countrySelection.length - number;
 }
 
 /** 
  * Returns the first free position in the countrySelection array
  * @returns {number} Open Position or -1 if there is none
  */
-function getFirstOpenPositionInSelection(){
-	for(i = 0; i<countrySelection.length; i++){
-		if(countrySelection[i] === null)
+function getFirstOpenPositionInSelection() {
+	for(let i = 0; i<countrySelection.length; i++) {
+		if(countrySelection[i] === null) {
 			return i;
+        }
 	}
-
 	return -1;
 }
+
 /** 
  * Converts the countrySelection variable to something like
  * 
@@ -123,28 +125,32 @@ function getFirstOpenPositionInSelection(){
  * 
  * @returns {string} String
  */
-function countrySelectionToString(){
-    var result = "";
+function countrySelectionToString() {
+    
+    let result = "";
 
 	// small hack to ensure correct first behaviour
-    if(dictionary === null)
-		return "France";
+    if(dictionary === null) {
+        return "France";
+    }
 
-		//todo fix this method
-    if(getNumberOfCountriesInSelection() == 1)
+	// if its a single country just return it
+    if(getNumberOfCountriesInSelection() == 1) {
         return convertIOCCodeToName(countrySelection[0]);
+    }
 
-    for(i = 0; i < getNumberOfCountriesInSelection(); i++){
+    for(let i = 0; i < getNumberOfCountriesInSelection(); i++) {
 		
-		if(countrySelection[i] === null)
-			continue;
-		
+		if(countrySelection[i] === null) {
+            continue;
+        }
+
         result += convertIOCCodeToName(countriesArray[i])
 
-        if(getNumberOfCountriesInSelection() - i == 2){
+        if(getNumberOfCountriesInSelection() - i == 2) {
            result += " and "
         } 
-        else if(getNumberOfCountriesInSelection() - i == 1){
+        else if(getNumberOfCountriesInSelection() - i == 1) {
             result += ""
         } else {
             result += ", "
