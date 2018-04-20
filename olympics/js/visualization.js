@@ -144,7 +144,7 @@ function countrySelectionToString() {
     //     }
     // }
 
-    for(let i = 0; i < getNumberOfCountriesInSelection(); i++) {
+    for(let i = 0; i < countrySelection.length; i++) {
 		
 		if(countrySelection[i] === null) {
             continue;
@@ -153,12 +153,12 @@ function countrySelectionToString() {
         result += "<strong>" + convertIOCCodeToName(countrySelection[i]) + "</strong>";
 
         if(getNumberOfCountriesInSelection() - i == 2) {
-           result += " and "
+           result += " and ";
         } 
-        else if(getNumberOfCountriesInSelection() - i == 1) {
-            result += ""
+        else if(getNumberOfCountriesInSelection() - i <= 1) {
+            result += "";
         } else {
-            result += ", "
+            result += ", ";
         }
     }
     return result;
