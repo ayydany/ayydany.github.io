@@ -254,6 +254,7 @@ function countrySelectionToString() {
                 break;
         }
     }
+    console.log("returning as country: " + result);
     return result;
 }
 
