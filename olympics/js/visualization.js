@@ -45,11 +45,7 @@ $(document).ready(function() {
 
 
 function randomizeInitialCountry(array) {
-    let rand = countryNameDictionary[Math.floor(Math.random() * array.length)];
 
-    countrySelection = [rand, null, null, null];
-    countryName = convertIOCCodeToName(rand);
-    countryLineIdentifier = [[rand, 0], [null, 1], [null, 2], [null, 3]];
 }
 
 /** 
@@ -67,7 +63,11 @@ function loadDictionary(){
             iocCodeDictionary[data[i].CountryCode] = data[i].CountryName;
         }
 
-        randomizeInitialCountry(data);
+        let rand = countryNameDictionary[Math.floor(Math.random() * data.length)];
+
+        countrySelection = [rand, null, null, null];
+        countryName = convertIOCCodeToName(rand);
+        countryLineIdentifier = [[rand, 0], [null, 1], [null, 2], [null, 3]];
 	})
 };
 
