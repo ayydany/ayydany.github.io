@@ -117,11 +117,6 @@ function countrySelectionToString() {
     let result = "";            
     let counter = 0;
 
-	// small hack to ensure correct first behaviour
-    if(dictionary === null) {
-        return "<strong>France</strong>";
-    }
-
     for(let i = 0; i < countrySelection.length; i++) {
 		if(countrySelection[i] === null) {
             continue;
