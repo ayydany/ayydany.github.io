@@ -11,7 +11,7 @@ var selectedNode = null,
     initialYearFilter = 1896,
     endYearFilter = 2012,
     currentFilterKeyword = "Sport",
-    dictionary = null;
+    dictionary = {};
 
 // colors used throughout the visualization
 var color_old,
@@ -46,7 +46,9 @@ function loadDictionary(){
     d3.csv("csv/dictionary.csv", function(error, data){
         if (error) throw error;
 
-        dictionary = data;
+        for (let i = 0; i < data.length; i++) {
+            dictionary[data[i].CountryName] = data[i].CountryCode;
+        }
 	})
 };
 
@@ -134,17 +136,6 @@ function countrySelectionToString() {
         return "<strong>France</strong>";
     }
 
-	// if its a single country just return it
-    // if(getNumberOfCountriesInSelection() == 1) {
-    //     for(let i = 0; i < getNumberOfCountriesInSelection(); i++) {
-    //         if(countrySelection[i] === null) {
-    //             continue;
-    //         } else {
-    //             return "<strong>" + convertIOCCodeToName(countrySelection[i] + "</strong>");
-    //         }
-    //     }
-    // }
-
     for(let i = 0; i < countrySelection.length; i++) {
 		if(countrySelection[i] === null) {
             continue;
@@ -157,9 +148,11 @@ function countrySelectionToString() {
             case 0:
                 result += "";
                 break;
+
             case 1:
                 result += " and ";
                 break;
+
             default:
                 result += ", "
                 break;
