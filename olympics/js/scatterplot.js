@@ -80,7 +80,7 @@ function genScatterplot(update) {
         processedCountries = d3.nest()
             .key(function(d) { return d.Country; })
             .rollup(function(leaves) {
-                    switch(currentLevel) {
+                    switch(currentState) {
                         case 0:
                             return {
                                 "TotalMedals" : d3.sum(leaves, function(d) {

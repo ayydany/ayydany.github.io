@@ -189,7 +189,7 @@ function updateLinechart(forceRefresh = false){
             .rollup(function(values) {
                 return { 
                     "TotalMedals" : d3.sum(values, function(d) {
-                        switch(currentLevel){
+                        switch(currentState){
                             case 0:
                                 return parseFloat(d.TotalMedals);
                                 break;
@@ -267,8 +267,6 @@ function updateLinechart(forceRefresh = false){
             }
 
             var currentCountryID = getLineID(element);
-
-            console.log(element);
 
             svg.select(".line.id" + currentCountryID)
                 .datum(processedData.get(element).entries().sort(descending)) // Binds data to the line

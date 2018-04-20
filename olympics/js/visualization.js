@@ -1,7 +1,7 @@
 
 // global variables
 var selectedNode = null,
-    currentLevel = 0,   // defines the deepness we're seeing in the vis (All = 0, Sport = 1; Discipline = 2; Event = 3)
+    currentState = 0,   // defines the deepness we're seeing in the vis (All = 0, Sport = 1; Discipline = 2; Event = 3)
     countrySelection = ["FRA", null, null, null],
     countryName = "France",
     countryLineIdentifier = [["FRA" , 0],[null , 1],[null , 2],[null , 3]],
@@ -132,7 +132,7 @@ function countrySelectionToString() {
 
 	// small hack to ensure correct first behaviour
     if(dictionary === null) {
-        return "France";
+        return "<strong>France</strong>";
     }
 
 	// if its a single country just return it

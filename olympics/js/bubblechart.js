@@ -57,63 +57,73 @@ function genBubblechart(update, isGoingLower) {
             //update current Level to new wanted level
             switch(isGoingLower){
                 case -1:
-                    currentLevel = currentLevel+1;
+                    currentState = currentState+1;
                     break;
                 case 0:
-                    currentLevel = currentLevel;
+                    currentState = currentState;
                     break;
                 case 1:
-                    currentLevel = currentLevel-1;
+                    currentState = currentState-1;
                     break;
             }
     
-            //check if currentLevel is possible [1,3]
-            //early exit if not possible, and set the currentLevel to regular values
-            if( (0 > currentLevel || currentLevel > 3) ){
-                switch(currentLevel){
+            //check if currentState is possible [1,3]
+            //early exit if not possible, and set the currentState to regular values
+            if( (0 > currentState || currentState > 3) ){
+                switch(currentState){
                     case -1:
-                        currentLevel = 0;
+                        currentState = 0;
                         break;
                     case 4:
-                        currentLevel = 3;
+                        currentState = 3;
                         break;
                 }
                 return;
             }
     
-            // and also update css global variables
-            let yearsText = (endYearFilter == initialYearFilter ? " in <strong>" + initialYearFilter + "</strong>" : 
-            " from <strong>" +  initialYearFilter + "</strong> to <strong>" + endYearFilter + "</strong>");
+            // Update dashboard state
+            let yearsText = 
+                (endYearFilter == initialYearFilter ? 
+                    " in <strong>" + initialYearFilter + "</strong>" :
+                    " from <strong>" +  initialYearFilter + "</strong> to <strong>" + endYearFilter + "</strong>"
+                );
             let countriesSection = countrySelectionToString();
             
-            switch(currentLevel) {
+            switch(currentState) {
+                // Dashboard currently showing everything
                 case 0:
                     sportFilter = "All";
                     currentFilterKeyword = "Sport";
-                    $('#statelabel').html(countriesSection
-                        + " on <strong> every Event </strong>" + yearsText);
+                    $('#statelabel').html(
+                        countriesSection + " on <strong> every Event </strong>" + yearsText
+                    );
                     $('#back-icon-container').hide();
                     break;
+
+                //Dashboard
                 case 1:
                     sportFilter = selectedNode.Sport;
                     currentFilterKeyword = "Discipline";
-                    $('#statelabel').html(countriesSection  + " on <strong>" 
-                        + sportFilter + "</strong>" + yearsText);
+                    $('#statelabel').html(
+                        countriesSection  + " on <strong>" + sportFilter + "</strong>" + yearsText
+                    );
                     $('#back-icon-container').show();
                     $('#back-subtitle').text("All");
                     break;
                 case 2:
                     disciplineFilter = selectedNode.Discipline;
                     currentFilterKeyword = "Event";
-                    $('#statelabel').html(countriesSection  + " on <strong>" 
-                        + disciplineFilter + "</strong>" + yearsText);
+                    $('#statelabel').html(
+                        countriesSection  + " on <strong>" + disciplineFilter + "</strong>" + yearsText
+                    );
                     $('#back-subtitle').text(sportFilter);
                     break;
                 case 3:
                     eventFilter = selectedNode.Event;
                     currentFilterKeyword = "Event";
-                    $('#statelabel').html(countriesSection  + " on <strong>" 
-                        + eventFilter + "</strong>" + yearsText);
+                    $('#statelabel').html(
+                        countriesSection  + " on <strong>" + eventFilter + "</strong>" + yearsText
+                    );
                     $('#back-subtitle').text(disciplineFilter);
                     break;
             }
@@ -138,7 +148,7 @@ function genBubblechart(update, isGoingLower) {
                 // filter the data, first by year and then by Country
                 var filteredData = data.filter(function(d, i){
                     if(countrySelection.includes(d["Country"]) && initialYearFilter <= d["Year"] && d["Year"] <= endYearFilter){
-                        switch(currentLevel){
+                        switch(currentState){
                             case 0: //all information
                                 return d;
                                 break;
@@ -213,7 +223,7 @@ function genBubblechart(update, isGoingLower) {
                             .attr("r", function(d){
                                 return radiusScale(d.TotalMedals) + offsetBetweenBubbles;
                             })
-                            .style("cursor", (currentLevel == 3 ? "default" : "pointer")); 
+                            .style("cursor", (currentState == 3 ? "default" : "pointer")); 
                         })
                     .on('mouseout', function(d){
                         tip.hide(d);
@@ -230,7 +240,7 @@ function genBubblechart(update, isGoingLower) {
                         // update global variable
                         selectedNode = d;
                         
-                        if(currentLevel != 3){
+                        if(currentState != 3){
                             drawBubbles(-1); //going deeper
                             updateLinechart();
                             genScatterplot(true);
