@@ -35,7 +35,7 @@ $(document).ready(function() {
     updateDashboardState(0, true);
 });
 
-function updateDashboardState(nextState, initialUpdate = false) {
+function updateDashboardState(nextState, initialUpdate = false, linechartRefresh = false) {
 
     //update current Level to new wanted level
     switch(nextState){
@@ -267,7 +267,7 @@ function changeSelectedCountry(countryName){
 
     countrySelection = [String(iocCode), null, null, null];
 
-    updateDashboardState(0);
+    updateDashboardState(0, false, true);
 };
 
 /** 
