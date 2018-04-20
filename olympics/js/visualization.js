@@ -65,7 +65,7 @@ function loadDictionary(){
  * @returns {string} IOC Code
  */
 function convertNameToIOCCode(countryName) {
-    return countryNameDictionary.countryName;
+    return countryNameDictionary[countryName];
 }
 /** 
  * converts a IOC code to the country name 
@@ -73,7 +73,7 @@ function convertNameToIOCCode(countryName) {
  * @returns {string} Country Name
  */
 function convertIOCCodeToName(code) {
-    return iocCodeDictionary.code;
+    return iocCodeDictionary[code];
 }
 
 /** 
