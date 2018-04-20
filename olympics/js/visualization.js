@@ -66,54 +66,6 @@ function updateDashboardState(nextState, initialUpdate = false) {
         }
         return;
     }
-
-    // Update dashboard state
-    let yearsText = 
-        (endYearFilter == initialYearFilter ? 
-            " in <strong>" + initialYearFilter + "</strong>" :
-            " from <strong>" +  initialYearFilter + "</strong> to <strong>" + endYearFilter + "</strong>"
-        );
-    let countriesSection = countrySelectionToString();
-    
-    switch(currentState) {
-        case 0:
-            sportFilter = "All";
-            currentFilterKeyword = "Sport";
-            $('#statelabel').html(
-                countriesSection + " on <strong> every Event </strong>" + yearsText
-            );
-            $('#back-icon-container').hide();
-            break;
-
-        case 1:
-            sportFilter = selectedNode.Sport;
-            currentFilterKeyword = "Discipline";
-            $('#statelabel').html(
-                countriesSection  + " on <strong>" + sportFilter + "</strong>" + yearsText
-            );
-            $('#back-icon-container').show();
-            $('#back-subtitle').text("All");
-            break;
-
-        case 2:
-            disciplineFilter = selectedNode.Discipline;
-            currentFilterKeyword = "Event";
-            $('#statelabel').html(
-                countriesSection  + " on <strong>" + disciplineFilter + "</strong>" + yearsText
-            );
-            $('#back-subtitle').text(sportFilter);
-            break;
-
-        case 3:
-            eventFilter = selectedNode.Event;
-            currentFilterKeyword = "Event";
-            $('#statelabel').html(
-                countriesSection  + " on <strong>" + eventFilter + "</strong>" + yearsText
-            );
-            $('#back-subtitle').text(disciplineFilter);
-            break;
-    }
-
     //redraw the dashboard
     if(initialUpdate){
         genTimeSlider();
@@ -126,6 +78,54 @@ function updateDashboardState(nextState, initialUpdate = false) {
         updateLinechart();
         genScatterplot(true);
     }
+
+  // Update dashboard state
+  let yearsText = 
+    (endYearFilter == initialYearFilter ? 
+        " in <strong>" + initialYearFilter + "</strong>" :
+        " from <strong>" +  initialYearFilter + "</strong> to <strong>" + endYearFilter + "</strong>"
+    );
+    let countriesSection = countrySelectionToString();
+
+    switch(currentState) {
+    case 0:
+        sportFilter = "All";
+        currentFilterKeyword = "Sport";
+        $('#statelabel').html(
+            countriesSection + " on <strong> every Event </strong>" + yearsText
+        );
+        $('#back-icon-container').hide();
+        break;
+
+    case 1:
+        sportFilter = selectedNode.Sport;
+        currentFilterKeyword = "Discipline";
+        $('#statelabel').html(
+            countriesSection  + " on <strong>" + sportFilter + "</strong>" + yearsText
+        );
+        $('#back-icon-container').show();
+        $('#back-subtitle').text("All");
+        break;
+
+    case 2:
+        disciplineFilter = selectedNode.Discipline;
+        currentFilterKeyword = "Event";
+        $('#statelabel').html(
+            countriesSection  + " on <strong>" + disciplineFilter + "</strong>" + yearsText
+        );
+        $('#back-subtitle').text(sportFilter);
+        break;
+
+    case 3:
+        eventFilter = selectedNode.Event;
+        currentFilterKeyword = "Event";
+        $('#statelabel').html(
+            countriesSection  + " on <strong>" + eventFilter + "</strong>" + yearsText
+        );
+        $('#back-subtitle').text(disciplineFilter);
+        break;
+}
+
 }
 
 /** 
