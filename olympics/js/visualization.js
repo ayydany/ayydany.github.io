@@ -39,7 +39,7 @@ $(document).ready(function() {
 function updateDashboardState(nextState, initialUpdate = false) {
 
     //semi asynchrinous call, this method has to wait for the initialization to end
-    if(!dictionariesInitialized){
+    if(dictionariesInitialized != true){
         setTimeout(updateDashboardState(0, true), 250);
     }
 
