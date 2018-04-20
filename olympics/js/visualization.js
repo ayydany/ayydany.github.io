@@ -34,8 +34,6 @@ window.onresize = function(){ location.reload(); }
 $(document).ready(function() {
     loadDictionary();
 
-    randomizeInitialCountry();
-
     genTimeSlider();
     genBubblechart(false, -1);
     genLinechart();
@@ -43,8 +41,16 @@ $(document).ready(function() {
     genScatterplot();
 });
 
+function randomizeInitialCountry(array, initialCountryCode = null) {
+    if(initialCountryCode === null){
+        let randomCountryCode = array[Math.floor(Math.random() * array.length)].CountryCode;
+    } else {
+        randomCountryCode = initialCountryCode;
+    }
 
-function randomizeInitialCountry(array) {
+    countrySelection = [randomCountryCode, null, null, null];
+    countryName = convertIOCCodeToName(randomCountryCode);
+    countryLineIdentifier = [[randomCountryCode, 0], [null, 1], [null, 2], [null, 3]];
 
 }
 
@@ -63,11 +69,8 @@ function loadDictionary(){
             iocCodeDictionary[data[i].CountryCode] = data[i].CountryName;
         }
 
-        let rand = data[Math.floor(Math.random() * data.length)].CountryCode;
+        randomizeInitialCountry(null, "FRA"); //Initial debugging country
 
-        countrySelection = [rand, null, null, null];
-        countryName = convertIOCCodeToName(rand);
-        countryLineIdentifier = [[rand, 0], [null, 1], [null, 2], [null, 3]];
 	})
 };
 
