@@ -135,6 +135,7 @@ function updateDashboardState(nextState, initialUpdate = false) {
  * optional paramenter defaults to null
  */
 function randomizeInitialCountry(array, initialCountryCode = null) {
+    console.log("running initialize country...");
     if(initialCountryCode === null){
         let randomCountryCode = array[Math.floor(Math.random() * array.length)].CountryCode;
     } else {
