@@ -123,7 +123,7 @@ function genWorldMap() {
                     return "url(#diagonalHatch)";
                 } if (d3.select(this).classed("country")) {
                     return NOT_SELECTED_COUNTRY_COLOR;
-                } else {
+                } else if(d3.select(this).classed("country country-on")) {
                     return color(convertNameToIOCCode(d.properties.name_long));
                 }
             })
