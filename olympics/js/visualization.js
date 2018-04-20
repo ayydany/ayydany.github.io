@@ -119,7 +119,8 @@ function getFirstOpenPositionInSelection() {
 }
 
 /** 
- * Converts the countrySelection variable to something like
+ * Converts the countrySelection variable to something a 
+ * human can read, example:
  * 
  * *"country1, country2 and country3"*
  * 
@@ -145,7 +146,7 @@ function countrySelectionToString() {
             continue;
         }
 
-        result += convertIOCCodeToName(countriesArray[i])
+        result += convertIOCCodeToName(countrySelection[i])
 
         if(getNumberOfCountriesInSelection() - i == 2) {
            result += " and "
