@@ -135,7 +135,6 @@ function updateDashboardState(nextState, initialUpdate = false) {
  * optional paramenter defaults to null
  */
 function randomizeInitialCountry(array, initialCountryCode = null) {
-    console.log("running initialize country...");
     if(initialCountryCode === null){
         let randomCountryCode = array[Math.floor(Math.random() * array.length)].CountryCode;
     } else {
@@ -255,7 +254,6 @@ function countrySelectionToString() {
                 break;
         }
     }
-    console.log("returning as country: " + result + " with country selection as: " + countrySelection);
     return result;
 }
 
@@ -269,10 +267,7 @@ function changeSelectedCountry(countryName){
 
     countrySelection = [String(iocCode), null, null, null];
 
-	// call all the draw methods to redraw dashboard components
-    genBubblechart(true, 0);
-    updateLinechart(true);
-    genScatterplot(true);
+    updateDashboardState(0);
 };
 
 /** 
@@ -284,7 +279,6 @@ function addCountryToSelection(countryName){
 
 	countrySelection[getFirstOpenPositionInSelection()] = String(convertNameToIOCCode(countryName));
 
-	// call all the draw methods to redraw dashboard components
     updateDashboardState(0);
 }
 
@@ -300,7 +294,6 @@ function removeCountryFromSelection(countryName){
     removeLineID(iocCode);
 
     updateDashboardState(0);
-
 }
 
 /** 
