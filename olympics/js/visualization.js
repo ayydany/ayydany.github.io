@@ -134,9 +134,15 @@ function countrySelectionToString() {
     }
 
 	// if its a single country just return it
-    if(getNumberOfCountriesInSelection() == 1) {
-        return "<strong>" + convertIOCCodeToName(countrySelection[0] + "</strong>");
-    }
+    // if(getNumberOfCountriesInSelection() == 1) {
+    //     for(let i = 0; i < getNumberOfCountriesInSelection(); i++) {
+    //         if(countrySelection[i] === null) {
+    //             continue;
+    //         } else {
+    //             return "<strong>" + convertIOCCodeToName(countrySelection[i] + "</strong>");
+    //         }
+    //     }
+    // }
 
     for(let i = 0; i < getNumberOfCountriesInSelection(); i++) {
 		
