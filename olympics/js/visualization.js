@@ -145,20 +145,26 @@ function countrySelectionToString() {
     // }
 
     for(let i = 0; i < countrySelection.length; i++) {
-		
+        
+        let counter = 0;
+
 		if(countrySelection[i] === null) {
             continue;
         }
 
         result += "<strong>" + convertIOCCodeToName(countrySelection[i]) + "</strong>";
+        counter++;
 
-        if(getNumberOfCountriesInSelection() - i == 2) {
-           result += " and ";
-        } 
-        else if(getNumberOfCountriesInSelection() - i <= 1) {
-            result += "";
-        } else {
-            result += ", ";
+        switch(getNumberOfCountriesInSelection() - counter) {
+            case 0:
+                result += "";
+                break;
+            case 1:
+                result += " and ";
+                break;
+            case 2:
+                result += ", "
+                break;
         }
     }
     return result;
