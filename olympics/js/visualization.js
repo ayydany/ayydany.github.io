@@ -30,9 +30,7 @@ window.onresize = function(){ location.reload(); }
 
 // call first vis drawing
 $(document).ready(function() {
-    loadDictionary();
-
-    updateDashboardState(0, true);
+    loadDictionary(() => updateDashboardState(0, true));
 });
 
 function updateDashboardState(nextState, initialUpdate = false) {
