@@ -1,5 +1,6 @@
 // global variables
-var selectedNode = null,
+var dictionariesInitialized = false;
+    selectedNode = null,
     currentState = 0,   // defines the deepness we're seeing in the vis (All = 0, Sport = 1; Discipline = 2; Event = 3)
     countrySelection = [null, null, null, null],
     countryLineIdentifier = [[null, 0], [null, 1], [null, 2], [null, 3]],
@@ -37,9 +38,10 @@ $(document).ready(function() {
 
 function updateDashboardState(nextState, initialUpdate = false) {
 
-    if(initialUpdate){
+    if(!dictionariesInitialized){
         //todo use deferreds probably
-        setTimeout(updateDashboardState(0), 250);
+        dictionariesINitialized = true;
+        setTimeout(updateDashboardState(0, true), 250);
     }
 
     //update current Level to new wanted level
