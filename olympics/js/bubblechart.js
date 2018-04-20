@@ -2,7 +2,7 @@
 // the update flag must be set to true if its an update of an old bubblechart, false otherwise
 // isGoingLower determines the if we're going in a deeper level (-1), staying on the same level (0)
 // or going up a level (1)
-function genBubblechart(update, isGoingLower) {
+function genBubblechart(update, nextState) {
     
     let width = $("#bubblechart").width(),
         height = $("#bubblechart").height(),
@@ -12,13 +12,13 @@ function genBubblechart(update, isGoingLower) {
 
     // if its a update callback we don't want to create a new svg, so we just select it
     if(!update) {
-        let svg = d3.select("#bubblechart")
+        var svg = d3.select("#bubblechart")
             .append("svg")
             .attr("height", height)
             .attr("width", width)
             .append("g");
     } else {
-        let svg = d3.select("#bubblechart g");
+        var svg = d3.select("#bubblechart g");
     }
 
     // set a automatic bubble scaler
@@ -44,19 +44,21 @@ function genBubblechart(update, isGoingLower) {
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function(d) {
-            return "<strong>" + d.GoldCount + "</strong> Gold // <strong>" + d.SilverCount + "</strong> Silver // <strong>" 
-            + d.BronzeCount + "</strong> Bronze on <strong>" + d[currentFilterKeyword] + "</strong>";
+            return "<strong>" + d.GoldCount + "</strong> Gold // <strong>" 
+                + d.SilverCount + "</strong> Silver // <strong>" 
+                + d.BronzeCount + "</strong> Bronze on <strong>" 
+                + d[currentFilterKeyword] + "</strong>";
         });
-    
+
     drawBubbles(0);
 
     // update on click with the DOM information of who clicked it
     // isGoingLower is a bool that defines if we're going into a
     // lower or upper level and node is a variable set on click element
-    function drawBubbles(isGoingLower) {
+    function drawBubbles(nextState) {
             
         //update current Level to new wanted level
-        switch(isGoingLower){
+        switch(nextState){
             case -1:
                 currentState = currentState+1;
                 break;
@@ -70,11 +72,12 @@ function genBubblechart(update, isGoingLower) {
 
         //check if currentState is possible [1,3]
         //early exit if not possible, and set the currentState to regular values
-        if( (0 > currentState || currentState > 3) ){
-            switch(currentState){
+        if(0 > currentState || currentState > 3) {
+            switch(currentState) {
                 case -1:
                     currentState = 0;
                     break;
+
                 case 4:
                     currentState = 3;
                     break;
@@ -148,27 +151,33 @@ function genBubblechart(update, isGoingLower) {
             });
 
             // filter the data, first by year and then by Country
-            let filteredData = data.filter(function(d, i){
-                if(countrySelection.includes(d["Country"]) && initialYearFilter <= d["Year"] && d["Year"] <= endYearFilter){
-                    switch(currentState){
+            let filteredData = data.filter(function(d, i) {
+                if(countrySelection.includes(d["Country"]) && initialYearFilter <= d["Year"] && d["Year"] <= endYearFilter) {
+                    switch(currentState) {
                         case 0: //all information
                             return d;
                             break;
+
                         case 1: // Specific Sport
-                            if (d["Sport"] == sportFilter)
+                            if(d["Sport"] == sportFilter) {
                                 return d;
+                            }
                             break;
+
                         case 2: // Specific Discipline
-                            if  (d["Discipline"] == disciplineFilter)
+                            if(d["Discipline"] == disciplineFilter) {
                                 return d;
+                            }
                             break;
+
                         case 3: // Specific Event
-                            if (d["Event"] == eventFilter)
-                            return d;
+                            if (d["Event"] == eventFilter) {
+                                return d;
+                            }
                             break;
                     }
                 }
-            })
+            });
 
             // create a new array with adding up information from different years of the olympics using a specified filter
             let processedData = [];
