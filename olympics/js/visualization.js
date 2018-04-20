@@ -34,7 +34,7 @@ window.onresize = function(){ location.reload(); }
 $(document).ready(function() {
     loadDictionary();
 
-    updateDashboardState(-1, true);
+    updateDashboardState(0, true);
 });
 
 function updateDashboardState(nextState, initialUpdate = false) {
@@ -88,43 +88,43 @@ function updateDashboardState(nextState, initialUpdate = false) {
     let countriesSection = countrySelectionToString();
 
     switch(currentState) {
-    case 0:
-        sportFilter = "All";
-        currentFilterKeyword = "Sport";
-        $('#statelabel').html(
-            countriesSection + " on <strong> every Event </strong>" + yearsText
-        );
-        $('#back-icon-container').hide();
-        break;
+        case 0:
+            sportFilter = "All";
+            currentFilterKeyword = "Sport";
+            $('#statelabel').html(
+                countriesSection + " on <strong> every Event </strong>" + yearsText
+            );
+            $('#back-icon-container').hide();
+            break;
 
-    case 1:
-        sportFilter = selectedNode.Sport;
-        currentFilterKeyword = "Discipline";
-        $('#statelabel').html(
-            countriesSection  + " on <strong>" + sportFilter + "</strong>" + yearsText
-        );
-        $('#back-icon-container').show();
-        $('#back-subtitle').text("All");
-        break;
+        case 1:
+            sportFilter = selectedNode.Sport;
+            currentFilterKeyword = "Discipline";
+            $('#statelabel').html(
+                countriesSection  + " on <strong>" + sportFilter + "</strong>" + yearsText
+            );
+            $('#back-icon-container').show();
+            $('#back-subtitle').text("All");
+            break;
 
-    case 2:
-        disciplineFilter = selectedNode.Discipline;
-        currentFilterKeyword = "Event";
-        $('#statelabel').html(
-            countriesSection  + " on <strong>" + disciplineFilter + "</strong>" + yearsText
-        );
-        $('#back-subtitle').text(sportFilter);
-        break;
+        case 2:
+            disciplineFilter = selectedNode.Discipline;
+            currentFilterKeyword = "Event";
+            $('#statelabel').html(
+                countriesSection  + " on <strong>" + disciplineFilter + "</strong>" + yearsText
+            );
+            $('#back-subtitle').text(sportFilter);
+            break;
 
-    case 3:
-        eventFilter = selectedNode.Event;
-        currentFilterKeyword = "Event";
-        $('#statelabel').html(
-            countriesSection  + " on <strong>" + eventFilter + "</strong>" + yearsText
-        );
-        $('#back-subtitle').text(disciplineFilter);
-        break;
-}
+        case 3:
+            eventFilter = selectedNode.Event;
+            currentFilterKeyword = "Event";
+            $('#statelabel').html(
+                countriesSection  + " on <strong>" + eventFilter + "</strong>" + yearsText
+            );
+            $('#back-subtitle').text(disciplineFilter);
+            break;
+    }
 
 }
 
