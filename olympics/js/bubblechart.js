@@ -59,7 +59,7 @@ function updateBubblechart() {
     let svg = d3.select("#bubblechart g");
     
     // delete all old bubbles in view
-    //svg.selectAll(".bubble").remove();
+    svg.selectAll(".bubble").remove();
     
     //initialize tooltip viewer
     svg.call(tip);
