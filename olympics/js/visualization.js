@@ -126,7 +126,8 @@ function getFirstOpenPositionInSelection() {
  */
 function countrySelectionToString() {
     
-    let result = "";
+    let result = "";            
+    let counter = 0;
 
 	// small hack to ensure correct first behaviour
     if(dictionary === null) {
@@ -145,9 +146,6 @@ function countrySelectionToString() {
     // }
 
     for(let i = 0; i < countrySelection.length; i++) {
-        
-        let counter = 0;
-
 		if(countrySelection[i] === null) {
             continue;
         }
