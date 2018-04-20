@@ -160,7 +160,7 @@ function countrySelectionToString() {
             case 1:
                 result += " and ";
                 break;
-            case 2:
+            default:
                 result += ", "
                 break;
         }
