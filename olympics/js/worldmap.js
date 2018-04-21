@@ -2,7 +2,7 @@ var MAX_SELECTED_COUNTRIES = 4;
 var currentSelectedCountriesNumber = 1;
 var isZoomed = false;
 
-var ALERT_MESSAGE = "You can't select more countries because the limit was reached!\nTo start a new group from scratch try Control + Left Click"
+var ALERT_MESSAGE = "You can't select more countries!\nTo start a new group from scratch try Control + Left Click"
 var NOT_SELECTED_COUNTRY_COLOR = "#A8A39D"
 
 function genWorldMap() {

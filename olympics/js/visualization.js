@@ -31,58 +31,60 @@ window.onresize = function(){ location.reload(); }
 // call first vis drawing
 $(document).ready(function() {
     loadDictionary();
-
-    updateDashboardState(0, true);
+    
+    setTimeout(function(){
+            updateDashboardState(0, true); 
+        }, 250);
+    ;
 });
 
+/**
+ * Updates the entire Dashboard state, this includes calling all redrawing functions
+ * and is also used to call the initial drawing (using the initialUpdate flag)
+ * @param {number} nextState - next state in the visualization (-1, 0, 1), see comment about 
+ * currentState for further information
+ * @param {boolean} initialUpdate - flag determining if its the first update (default = false)
+ * @param {boolean} linechartRefresh - flag determining if the linechart should refresh (for catching
+ * ctrl+click on map, default = false)
+*/
 function updateDashboardState(nextState, initialUpdate = false, linechartRefresh = false) {
 
-    //update current Level to new wanted level
     switch(nextState){
         case -1:
-            currentState = currentState+1;
+            if(++currentState > 3) {
+                currentState = 3;
+                return;
+            }
             break;
         case 0:
-            currentState = currentState;
             break;
         case 1:
-            currentState = currentState-1;
+            if(--currentState < 0) {
+                currentState = 0;
+                return;
+            }
             break;
     }
 
-    //check if currentState is possible [1,3]
-    //early exit if not possible, and set the currentState to regular values
-    if(0 > currentState || currentState > 3) {
-        switch(currentState) {
-            case -1:
-                currentState = 0;
-                break;
-
-            case 4:
-                currentState = 3;
-                break;
-        }
-        return;
-    }
-    //redraw the dashboard
-    if(initialUpdate){
+    if(initialUpdate) {
         genTimeSlider();
+
         genBubblechart();
         genLinechart();
         genWorldMap();
         genScatterplot();
+
     } else {
         updateBubblechart();
         updateLinechart(linechartRefresh);
         genScatterplot(true);
     }
 
-  // Update dashboard state
-  let yearsText = 
-    (endYearFilter == initialYearFilter ? 
-        " in <strong>" + initialYearFilter + "</strong>" :
-        " from <strong>" +  initialYearFilter + "</strong> to <strong>" + endYearFilter + "</strong>"
-    );
+    let yearsText = 
+        (endYearFilter == initialYearFilter ? 
+            " in <strong>" + initialYearFilter + "</strong>" :
+            " from <strong>" +  initialYearFilter + "</strong> to <strong>" + endYearFilter + "</strong>"
+        );
     let countriesSection = countrySelectionToString();
 
     switch(currentState) {
@@ -123,28 +125,8 @@ function updateDashboardState(nextState, initialUpdate = false, linechartRefresh
             $('#back-subtitle').text(disciplineFilter);
             break;
     }
-
 }
 
-/** 
- * Selects a random country to be the initial active one 
- * 
- * @param {array} array - Array containing a CountryName <-> CountryCode relationship
- * (see loadDictionary())
- * @param {array} initialCountryCode - IOC Code of the country to be the initial one,
- * optional paramenter defaults to null
- */
-function randomizeInitialCountry(array, initialCountryCode = null) {
-    if(initialCountryCode === null){
-        let randomCountryCode = array[Math.floor(Math.random() * array.length)].CountryCode;
-    } else {
-        randomCountryCode = initialCountryCode;
-    }
-
-    countrySelection = [randomCountryCode, null, null, null];
-    countryLineIdentifier = [[randomCountryCode, 0], [null, 1], [null, 2], [null, 3]];
-
-}
 
 /** 
  * Loads the dictionary into memory (var dictionary, JSON Object)
@@ -161,9 +143,31 @@ function loadDictionary(){
             iocCodeDictionary[data[i].CountryCode] = data[i].CountryName;
         }
 
-        randomizeInitialCountry(null, "FRA"); //Initial debugging country
+        randomizeInitialCountry(data, "FRA"); //Initial debugging country
 	})
 };
+
+/** 
+ * Selects a random country to be the initial selected 
+ * 
+ * @param {array} array - Array containing a CountryName <-> CountryCode relationship
+ * (see loadDictionary())
+ * @param {array} initialCountryCode - IOC Code of the country to be the initial one,
+ * optional paramenter defaults to null, no checks are made to this parameter
+ */
+function randomizeInitialCountry(array, initialCountryCode = null) {
+    
+    let randomCountryCode;
+    
+    if(initialCountryCode === null) {
+        randomCountryCode = array[Math.floor(Math.random() * array.length)].CountryCode;
+    } else {
+        randomCountryCode = initialCountryCode;
+    }
+
+    countrySelection = [randomCountryCode, null, null, null];
+    countryLineIdentifier = [[randomCountryCode, 0], [null, 1], [null, 2], [null, 3]];
+}
 
 /** 
  * Converts a country name to the IOC code 
