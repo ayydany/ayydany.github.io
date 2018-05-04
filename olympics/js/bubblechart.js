@@ -54,8 +54,7 @@ var Bubblechart = (function() {
 
     var update = function() {                     
         // create new bubbles as necessary
-        d3.csv("csv/summer_year_country_event.csv", function(error, data) {
-            if (error) throw error;
+        d3.csv("csv/summer_year_country_event.csv").then(function(data) {
 
             data.forEach(function(d) {
                 d.Year = +d.Year;
@@ -219,7 +218,9 @@ var Bubblechart = (function() {
                 .force("collide", d3.forceCollide().strength(.5).radius(function(d) { 
                     return radiusScale(d.TotalMedals) + offsetBetweenBubbles; 
                 }))
-                .on('tick', _ticked);
+                .alpha(1)
+                .on('tick', _ticked)
+                .restart();
 
             function _ticked()  {
                 bubble
