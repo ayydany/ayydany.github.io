@@ -28,19 +28,21 @@ var animationTime = 750;
 // set a reload function on window resize
 window.onresize = function(){ location.reload(); }
 
-// call first vis drawing
+// First visualization drawing.
 $(document).ready(function() {
-    loadDictionary();
+
+    // Make the Dictionary Loader run asynchronously
+    var callback = $.Deferred();
+    loadDictionary(callback);
+
+    callback.done(function() {
+        updateDashboardState(0,true);
+    });
     
-    setTimeout(function(){
-            updateDashboardState(0, true); 
-        }, 250);
-    ;
 });
 
 /**
- * Updates the entire Dashboard state, this includes calling all redrawing functions
- * and is also used to call the initial drawing (using the initialUpdate flag)
+ * Main function that does the updates the visualization requires
  * @param {number} nextState - next state in the visualization (-1, 0, 1), see comment about 
  * currentState for further information
  * @param {boolean} initialUpdate - flag determining if its the first update (default = false)
@@ -56,8 +58,6 @@ function updateDashboardState(nextState, initialUpdate = false, linechartRefresh
                 return;
             }
             break;
-        case 0:
-            break;
         case 1:
             if(--currentState < 0) {
                 currentState = 0;
@@ -67,17 +67,17 @@ function updateDashboardState(nextState, initialUpdate = false, linechartRefresh
     }
 
     if(initialUpdate) {
-        genTimeSlider();
+        TimeSlider.initialize();
 
-        genBubblechart();
-        genLinechart();
-        genWorldMap();
-        genScatterplot();
+        Bubblechart.initialize();
+        WorldMap.initialize();
+        Linechart.initialize();
+        Scatterplot.initialize();
 
     } else {
-        updateBubblechart();
-        updateLinechart(linechartRefresh);
-        genScatterplot(true);
+        Bubblechart.update();
+        Linechart.update(linechartRefresh);
+        Scatterplot.update();
     }
 
     let yearsText = 
@@ -129,12 +129,12 @@ function updateDashboardState(nextState, initialUpdate = false, linechartRefresh
 
 
 /** 
- * Loads the dictionary into memory (var dictionary, JSON Object)
+ * Initializes the internal dicionary objects
  */
-function loadDictionary(){
+var loadDictionary = function(callback) {
     d3.csv("csv/dictionary.csv", function(error, data){
         if (error) throw error;
-
+    
         for (let i = 0; i < data.length; i++) {
             countryNameDictionary[data[i].CountryName] = data[i].CountryCode;
         }
@@ -143,8 +143,10 @@ function loadDictionary(){
             iocCodeDictionary[data[i].CountryCode] = data[i].CountryName;
         }
 
-        randomizeInitialCountry(data, "FRA"); //Initial debugging country
-	})
+         randomizeInitialCountry(data, "FRA");
+
+         callback.resolve();
+    })
 };
 
 /** 
@@ -236,7 +238,9 @@ function countrySelectionToString() {
     let result = "",            
         counter = 0;
 
+    // Cicle through the countries in countrySelection.
     for(let i = 0; i < countrySelection.length; i++) {
+        
 		if(countrySelection[i] === null) {
             continue;
         }
@@ -307,7 +311,7 @@ function removeCountryFromSelection(countryName){
 function clearLineIDArray(){
     for(i = 0; i < countryLineIdentifier.length; i++){
         countryLineIdentifier[i][0] = null;
-        hideLine(i);
+        Linechart.hideLine(i);
     }
 }
 
@@ -338,7 +342,7 @@ function setNextFreeLineID(iocCode){
     for(i = 0; i < countryLineIdentifier.length; i++){
         if(countryLineIdentifier[i][0] === null){
 			setLineID(iocCode, i);
-			showLine(i);
+			Linechart.showLine(i);
             return i;
         }
     }
@@ -346,7 +350,7 @@ function setNextFreeLineID(iocCode){
 }
 
 function removeLineID(country){
-    hideLine(getLineID(country));
+    Linechart.hideLine(getLineID(country));
     countryLineIdentifier[getLineID(country)][0] = null;
 }
 
