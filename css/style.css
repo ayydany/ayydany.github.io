@@ -10,7 +10,7 @@
 *, body {
     margin: 0;
     padding: 0;
-    font-family: "Roboto", "Segoe UI";
+    font-family: "Open Sans", "Segoe UI";
 }    
 
 body {
@@ -89,7 +89,7 @@ a:hover {
     padding: 30px;
 }
 
-.about, .projects {
+#about, #projects {
     background: var(--main-bg-color);
 }
 
@@ -97,7 +97,7 @@ a:hover {
     background: #fff;
 }
 
-#exp, .projects, .contact {
+#exp, #projects, #contact {
     margin: 0 auto; 
     text-align: center;
     padding: 150px 0px 150px 0px;
@@ -105,19 +105,19 @@ a:hover {
 
 /* About */
 
-.about {    
+#about {    
     padding: 400px 0px 400px 0px;
     margin: 0 auto; 
     text-align: center;
 }
 
-.about .aboutleft {
+#about .aboutleft {
     float: left;
     width: 40%;
     text-align: right;
 } 
 
-.about .aboutleft .avatar {
+#about .aboutleft .avatar {
     position: relative;
     right: 0%;
     top: 0%;
@@ -131,7 +131,7 @@ a:hover {
     z-index: 9;
 }
 
-.about .aboutright {
+#about .aboutright {
     float: right;
     /*background: darkgreen;*/
     width: 50%;
@@ -139,11 +139,11 @@ a:hover {
     color: #111;
 }
 
-.about .aboutright h3 {
+#about .aboutright h3 {
     padding-left: 20px;
 }
 
-.about .aboutright p {
+#about .aboutright p {
     width: 50%;
     padding: 5px;
 }
@@ -285,6 +285,35 @@ overlay a:hover {
 
 .element:hover .elementinfo {
     transform: translateY(0);
+}
+
+
+/* Footer */
+
+/* footer */
+
+.divider {
+    border: none;
+    border-bottom: 1px solid #222;
+    width: 70%;
+    margin: 30px auto;
+    height: 1px;
+}
+
+footer {
+    margin: 0 auto;
+    background: #333333;
+    /*float: left;*/
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+    padding: 10px 0px 10px 0px;
+}   
+
+footer span {
+    color: var(--main-white-color);
+    font-size: 16px;
+    margin: 50px;
 }
 
 body, a, a:hover, img, img:hover{
