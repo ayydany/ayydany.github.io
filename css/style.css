@@ -1,0 +1,259 @@
+:root {
+    --main-dark-color: #333333;
+    --main-white-color: #EEEEDD;
+    
+	--main-bg-color: #FFFFF7;
+}
+
+
+*, body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", "Segoe UI";
+}    
+
+body {
+    background: var(--main-bg-color);   
+    width: 100%;
+    height: 100%;
+}
+
+a {
+    color: #444;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #999;
+}
+
+.head {
+    background: url("../img/background.jpg") no-repeat;
+    background-size: cover;
+    height: 100%;
+    transition: ease-in-out .3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.head:hover {
+    transition: ease-in-out .3s;
+}
+
+ /* Main text */
+.centertext {   
+    width: 100%;
+    text-align: center; 
+    margin-top: 15%;
+    position: absolute;     
+    color: var(--main-bg-color);;
+    z-index: 10;
+}
+
+.centertext h1 {
+    font-size: 45px;
+    border-bottom: 1px solid var(--main-white-color);
+    width: 40%; 
+    margin: 0 auto;
+    padding: 60px 0px 0px 0px;
+}
+
+.centertext h2 {
+    font-size: 20px;
+    padding: 20px;
+}
+
+/* General settings */
+
+.title {
+    font-family: "Roboto Condensed", "Segoi UI";
+    text-align: center;
+    color: var(--main-dark-color);
+    font-size: 40px;
+    padding: 30px;
+}
+
+.about, .projects {
+    background: var(--main-bg-color);
+}
+
+.exp {
+    background: #fff;
+}
+
+.exp, .projects, .contact {
+    margin: 0 auto; 
+    text-align: center;
+    padding: 150px 0px 150px 0px;
+}
+
+/* About */
+
+.about {    
+    padding: 400px 0px 400px 0px;
+    margin: 0 auto; 
+    text-align: center;
+}
+
+.about .aboutleft {
+    float: left;
+    width: 40%;
+    text-align: right;
+} 
+
+.about .aboutleft .avatar {
+    position: relative;
+    right: 0%;
+    top: 0%;
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+    /*border: 5px solid #ccc;*/
+    text-align: center;
+    margin: 20px;   
+    box-shadow: 3px 3px 4px rgba(0,0,0,0.3);
+    z-index: 9;
+}
+
+.about .aboutright {
+    float: right;
+    /*background: darkgreen;*/
+    width: 50%;
+    text-align: left;
+    color: #111;
+}
+
+.about .aboutright p {
+    width: 50%;
+    padding: 5px;
+}
+
+/* Buttons */
+
+.social {
+    padding: 10px 0px 10px 0px;
+}
+
+.social a:hover, .contact a:hover, a.steam:hover {
+    color: #fff;
+    opacity: 0.7;
+}
+
+.social a.github:hover {
+    color: #000;
+}
+
+.social .mail, .twitter, .github, .steam, .lastfm {  
+    padding: 6px 12px;
+    /*font-size: 14px;*/
+    /*font-weight: 600;*/
+    text-align: center;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.social .mail {
+    background: #d54b3d;
+}
+
+.social .twitter {
+    background: #5bc0de;
+}
+
+.social .github {
+    background: #eaeaea;
+    color: #000;
+    border: 1px solid #aaa;
+}
+
+.social .steam {
+    background: var(--main-dark-color);
+    color: #fff;
+    border: 1px solid #aaa;
+}
+
+.social .lastfm {
+    background: #e4141e;
+}
+
+/* Experience */
+
+.exp .work {
+    text-align: left;
+    width: 45%;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+h3 {
+    font-style: italic;
+}
+
+h3, h4, .work p {
+    padding: 10px;
+}
+
+/* Projects */
+
+.projectcontainer{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    
+    width: 80%;
+    margin: 0 auto;
+}
+
+.element {
+    position: relative;
+    max-height: 280px;
+    border: 1px solid #888;
+    margin: 1px;
+}
+
+.element .image {
+    height: 100%;
+    width: 100%;
+}
+
+.element .elementinfo {
+    font-size: 16px;
+}
+
+/* overlay */
+
+.overlay {
+    position: absolute;  
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity .2s, visibility .2s;
+}
+
+.element:hover .overlay {
+    visibility: visible;
+    opacity: 1;
+}
+
+.elementinfo {
+    cursor: pointer;
+    transition: .2s;
+    transform: translateY(1em);
+}
+
+.element:hover .elementinfo {
+    transform: translateY(0);
+}
+
+body, a, a:hover, img, img:hover, #user, #user:hover, #wishlist, #wishlist:hover, .basketcell, .basketcell:hover {
+    transition: ease-in-out .3s;
+}

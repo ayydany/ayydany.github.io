@@ -1,73 +1,124 @@
 <!DOCTYPE html>
 
 	<head>
-        <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed:700" rel="stylesheet">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700i|Roboto+Condensed:700" rel="stylesheet">
         <link rel="icon" type="image/png" sizes="32x32" href="https://avatars0.githubusercontent.com/u/8873809">
         
-        <link rel='stylesheet' href='style.css' />
+        <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/all.js" integrity="sha384-Voup2lBiiyZYkRto2XWqbzxHXwzcm4A5RfdfG6466bu5LqjwwrjXCMBQBLMWh7qR" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
         
-        <title>ayydany</title>
-	</head>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script type="text/javascript" src="js/script.js"></script>
+        
+        <title>ayydany | Home</title>
+    </head>
+    
+    <header class="head"></header>
 
 	<body>
-        <div id=header>
-                <span class=title>hi i'm daniel</span>
-                <span class=subtitle>and this is just a place to host some things I made</span>
+        <div class="centertext">
+            <h1>Daniel Carmo</h1>
+            <h2>Computer Science Graduate that does somethings sometimes.</h2>
         </div>
 
-        <div class="container">
-            <span class=title>webapps</span>
-            <div class="subcontainer">
-                <div class="element">
-                    <span class="title">Olympics Visualization</span>
-                    <a href="https://danyboss.github.io/olympics/">
-                        <img class='image' src="https://raw.githubusercontent.com/DanyBoss/olympics-visualization/master/preview.png" alt="cute">
-                    </a>
-                    <span class="description">A D3.js powered Olympics Visualization.</span>
-                    <div class="description">
-                        <a href="https://danyboss.github.io/olympics/">[LIVE]</a>
-                        <a href="https://github.com/DanyBoss/Olympics-Visualization">[CODE]</a>
-                    </div>
+        <div id="about" class="about">
+
+            <div class="title">About</div>
+        
+            <div class="aboutleft">
+                <img class="avatar" src="img/avatar.png">   
+            </div>
+        
+            <div class="aboutright">
+                <p>Hi I'm Daniel. Nice to meet you. </p>
+                <p>A Computer Science graduate from Técnico Lisbon. Currently working for something.</p>
+                <p>Hobbies</p>
+                <p>Passion</p>
+                <p>Social shit below</p>
+                <div class="social">
+                    <a target="_blank" class="mail" href="mailto:danielcarmo93@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+                    <a target="_blank" class="twitter" href="https://twitter.com/ayyydany"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a target="_blank" class="github" href="https://github.com/DanyBoss"><i class="fab fa-github"></i> Github</a>
+                    <a target="_blank" class="steam" href="https://steamcommunity.com/id/DanyBoss"><i class="fab fa-steam-symbol"></i> Steam</a>
+                    <a target="_blank" class="lastfm" href="https://www.last.fm/user/ayydany"><i class="fab fa-lastfm"></i> last.fm</a>              
                 </div>
+            </div>
+        </div>
+
+        <div id="exp" class="exp">
+
+                <div class="title">Experience</div>  
+            
+                <h2><i class="fas fa-graduation-cap"></i></h2>
+            
+                <div class="work">
+                    <h3>Bachelor's Degree in Electrical and Computer Engineering</h3>
+                    <h4>2011 - 2014</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Técnico Lisboa</p>
+                </div>
+
+                <div class="work">      
+                    <h3>Bachelor's Degree in Computer Science</h3>
+                    <h4>2014 - 2017</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Técnico Lisboa</p>
+            
+                </div>
+
+                <h2><i class="fas fa-code"></i></h2>
+            
+                <div class="work">
+            
+                    <h3>Full-Stack Developer</h3>
+                    <h4>Mainly</h4>
+
+                </div>
+            
+                <h2><i class="fas fa-briefcase"></i></h2>
+            
+                <div class="work">
+            
+                    <h3>Software Developer at PaperSoft</h3>
+                    <h4>2017 - Current</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Lisbon</p>
+                </div>
+            
+                </div>  
+                
+            </div> 
+        
+        <div id="projects" class="projects">
+
+            <div class="title">Projects</div>  
+        
+            <div class="projectcontainer">
+
+                <div class="element">
+                    <img class='image' src="https://raw.githubusercontent.com/DanyBoss/olympics-visualization/master/preview.png">
+                    <a href="olympics" rel="" class="overlay">
+                        <p class="elementinfo">Olympics Visualization</p>
+                    </a>  
+                </div>
+
             <div class="element">
-                <span class="title">iRave (SmartWatch Application)</span>
-                <a href="https://danyboss.github.io/irave/">
-                    <img class='image' src="https://raw.githubusercontent.com/DanyBoss/iRave/master/preview.jpg" alt="cute">
-                </a>
-                <span class="description">A purely JS Smartwatch application for music festivals.</span>
-                <div class="description">
-                    <a href="https://danyboss.github.io/irave/index.html">[LIVE]</a>
-                    <a href="https://github.com/DanyBoss/iRave">[CODE]</a>
-                </div>
+                <img class='image' src="https://raw.githubusercontent.com/DanyBoss/iRave/master/preview.jpg">
+                <a href="irave" rel="" class="overlay">
+                        <p class="elementinfo">iRave</p>
+                    </a>  
+            </div>
+            <div class="element">
+                <img class='image' src="https://raw.githubusercontent.com/DanyBoss/ubiquitous/master/preview.png">
+                <a href="ubiquitous" rel="" class="overlay">
+                        <p class="elementinfo">ubiquitous</p>
+                    </a>  
+            </div>
+            <div class="element">
+                <img class='image' src="https://raw.githubusercontent.com/DanyBoss/thankful/master/preview.png">
+                <a href="thankful" rel="" class="overlay">
+                        <p class="elementinfo">thankful</p>
+                    </a>  
             </div>
         </div>
 
-        <div class="container">
-            <span class=title>startpages</span>
-            <div class="subcontainer">
-                <div class="element">
-                    <span class="title">ubiquitous</span>
-                    <a href="https://danyboss.github.io/ubiquitous/">
-                        <img class='image' src="https://raw.githubusercontent.com/DanyBoss/ubiquitous/master/preview.png" alt="cute">
-                    </a>
-                    <span class="description">A minimalistic startpage design based on another one I can't remember right now.</span>
-                    <div class="description">
-                        <a href="https://danyboss.github.io/ubiquitous/">[LIVE]</a>
-                        <a href="https://github.com/DanyBoss/ubiquitous">[CODE]</a>
-                    </div>
-                </div>
-                <div class="element">
-                    <span class="title">thankful</span>
-                    <a href="https://danyboss.github.io/thankful/">
-                        <img class='image' src="https://raw.githubusercontent.com/DanyBoss/thankful/master/preview.png" alt="cute">
-                    </a>
-                    <span class="description">Another simple startpage design.</span>
-                    <div class="description">
-                        <a href="https://danyboss.github.io/thankful/">[LIVE]</a>
-                        <a href="https://github.com/DanyBoss/thankful">[CODE]</a>
-                    </div>
-                </div>
-            </div>
-        </div>
 	</body>
 </html>
