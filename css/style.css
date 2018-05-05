@@ -2,7 +2,8 @@
     --main-dark-color: #333333;
     --main-white-color: #EEEEDD;
     
-	--main-bg-color: #FFFFF7;
+    --main-bg-color: #ECF0F1;
+    --main-bg2-color: #EEEEEE;
 }
 
 
@@ -42,7 +43,20 @@ a:hover {
     transition: ease-in-out .3s;
 }
 
+/* Loading screen template */
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: 50% 50% no-repeat var(--main-bg-color);
+  }
+
  /* Main text */
+
 .centertext {   
     width: 100%;
     text-align: center; 
@@ -79,11 +93,11 @@ a:hover {
     background: var(--main-bg-color);
 }
 
-.exp {
+#exp {
     background: #fff;
 }
 
-.exp, .projects, .contact {
+#exp, .projects, .contact {
     margin: 0 auto; 
     text-align: center;
     padding: 150px 0px 150px 0px;
@@ -123,6 +137,10 @@ a:hover {
     width: 50%;
     text-align: left;
     color: #111;
+}
+
+.about .aboutright h3 {
+    padding-left: 20px;
 }
 
 .about .aboutright p {
@@ -180,18 +198,18 @@ a:hover {
 
 /* Experience */
 
-.exp .work {
+#exp .work {
     text-align: left;
     width: 45%;
     margin: 0 auto;
     padding: 15px;
 }
 
-.exp h3 {
+#exp h3 {
     font-style: italic;
 }
 
-.exp h3, h4, .work p {
+#exp h3, h4, .work p {
     padding: 10px;
 }
 
@@ -220,7 +238,7 @@ a:hover {
     font-size: 16px;
 }
 
-/* overlay */
+/* Overlay */
 
 .overlay {
     position: absolute;  
@@ -240,7 +258,7 @@ a:hover {
 }
 
 .overlay .description {
-    margin-top: 150px;
+    margin-top: 30%;
 }
 
 .overlay a{
@@ -269,6 +287,6 @@ overlay a:hover {
     transform: translateY(0);
 }
 
-body, a, a:hover, img, img:hover, #user, #user:hover, #wishlist, #wishlist:hover, .basketcell, .basketcell:hover {
+body, a, a:hover, img, img:hover{
     transition: ease-in-out .3s;
 }
