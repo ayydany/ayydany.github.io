@@ -187,17 +187,17 @@ a:hover {
     padding: 15px;
 }
 
-h3 {
+.exp h3 {
     font-style: italic;
 }
 
-h3, h4, .work p {
+.exp h3, h4, .work p {
     padding: 10px;
 }
 
 /* Projects */
 
-.projectcontainer{
+.projectcontainer {
     display: grid;
     grid-template-columns: auto auto auto;
     
@@ -205,19 +205,18 @@ h3, h4, .work p {
     margin: 0 auto;
 }
 
-.element {
+.projectcontainer .element {
     position: relative;
     max-height: 280px;
-    border: 1px solid #888;
     margin: 1px;
 }
 
-.element .image {
+.projectcontainer .element .image {
     height: 100%;
     width: 100%;
 }
 
-.element .elementinfo {
+.projectcontainer .element .elementinfo {
     font-size: 16px;
 }
 
@@ -233,10 +232,22 @@ h3, h4, .work p {
     color: #fff;
     visibility: hidden;
     opacity: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     transition: opacity .2s, visibility .2s;
+}
+
+.overlay h1 {
+    margin-top: 25px;
+}
+
+.overlay .description {
+    margin-top: 150px;
+}
+
+.overlay a{
+    color: #fff;
+}
+overlay a:hover {
+    color: #999;
 }
 
 .element:hover .overlay {
@@ -248,6 +259,10 @@ h3, h4, .work p {
     cursor: pointer;
     transition: .2s;
     transform: translateY(1em);
+}
+
+.elementinfo p{
+    font-size: 28px;
 }
 
 .element:hover .elementinfo {

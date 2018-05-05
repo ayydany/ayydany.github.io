@@ -17,6 +17,13 @@
     <header class="head"></header>
 
 	<body>
+        <!-- Loading image -->
+        <script type="text/javascript">
+            $(window).load(function() {
+                $(".loader").fadeOut("slow");
+            })
+        </script>    
+
         <div class="centertext">
             <h1>Daniel Carmo</h1>
             <h2>Computer Science Graduate that does somethings sometimes.</h2>
@@ -50,6 +57,7 @@
 
                 <div class="title">Experience</div>  
             
+                <!-- Education -->
                 <h2><i class="fas fa-graduation-cap"></i></h2>
             
                 <div class="work">
@@ -65,15 +73,7 @@
             
                 </div>
 
-                <h2><i class="fas fa-code"></i></h2>
-            
-                <div class="work">
-            
-                    <h3>Full-Stack Developer</h3>
-                    <h4>Mainly</h4>
-
-                </div>
-            
+                <!-- Work -->
                 <h2><i class="fas fa-briefcase"></i></h2>
             
                 <div class="work">
@@ -83,7 +83,16 @@
                     <p><i class="fas fa-map-marker-alt"></i> Lisbon</p>
                 </div>
             
-                </div>  
+                <!-- Coding Experience-->
+                
+                <h2><i class="fas fa-code"></i></h2>
+                
+                <div class="work">
+            
+                    <h3>Full-Stack Developer</h3>
+                    <h4>Languages I speak:</h4>
+                    <p>C, C++, C#, Java, Lisp, Javascript</p>
+                </div>
                 
             </div> 
         
@@ -95,28 +104,48 @@
 
                 <div class="element">
                     <img class='image' src="https://raw.githubusercontent.com/DanyBoss/olympics-visualization/master/preview.png">
-                    <a href="olympics" rel="" class="overlay">
-                        <p class="elementinfo">Olympics Visualization</p>
-                    </a>  
+                    <div class="overlay">
+                        <h1>Olympics Visualization</h1>
+                        <p class="description">A D3.js powered Olympics Visualization.</p>
+                        <p class="links">
+                                <a href="https://danyboss.github.io/olympics/">[LIVE]</a>
+                                <a href="https://github.com/DanyBoss/Olympics-Visualization">[CODE]</a>
+                        </p>
+                    </div>
                 </div>
 
             <div class="element">
                 <img class='image' src="https://raw.githubusercontent.com/DanyBoss/iRave/master/preview.jpg">
-                <a href="irave" rel="" class="overlay">
-                        <p class="elementinfo">iRave</p>
-                    </a>  
+                <div class="overlay">
+                        <h1>iRave</h1>
+                        <p class="description">A smartwatch mock up application for Music Festivals.</p>
+                        <p class="links">
+                            <a href="https://danyboss.github.io/irave/">[LIVE]</a>
+                            <a href="https://github.com/DanyBoss/iRave">[CODE]</a>
+                        </p>
+                    </div>
             </div>
             <div class="element">
                 <img class='image' src="https://raw.githubusercontent.com/DanyBoss/ubiquitous/master/preview.png">
-                <a href="ubiquitous" rel="" class="overlay">
-                        <p class="elementinfo">ubiquitous</p>
-                    </a>  
+                <div class="overlay">
+                        <h1>ubiquitous</h1>
+                        <p class="description">A minimalistic startpage design.</p>
+                        <p class="links">
+                            <a href="https://danyboss.github.io/ubiquitous/">[LIVE]</a>
+                            <a href="https://github.com/DanyBoss/ubiquitous">[CODE]</a>
+                        </p>
+                    </div>
             </div>
             <div class="element">
                 <img class='image' src="https://raw.githubusercontent.com/DanyBoss/thankful/master/preview.png">
-                <a href="thankful" rel="" class="overlay">
-                        <p class="elementinfo">thankful</p>
-                    </a>  
+                <div class="overlay">
+                        <h1>thankful</h1>
+                        <p class="description">Cute startpage.</p>
+                        <p class="links">
+                            <a href="https://danyboss.github.io/thankful/">[LIVE]</a>
+                            <a href="https://github.com/DanyBoss/thankful">[CODE]</a>
+                        </p>
+                    </div>
             </div>
         </div>
 
