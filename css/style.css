@@ -15,6 +15,7 @@
 }    
 
 body {
+    
     background: var(--main-bg-color);   
     width: 100%;
     height: 100%;
@@ -69,9 +70,9 @@ a:hover {
     padding: 150px 0px 150px 0px;
 }
 
- /* Main text */
+/* Main text */
 
- .head {
+.head {
     height: 100%;
     width: 100%;
     top: 0;
@@ -230,16 +231,17 @@ a:hover {
 
 .projectcontainer .element {
     position: relative;
-    max-height: 240px;
-    max-width: 426px;
+    
+    background-size: cover;
+    height: auto;
+    width: auto;
+ 
     overflow:hidden;
-
-    margin: 1px;
 }
 
 .projectcontainer .element .image {
-    height: 100%;
-    width: 100%;
+    max-width: 100%;
+    height: auto;
 }
 
 /* Overlay */
@@ -263,10 +265,6 @@ a:hover {
     opacity: 1;
 }
 
-.element:hover .image {
-    /*filter: blur(2px); */
-}
-
 .overlayinfo {
     transition: .2s;
     transform: translateY(1em);
@@ -284,7 +282,7 @@ a:hover {
 .modal {
     display:none;
 
-    max-width: 600px;
+    max-width: 60%;
     width: 100%;
     background: #fff;
     padding: 30px;
@@ -294,39 +292,35 @@ a:hover {
 }
 
 .modal h1 {
-    font-family: "Open Sans", cursive;
+    font-size: 3em;
     font-style: italic;
-    font-weight: 100;
-    font-size: 30px;
-    padding: 20px;
+
+    text-shadow:
+        0 1px 0px #777,
+        1px 0 0px #777,
+        1px 1px 0px #777;
 }
 
 .modal p.description {
-    margin: 20px;
+    font-size: 1em;
+
+    margin: 10px;
     padding: 10px;
-    border-left: 2px solid #aaa;
 }
 
 .modal p.links {
-    text-align:center;
+    font-size:1.2em;
+
+    text-align: center;
 
     margin: 10px;
 }
 
 .modal img {
-    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    max-width: 100%;
+    height: auto;
 }
-
-.modal a.close-modal {
-    /*display: none;*/
-    top: 20px;
-    right: 20px;
-}
-
-.modal a.close-modal:hover {
-    opacity: 0.7;
-}
-
 
 /* Footer */
 
