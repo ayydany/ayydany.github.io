@@ -8,6 +8,7 @@
 
 
 *, body {
+    
     margin: 0;
     padding: 0;
     font-family: "Open Sans", "Segoe UI";
@@ -170,11 +171,10 @@ a:hover {
 
 .social .mail, .twitter, .github, .steam, .lastfm {  
     padding: 6px 12px;
-    /*font-size: 14px;*/
-    /*font-weight: 600;*/
     text-align: center;
     color: #fff;
     border-radius: 4px;
+    display:inline-block;
 }
 
 .social .mail {
@@ -224,23 +224,22 @@ a:hover {
     display: grid;
     grid-template-columns: auto auto auto;
     
-    width: 80%;
+    width: 60%;
     margin: 0 auto;
 }
 
 .projectcontainer .element {
     position: relative;
-    max-height: 280px;
+    max-height: 240px;
+    max-width: 426px;
+    overflow:hidden;
+
     margin: 1px;
 }
 
 .projectcontainer .element .image {
     height: 100%;
     width: 100%;
-}
-
-.projectcontainer .element .elementinfo {
-    font-size: 16px;
 }
 
 /* Overlay */
@@ -256,21 +255,7 @@ a:hover {
     visibility: hidden;
     opacity: 0;
     transition: opacity .2s, visibility .2s;
-}
-
-.overlay h1 {
-    margin-top: 3%;
-}
-
-.overlay .description {
-    margin-top: 30%;
-}
-
-.overlay a {
-    color: #fff;
-}
-overlay a:hover {
-    color: #999;
+    cursor: pointer;
 }
 
 .element:hover .overlay {
@@ -282,18 +267,64 @@ overlay a:hover {
     /*filter: blur(2px); */
 }
 
-.elementinfo {
-    cursor: pointer;
+.overlayinfo {
     transition: .2s;
     transform: translateY(1em);
+
+    padding-top: 25%;
+    font-size: 1em;
 }
 
-.elementinfo p{
-    font-size: 28px;
-}
-
-.element:hover .elementinfo {
+.element:hover .overlayinfo {
     transform: translateY(0);
+}
+
+/* Modal Stuff */
+
+.modal {
+    display:none;
+
+    max-width: 600px;
+    width: 100%;
+    background: #fff;
+    padding: 30px;
+    border-radius: 0px;
+    box-shadow: 3px 3px 2px rgba(0,0,0,0.2);
+    text-align: left;
+}
+
+.modal h1 {
+    font-family: "Open Sans", cursive;
+    font-style: italic;
+    font-weight: 100;
+    font-size: 30px;
+    padding: 20px;
+}
+
+.modal p.description {
+    margin: 20px;
+    padding: 10px;
+    border-left: 2px solid #aaa;
+}
+
+.modal p.links {
+    text-align:center;
+
+    margin: 10px;
+}
+
+.modal img {
+    width: 100%;
+}
+
+.modal a.close-modal {
+    /*display: none;*/
+    top: 20px;
+    right: 20px;
+}
+
+.modal a.close-modal:hover {
+    opacity: 0.7;
 }
 
 
@@ -322,6 +353,88 @@ footer span {
     margin: 50px;
 }
 
+/* media queries */
+
+/* portrait */
+@media only screen and (max-width: 1200px) {
+
+    #about .aboutleft, #about .aboutright {
+        font-size: 14px;
+        text-align: center;
+    }   
+
+    #about .aboutright p {
+        width: 80%;
+        margin: 0 auto;
+    }
+    #about .aboutleft {
+        text-align: right;
+    }   
+    
+    #about {
+        padding: 300px 0px 500px 0px;
+    }
+
+    #exp .work {
+        width: 90%;
+    }   
+
+    .projectcontainer {
+        width:100%;
+    }
+
+    .element .image {
+        min-width: 100% !important;
+    }
+
+    footer span {
+        font-size: 0.75em;
+        margin:0;
+    }
+}
+
+/* mobile */
+@media only screen and (max-width: 600px) {
+
+    /* About */
+    #about .aboutleft, #about .aboutright {
+        width: 100%;
+        font-size: 14px;
+        text-align: center;
+    }   
+
+    #about .aboutleft {
+        height: 250px;
+        margin: 0 auto; 
+        text-align: right;  
+    }
+    #about .aboutleft .avatar {
+        margin-right: 24%;
+    }
+    #about {
+        padding: 300px 0px 750px 0px;
+    }
+    .centertext h1 {
+        font-size: 35px;
+        width: 80%;
+        margin: 0 auto; 
+        padding: 100px 0px 0px 0px;
+    }
+    .centertext h2 {
+        font-size: 20px;
+        width: 80%;
+        margin: 0 auto;
+        padding: 50px 0px 100px 0px;
+    }
+
+    .projectcontainer {
+        width:100%;
+    }
+
+    .element .image, .element {
+        width: 100% !important;
+    }
+}
 
 
 body, a, a:hover, img, img:hover{
