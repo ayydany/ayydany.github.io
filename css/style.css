@@ -137,6 +137,11 @@ a:hover {
     z-index: 9;
 }
 
+#about .aboutleft .avatar:hover {
+    transition: 0.8s ease-in-out;
+    transform: rotate(360deg);
+}
+
 #about .aboutright {
     float: right;
     width: 50%;
