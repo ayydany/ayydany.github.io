@@ -44,7 +44,8 @@ a:hover {
 /* General settings */
 
 .title {
-    font-family: "Roboto Condensed", "Segoi UI";
+    font-family: "Open Sans Condensed", "Segoi UI";
+    font-weight: bold;
     text-align: center;
     color: var(--main-dark-color);
     font-size: 2.5em;
@@ -271,11 +272,13 @@ a:hover {
 }
 
 .overlayinfo {
+    font-size: 1.5em;
+    font-family: 'Open Sans Condensed';
+    font-weight: bold;
     transition: .2s;
     transform: translateY(1em);
 
     padding-top: 25%;
-    font-size: 1em;
 }
 
 .element:hover .overlayinfo {
