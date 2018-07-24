@@ -1,22 +1,19 @@
 :root {
     --main-dark-color: #333333;
     --main-white-color: #EEEEDD;
-    
     --main-bg-color: #ECF0F1;
     --main-bg2-color: #EEEEEE;
 }
 
-
-*, body {
-    
+*,
+body {
     margin: 0;
     padding: 0;
     font-family: "Open Sans", "Segoe UI";
-}    
+}
 
 body {
-    
-    background: var(--main-bg-color);   
+    background: var(--main-bg-color);
     width: 100%;
     height: 100%;
 }
@@ -40,7 +37,35 @@ a:hover {
     height: 100%;
     z-index: 9999;
     background: 50% 50% no-repeat var(--main-bg-color);
-  }
+}
+
+.arrow {
+    text-align: center;
+    margin: 25% 0;
+}
+
+.bounce {
+    -moz-animation: bounce 2s infinite;
+    -webkit-animation: bounce 2s infinite;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
 /* General settings */
 
 .title {
@@ -50,14 +75,11 @@ a:hover {
     color: var(--main-dark-color);
     font-size: 2.5em;
     padding: 30px;
-
-    text-shadow:
-        0 1px 0px #555,
-        1px 0 0px #555,
-        1px 1px 0px #555;
+    text-shadow: 0 1px 0px #555, 1px 0 0px #555, 1px 1px 0px #555;
 }
 
-#about, #projects {
+#about,
+#projects {
     background: var(--main-bg-color);
 }
 
@@ -65,8 +87,9 @@ a:hover {
     background: #fff;
 }
 
-#exp, #projects {
-    margin: 0 auto; 
+#exp,
+#projects {
+    margin: 0 auto;
     text-align: center;
     padding: 150px 0px 150px 0px;
 }
@@ -81,7 +104,6 @@ a:hover {
     position: fixed;
     background: url("../img/background.jpg") no-repeat;
     background-size: cover;
-    
     transition: ease-in-out .3s;
 }
 
@@ -89,19 +111,19 @@ a:hover {
     transition: ease-in-out .3s;
 }
 
-.centertext {   
+.centertext {
     width: 100%;
-    text-align: center; 
+    text-align: center;
     margin-top: 15%;
-    position: absolute;     
-    color: var(--main-bg-color);;
+    position: absolute;
+    color: var(--main-bg-color);
     z-index: 10;
 }
 
 .centertext h1 {
     font-size: 3em;
     border-bottom: 1px solid var(--main-white-color);
-    width: 40%; 
+    width: 40%;
     margin: 0 auto;
     padding: 60px 0px 0px 0px;
 }
@@ -113,9 +135,9 @@ a:hover {
 
 /* About */
 
-#about {    
+#about {
     padding: 400px 0px 600px 0px;
-    margin: 0 auto; 
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -123,7 +145,7 @@ a:hover {
     float: left;
     width: 40%;
     text-align: right;
-} 
+}
 
 #about .aboutleft .avatar {
     position: relative;
@@ -133,8 +155,8 @@ a:hover {
     height: 200px;
     border-radius: 200px;
     text-align: center;
-    margin: 20px;   
-    box-shadow: 3px 3px 4px rgba(0,0,0,0.3);
+    margin: 20px;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.3);
     z-index: 9;
 }
 
@@ -152,7 +174,6 @@ a:hover {
 
 #about .aboutright h1 {
     font-size: 1em;
-
     padding-left: 7%;
 }
 
@@ -167,7 +188,9 @@ a:hover {
     padding: 10px 0px 10px 0px;
 }
 
-.social a:hover, .contact a:hover, a.steam:hover {
+.social a:hover,
+.contact a:hover,
+a.steam:hover {
     color: #fff;
     opacity: 0.7;
 }
@@ -176,12 +199,16 @@ a:hover {
     color: #000;
 }
 
-.social .mail, .twitter, .github, .steam, .lastfm {  
+.social .mail,
+.twitter,
+.github,
+.steam,
+.lastfm {
     padding: 6px 12px;
     text-align: center;
     color: #fff;
     border-radius: 4px;
-    display:inline-block;
+    display: inline-block;
 }
 
 .social .mail {
@@ -221,7 +248,9 @@ a:hover {
     font-style: italic;
 }
 
-#exp h3, h4, .work p {
+#exp h3,
+h4,
+.work p {
     padding: 10px;
 }
 
@@ -231,7 +260,6 @@ a:hover {
     display: grid;
     grid-template-columns: auto auto auto;
     align-items: stretch;
-
     width: 60%;
     margin: 0 auto;
 }
@@ -240,7 +268,6 @@ a:hover {
     position: relative;
     display: flex;
     align-items: center;
-
     overflow: hidden;
 }
 
@@ -251,13 +278,12 @@ a:hover {
 /* Overlay */
 
 .overlay {
-    position: absolute;  
+    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     color: var(--main-white-color);
     visibility: hidden;
     opacity: 0;
@@ -276,7 +302,6 @@ a:hover {
     font-weight: bold;
     transition: .2s;
     transform: translateY(1em);
-
     padding-top: 25%;
 }
 
@@ -287,39 +312,31 @@ a:hover {
 /* Modal Stuff */
 
 .modal {
-    display:none;
-
+    display: none;
     max-width: 60%;
     width: 100%;
     background: #fff;
     padding: 30px;
     border-radius: 0px;
-    box-shadow: 3px 3px 2px rgba(0,0,0,0.2);
+    box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.2);
     text-align: left;
 }
 
 .modal h1 {
     font-size: 3em;
     font-style: italic;
-
-    text-shadow:
-        0 1px 0px #777,
-        1px 0 0px #777,
-        1px 1px 0px #777;
+    text-shadow: 0 1px 0px #777, 1px 0 0px #777, 1px 1px 0px #777;
 }
 
 .modal p.description {
     font-size: 1em;
-
     margin: 10px;
     padding: 10px;
 }
 
 .modal p.links {
-    font-size:1.2em;
-
+    font-size: 1.2em;
     text-align: center;
-
     margin: 10px;
 }
 
@@ -346,7 +363,7 @@ footer {
     font-size: 16px;
     text-align: center;
     padding: 10px 0px 10px 0px;
-}   
+}
 
 footer span {
     color: var(--main-white-color);
@@ -358,57 +375,52 @@ footer span {
 /* media queries */
 
 /* portrait */
-@media only screen and (max-width: 1200px) {
 
-    #about .aboutleft, #about .aboutright {
+@media only screen and (max-width: 1200px) {
+    #about .aboutleft,
+    #about .aboutright {
         font-size: 14px;
         text-align: center;
-    }   
-
+    }
     #about .aboutright p {
         width: 80%;
         margin: 0 auto;
     }
     #about .aboutleft {
         text-align: right;
-    }   
-    
+    }
     #about {
         padding: 300px 0px 500px 0px;
     }
-
     #exp .work {
         width: 90%;
-    }   
-
-    .projectcontainer {
-        width:100%;
     }
-
+    .projectcontainer {
+        width: 100%;
+    }
     .element .image {
         min-width: 100% !important;
     }
-
     footer span {
         font-size: 0.75em;
-        margin:0;
+        margin: 0;
     }
 }
 
 /* mobile */
-@media only screen and (max-width: 600px) {
 
+@media only screen and (max-width: 600px) {
     /* About */
-    #about .aboutleft, #about .aboutright {
+    #about .aboutleft,
+    #about .aboutright {
         width: 100%;
         font-size: 14px;
         text-align: center;
-    }   
-
+    }
     #about .aboutleft {
         height: 250px;
-        margin: 0 auto; 
-        text-align: right;  
+        margin: 0 auto;
+        text-align: right;
     }
     #about .aboutleft .avatar {
         margin-right: 24%;
@@ -419,7 +431,7 @@ footer span {
     .centertext h1 {
         font-size: 35px;
         width: 80%;
-        margin: 0 auto; 
+        margin: 0 auto;
         padding: 100px 0px 0px 0px;
     }
     .centertext h2 {
@@ -428,21 +440,22 @@ footer span {
         margin: 0 auto;
         padding: 50px 0px 100px 0px;
     }
-
     .projectcontainer {
-        width:100%;
+        width: 100%;
     }
-
-    .element .image, .element {
+    .element .image,
+    .element {
         width: 100% !important;
     }
-
     .modal {
         max-width: 90%;
     }
 }
 
-
-body, a, a:hover, img, img:hover{
+body,
+a,
+a:hover,
+img,
+img:hover {
     transition: ease-in-out .3s;
 }
