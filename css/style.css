@@ -230,24 +230,22 @@ a:hover {
 .projectcontainer {
     display: grid;
     grid-template-columns: auto auto auto;
-    
+    align-items: stretch;
+
     width: 60%;
     margin: 0 auto;
 }
 
 .projectcontainer .element {
     position: relative;
-    
-    background-size: cover;
-    height: auto;
-    width: auto;
- 
-    overflow:hidden;
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
 }
 
 .projectcontainer .element .image {
     max-width: 100%;
-    height: auto;
 }
 
 /* Overlay */
@@ -258,6 +256,7 @@ a:hover {
     bottom: 0;
     left: 0;
     right: 0;
+    
     background: rgba(0,0,0,0.6);
     color: var(--main-white-color);
     visibility: hidden;
@@ -351,7 +350,8 @@ footer {
 
 footer span {
     color: var(--main-white-color);
-    font-size: 16px;
+    font-weight: lighter;
+    font-size: 14px;
     margin: 50px;
 }
 
