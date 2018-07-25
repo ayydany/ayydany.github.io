@@ -5,6 +5,24 @@
     --main-bg2-color: #EEEEEE;
 }
 
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    /* remove scrollbar space */
+    background: transparent;
+    /* optional: just make scrollbar invisible */
+}
+
+/* optional: show position indicator in red */
+
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
 *,
 body {
     margin: 0;
@@ -377,14 +395,25 @@ footer span {
 /* portrait */
 
 @media only screen and (max-width: 1200px) {
+    /* Main Text */
+    .centertext h1 {
+        font-size: 60px;
+        width: 80%;
+        margin: 0 auto;
+        padding: 100px 0px 0px 0px;
+    }
+    .centertext h2 {
+        font-size: 20px;
+        width: 60%;
+        margin: 0 auto;
+        padding: 20px 0px 100px 0px;
+    }
     #about .aboutleft,
     #about .aboutright {
         font-size: 14px;
-        text-align: center;
     }
     #about .aboutright p {
         width: 80%;
-        margin: 0 auto;
     }
     #about .aboutleft {
         text-align: right;
@@ -397,6 +426,7 @@ footer span {
     }
     .projectcontainer {
         width: 100%;
+        grid-template-columns: auto auto;
     }
     .element .image {
         min-width: 100% !important;
@@ -410,6 +440,19 @@ footer span {
 /* mobile */
 
 @media only screen and (max-width: 600px) {
+    /* Main Text */
+    .centertext h1 {
+        font-size: 35px;
+        width: 80%;
+        margin: 0 auto;
+        padding: 100px 0px 0px 0px;
+    }
+    .centertext h2 {
+        font-size: 20px;
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px 0px 20px 0px;
+    }
     /* About */
     #about .aboutleft,
     #about .aboutright {
@@ -423,25 +466,22 @@ footer span {
         text-align: right;
     }
     #about .aboutleft .avatar {
-        margin-right: 24%;
+        display: block;
+        margin: 0 auto;
+    }
+    #about .aboutright p {
+        width: 80%;
+        margin: 0 auto;
     }
     #about {
         padding: 300px 0px 750px 0px;
     }
-    .centertext h1 {
-        font-size: 35px;
-        width: 80%;
-        margin: 0 auto;
-        padding: 100px 0px 0px 0px;
-    }
-    .centertext h2 {
-        font-size: 20px;
-        width: 80%;
-        margin: 0 auto;
-        padding: 50px 0px 100px 0px;
+    #exp .work {
+        text-align: center;
     }
     .projectcontainer {
         width: 100%;
+        grid-template-columns: auto;
     }
     .element .image,
     .element {
