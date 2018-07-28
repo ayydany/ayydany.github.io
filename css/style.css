@@ -276,6 +276,7 @@ h4,
 }
 
 .projectcontainer .element .image {
+    object-fit: cover;
     max-width: 100%;
 }
 
