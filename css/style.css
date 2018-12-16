@@ -9,7 +9,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 body {
@@ -69,7 +69,7 @@ a:hover {
 /* General settings */
 
 .title {
-    font-family: "Roboto Condensed", "Segoi UI";
+    font-family: "Open Sans Condensed", sans-serif;
     font-weight: bold;
     text-align: center;
     color: var(--main-dark-color);
@@ -303,7 +303,7 @@ h4,
 
 .overlayinfo {
     font-size: 1.5em;
-    font-family: 'Roboto Condensed';
+    font-family: "Open Sans Condensed", sans-serif;;
     font-weight: bold;
     transition: .2s;
     transform: translateY(1em);
