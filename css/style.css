@@ -174,7 +174,7 @@ a:hover {
 
 #about .aboutright h1 {
     font-size: 1em;
-    padding-left: 7%;
+    padding: 0px 0px 5px 5px;
 }
 
 #about .aboutright p {
