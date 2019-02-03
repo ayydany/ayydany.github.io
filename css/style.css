@@ -464,6 +464,27 @@ footer span {
     .element .image {
         min-width: 100% !important;
     }
+
+    .modal {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .modal h1 {
+        font-size: 2em;
+    }
+
+    .modal p.description {
+        font-size: 1.2em;
+        text-align: center;
+        padding: 5px 0px 10px 0px
+    }
+
+    .modal img {
+        max-width: 100%;
+        margin: 0px auto 20px auto;
+    }
+
     footer span {
         font-size: 0.75em;
         margin: 0;
@@ -471,7 +492,6 @@ footer span {
 }
 
 /* mobile */
-
 @media only screen and (max-width: 700px) {
     /* Main Text */
     .centertext h1 {
@@ -521,8 +541,25 @@ footer span {
     .element {
         width: 100% !important;
     }
+
     .modal {
-        max-width: 90%;
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .modal h1 {
+        font-size: 1.5em;
+    }
+
+    .modal p.description {
+        font-size: 1.2em;
+        text-align: center;
+        padding: 5px 0px 10px 0px
+    }
+
+    .modal img {
+        max-width: 100%;
+        margin: 0px auto 20px auto;
     }
 }
 
