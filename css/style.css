@@ -16,6 +16,7 @@ body {
     background: var(--main-bg-color);
     width: 100%;
     height: 100%;
+    overflow: auto !important;
 }
 
 a {
@@ -188,21 +189,26 @@ a:hover {
     padding: 10px 0px 10px 0px;
 }
 
-.social a:hover,
-.contact a:hover,
+a.mail:hover,
+a.live:hover,
+a.twitter:hover,
+a.lastfm:hover,
+a.contact:hover,
 a.steam:hover {
     color: #fff;
     opacity: 0.7;
 }
 
-.social a.github:hover {
+a.github:hover {
     color: #000;
+    opacity: 0.7;
 }
 
-.social .mail,
+.mail,
 .twitter,
 .github,
 .steam,
+.live,
 .lastfm {
     padding: 6px 12px;
     text-align: center;
@@ -211,27 +217,31 @@ a.steam:hover {
     display: inline-block;
 }
 
-.social .mail {
+.mail {
     background: #d54b3d;
 }
 
-.social .twitter {
+.twitter {
     background: #5bc0de;
 }
 
-.social .github {
+.live {
+    background: #5bc0de;
+}
+
+.github {
     background: #eaeaea;
     color: #000;
     border: 1px solid #aaa;
 }
 
-.social .steam {
+.steam {
     background: var(--main-dark-color);
     color: #fff;
     border: 1px solid #aaa;
 }
 
-.social .lastfm {
+.lastfm {
     background: #e4141e;
 }
 
@@ -248,14 +258,45 @@ a.steam:hover {
     text-align:center;
 }
 
-#exp h3 {
+#exp .work p.subtitlemain {
+    font-size: 1.4em;
+    font-weight: bold;
     font-style: italic;
 }
 
-#exp h3,
-h4,
-.work a, .work p {
-    padding: 10px;
+#exp .work p.subtitle {
+    font-size: 1.2em;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#exp .work p.description {
+    font-size: 1.1em;
+    font-weight: bold;
+    font-style: italic;
+    padding-left: 10px;
+    padding-bottom: 0px;
+}
+
+#exp .work p.subdescription {
+    font-size: 1em;
+    font-style: italic;
+    padding-top: 0px;
+    padding-left: 15px;
+}
+
+#exp .work p.calendar {
+    font-size: 1.1em;
+    font-style: italic;
+}
+
+#exp .work p.location {
+    font-size: 1em;
+    font-style: italic;
+}
+
+#exp .work a, .work p {
+    padding: 5px 0px 5px 0px;
 }
 
 /* Projects */
@@ -318,10 +359,10 @@ h4,
 
 .modal {
     display: none;
-    max-width: 60%;
-    width: 100%;
+    max-width: 80%;
+    width: 80%;
     background: #fff;
-    padding: 30px;
+    padding: 20px;
     border-radius: 0px;
     box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.2);
     text-align: left;
@@ -329,14 +370,14 @@ h4,
 
 .modal h1 {
     font-size: 3em;
+    padding-left: 20px;
     font-style: italic;
     text-shadow: 0 1px 0px #777, 1px 0 0px #777, 1px 1px 0px #777;
 }
 
 .modal p.description {
-    font-size: 1em;
-    margin: 10px;
-    padding: 10px;
+    font-size: 1.5em;
+    padding: 5px 0px 20px 50px;
 }
 
 .modal p.links {
@@ -346,9 +387,13 @@ h4,
 }
 
 .modal img {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    max-width: 100%;
+    display: block;
+    margin: 20px auto 30px auto;
+    
+    max-width: 70%;
     height: auto;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* Footer */

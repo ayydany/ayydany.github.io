@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Daniel Carmo">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,600i|Open+Sans+Condensed:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i|Open+Sans+Condensed:700" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="32x32" href="https://avatars0.githubusercontent.com/u/8873809">
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/all.js" integrity="sha384-Voup2lBiiyZYkRto2XWqbzxHXwzcm4A5RfdfG6466bu5LqjwwrjXCMBQBLMWh7qR"
@@ -25,13 +25,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 
     <!-- custombox modal -->
-    <link href="css/custombox.min.css" rel="stylesheet">
-    <script src="js/custombox.min.js"></script>
-
+    <link href="lib/custombox/custombox.min.css" rel="stylesheet">
+    <script src="lib/custombox/custombox.min.js"></script>
+    
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script type="text/javascript" src="js/script.js"></script>
 
-    <title>ayydany | Home</title>
+    <title>Daniel Carmo | Home</title>
 </head>
 
 <header class="head"></header>
@@ -73,11 +73,11 @@
             <p>Live fit love life. Also into technology, videogames, anime but mostly I just read a lot of weird books.</p>
             <p>Hit me up on any of these 👇 </p>
             <div class="social">
-                <a target="_blank" class="mail" href="mailto:me@ayydany.space"> <i class="fas fa-envelope"></i> Email</a>
-                <a target="_blank" class="twitter" href="https://twitter.com/ayyydany"> <i class="fab fa-twitter"></i> Twitter</a>
-                <a target="_blank" class="lastfm" href="https://www.last.fm/user/ayydany"> <i class="fab fa-lastfm"></i> last.fm</a>
-                <a target="_blank" class="steam" href="https://steamcommunity.com/id/DanyBoss"> <i class="fab fa-steam-symbol"></i> Steam</a>
-                <a target="_blank" class="github" href="https://github.com/DanyBoss"> <i class="fab fa-github"></i> GitHub</a>
+                <a target="_blank" class="mail" href="mailto:me@ayydany.space"> <i class="fas fa-envelope fa-fw"></i> Email</a>
+                <a target="_blank" class="twitter" href="https://twitter.com/ayyydany"> <i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                <a target="_blank" class="lastfm" href="https://www.last.fm/user/ayydany"> <i class="fab fa-lastfm fa-fw"></i> last.fm</a>
+                <a target="_blank" class="steam" href="https://steamcommunity.com/id/DanyBoss"> <i class="fab fa-steam-symbol fa-fw"></i> Steam</a>
+                <a target="_blank" class="github" href="https://github.com/DanyBoss"> <i class="fab fa-github fa-fw"></i> GitHub</a>
             </div>
         </div>
     </section>
@@ -85,35 +85,37 @@
 
     <!-- Experience Section Start -->
     <section id="exp">
-
         <div class="title">Experience</div>
 
         <!-- Coding Experience-->
         <div class="work" style="background-color:#ECF0F1">
-            <h3><i class="fas fa-code"></i> Full-Stack Developer</h3>
-            <h4>Experienced in:</h4>
-            <p>C, C++, C#, Java, Lisp, Javascript, Prolog, etc...</p>
+            <p class="subtitlemain"><i class="fas fa-terminal fa-fw"></i> Full-Stack Developer</p>
+            <p class="description">Experienced in:</p>
+            <p class="subdescription">C, C++, C#, Java, Javascript, Python, Lisp, Prolog, and lots more</p>
+            <p class="description">In Love for:</p>
+            <p class="subdescription">Front-End Web</p>
         </div>
 
         <!-- Education -->
         <div class="work">
-                <h3><i class="fas fa-graduation-cap"></i> Bachelor's Degree in Electrical Engineering</h3>
-                <h4>2011 - 2014</h4>
-                <a href="https://tecnico.ulisboa.pt/en/"><i class="fas fa-map-marker-alt"></i> Técnico Lisbon</a>
+            <p class="subtitle"><i class="fas fa-university fa-fw"></i> Bachelor's Degree in Electrical Engineering at <a href="https://tecnico.ulisboa.pt/en/">Instituto Superior Técnico</a></p>
+            <p class="calendar"><i class="far fa-calendar fa-fw"></i> 2011 - 2014</p>
+            <p class="location"><i class="fas fa-map-marker-alt fa-fw"></i> Lisbon</p>
         </div>
 
         <div class="work" style="background-color:#ECF0F1">
-            <h3><i class="fas fa-graduation-cap"></i> Bachelor's Degree in Computer Science</h3>
-            <h4>2014 - 2017</h4>
-            <a href="https://tecnico.ulisboa.pt/en/"><i class="fas fa-map-marker-alt"></i> Técnico Lisbon</a>
+            <p class="subtitle"><i class="fas fa-university fa-fw"></i> Bachelor's Degree in Computer Science at <a href="https://tecnico.ulisboa.pt/en/">Instituto Superior Técnico</a></p>
+            <p class="calendar"><i class="far fa-calendar fa-fw"></i> 2014 - 2017</p>
+            <p class="location"><i class="fas fa-map-marker-alt fa-fw"></i> Lisbon</p>
         </div>
 
         <!-- Work -->
         <div class="work">
-            <h3><i class="fas fa-briefcase"></i> Software Developer at Papersoft</h3>
-            <h4>2017 - Current</h4>
-            <p><i class="fas fa-map-marker-alt"></i> Lisbon</p>
+            <p class="subtitle"><i class="fas fa-briefcase fa-fw"></i> Full-Stack Developer at <a href="https://papersoft-dms.com/">Papersoft ///</a></p>
+            <p class="calendar"><i class="far fa-calendar fa-fw"></i> 2017 - Current</p>
+            <p class="location"><i class="fas fa-map-marker-alt fa-fw"></i> Lisbon</p>
         </div>
+
     </section>
     <!-- Experience Section End -->
 
@@ -133,11 +135,11 @@
 
             <div id="olympics-modal" class="modal">
                 <h1>Olympic Visualization</h1>
-                <p class="description">A D3.js powered Olympics Visualization.</p>
+                <p class="description">A D3.js powered Olympics Visualization</p>
                 <img class="image" src="https://raw.githubusercontent.com/DanyBoss/Olympics-Visualization/master/res/preview.png">
                 <p class="links">
-                    <a href="http://olympics.ayydany.space">[LIVE]</a>&emsp;
-                    <a href="https://github.com/DanyBoss/Olympics-Visualization">[CODE]</a>
+                    <a class="github" href="http://olympics.ayydany.space"><i class="fas fa-lemon fa-fw"></i> LIVE</a>&emsp;
+                    <a class="github" href="https://github.com/DanyBoss/Olympics-Visualization"><i class="fab fa-github fa-fw"></i> CODE</a>
                 </p>
             </div>
 
@@ -150,12 +152,12 @@
             </div>
 
             <div id="irave-modal" class="modal">
-                <h1>Olympic Visualization</h1>
-                <p class="description">A smartwatch mock up application for Music Festivals.</p>
+                <h1>iRave</h1>
+                <p class="description">A smartwatch mock up application for Music Festivals</p>
                 <img class="image" src="https://raw.githubusercontent.com/DanyBoss/iRave/master/preview.png">
                 <p class="links">
-                    <a href="http://irave.ayydany.space">[LIVE]</a>&emsp;
-                    <a href="https://github.com/DanyBoss/irave">[CODE]</a>
+                    <a class="github" href="http://irave.ayydany.space"><i class="fas fa-lemon fa-fw"></i> LIVE</a>&emsp;
+                    <a class="github" href="https://github.com/DanyBoss/irave"><i class="fab fa-github fa-fw"></i> CODE</a>
                 </p>
             </div>
 
@@ -169,10 +171,10 @@
 
             <div id="ghb-modal" class="modal">
                 <h1>Grand Hero Farmer</h1>
-                <p class="description">A simple C# Console Application to farm feathers at the speed of light!</p>
+                <p class="description">A simple C# Console Application to farm feathers at the speed of light</p>
                 <img class="image" src="https://raw.githubusercontent.com/DanyBoss/GrandHeroFarmer/master/preview.png">
                 <p class="links">
-                    <a href="https://github.com/DanyBoss/GrandHeroFarmer">[CODE]</a>
+                        <a class="github" href="https://github.com/DanyBoss/GrandHeroFarmer"><i class="fab fa-github fa-fw"></i> CODE</a>
                 </p>
             </div>
 
@@ -186,11 +188,11 @@
 
             <div id="ubiquitous-modal" class="modal">
                 <h1>ubiquitous</h1>
-                <p class="description">A minimalistic startpage design.</p>
+                <p class="description">A minimalistic startpage design</p>
                 <img class="image" src="https://raw.githubusercontent.com/DanyBoss/ubiquitous/master/preview.png">
                 <p class="links">
-                    <a href="http://ubiquitous.ayydany.space">[LIVE]</a>&emsp;
-                    <a href="https://github.com/DanyBoss/ubiquitous">[CODE]</a>
+                    <a class="github" href="http://ubiquitous.ayydany.space"><i class="fas fa-lemon fa-fw"></i> LIVE</a>&emsp;
+                    <a class="github" href="https://github.com/DanyBoss/ubiquitous"><i class="fab fa-github fa-fw"></i> CODE</a>
                 </p>
             </div>
 
@@ -205,11 +207,11 @@
 
             <div id="thankful-modal" class="modal">
                 <h1>thankful</h1>
-                <p class="description">A cute startpage with a smart searchbar.</p>
+                <p class="description">A cute startpage with a smart searchbar</p>
                 <img class="image" src="https://raw.githubusercontent.com/DanyBoss/thankful/master/preview.png">
                 <p class="links">
-                    <a href="http://thankful.ayydany.space">[LIVE]</a>&emsp;
-                    <a href="https://github.com/DanyBoss/thankful">[CODE]</a>
+                    <a class="github" href="http://thankful.ayydany.space"><i class="fas fa-lemon fa-fw"></i> LIVE</a>&emsp;
+                    <a class="github" href="https://github.com/DanyBoss/thankful"><i class="fab fa-github fa-fw"></i> CODE</a>
                 </p>
             </div>
 
@@ -223,18 +225,17 @@
 
             <div id="meme-modal" class="modal">
                 <h1>simpsonwave</h1>
-                <p class="description">Well this is certainly something uh.</p>
+                <p class="description">Well this is certainly something uh</p>
                 <img class="image" src="https://raw.githubusercontent.com/DanyBoss/me/master/preview.png">
                 <p class="links">
-                    <a href="http://me.ayydany.space">[LIVE]</a>
+                    <a class="github" href="http://me.ayydany.space"><i class="fas fa-lemon fa-fw"></i> LIVE</a>&emsp;
                 </p>
             </div>
         </div>
     </section>
 
     <footer>
-        <span>Handcrafted with 🧡 by me
-            <i class="far fa-copyright"></i> twentyeighteen</span>
+        <span>handcrafted with 🧡 by me <i class="far fa-copyright fa-fw"></i> twentynineteen</span>
     </footer>
 </body>
 

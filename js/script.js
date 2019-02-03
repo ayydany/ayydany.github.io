@@ -7,12 +7,10 @@ $(document).ready(function(){
                 effect: "fadein",
                 target: String($(this).data().name)
             }
-          }).open();
+            }).open();
     });
-    
-  
+
     $(window).on('scroll', function(){
-   
       if ($(window).scrollTop() >= 50) {
           $('.head').css({
            'box-shadow' : '3px 4px 5px rgba(0,0,0,0.3)',
