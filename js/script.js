@@ -4,7 +4,7 @@ $(document).ready(function(){
     $(".element").on("click", function(){
         var modal = new Custombox.modal({
             content: {
-                effect: "fadein",
+                effect: "blur",
                 target: String($(this).data().name)
             }
             }).open();
