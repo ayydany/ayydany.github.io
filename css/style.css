@@ -20,12 +20,12 @@ body {
 }
 
 a {
-    color: #333;
+    color: #999 ;
     text-decoration: none;
 }
 
 a:hover {
-    color: #999;
+    color: #555;
 }
 
 /* Loading screen template */
@@ -66,6 +66,7 @@ a:hover {
         transform: translateY(-15px);
     }
 }
+
 
 /* General settings */
 
@@ -249,7 +250,7 @@ a.github:hover {
 
 #exp .work {
     text-align: left;
-    width: 45%;
+    width: 65%;
     margin: 0 auto;
     padding: 15px;
 }
@@ -359,25 +360,24 @@ a.github:hover {
 
 .modal {
     display: none;
-    max-width: 80%;
-    width: 80%;
     background: #fff;
     padding: 20px;
-    border-radius: 0px;
-    box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    box-shadow:none;
     text-align: left;
 }
 
 .modal h1 {
+    text-align: center;
     font-size: 3em;
-    padding-left: 20px;
     font-style: italic;
     text-shadow: 0 1px 0px #777, 1px 0 0px #777, 1px 1px 0px #777;
 }
 
 .modal p.description {
-    font-size: 1.5em;
-    padding: 5px 0px 20px 50px;
+    text-align: center;
+    font-size: 1em;
+    padding: 20px;
 }
 
 .modal p.links {
@@ -389,11 +389,10 @@ a.github:hover {
 .modal img {
     display: block;
     margin: 20px auto 30px auto;
+    border-radius: 2px;
     
     max-width: 70%;
     height: auto;
-
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* Footer */
