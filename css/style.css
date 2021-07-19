@@ -123,15 +123,16 @@ a:hover {
 }
 
 .centertext h1 {
-    font-size: 3em;
+    font-size: 6em;
     border-bottom: 1px solid var(--main-white-color);
-    width: 40%;
+    width: 60%;
     margin: 0 auto;
     padding: 60px 0px 0px 0px;
+    text-shadow: 3px 3px 0px #4ab18e;
 }
 
 .centertext h2 {
-    font-size: 1em;
+    font-size: 1.5em;
     padding: 0.5em;
 }
 
@@ -502,6 +503,7 @@ footer span {
         width: 80%;
         margin: 0 auto;
         padding: 100px 0px 0px 0px;
+    text-shadow: 2px 2px 0px #4ab18e;
     }
     .centertext h2 {
         font-size: 20px;
