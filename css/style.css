@@ -178,11 +178,7 @@ p{
   color: var(--main-dark-color);
 }
 
-#about .aboutright h1 {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  color: var(--main-dark-color);
-}
+
 
 #about .aboutright p {
   padding-top: 2px;
@@ -193,7 +189,7 @@ p{
 /* Buttons */
 
 #about .social {
-  padding: 10px 0px 10px 0px;
+  padding: 5px 0px 5px 0px;
   text-align: center;
 }
 
@@ -407,6 +403,7 @@ footer span {
     margin: 0 auto;
     padding: 20px 0px 100px 0px;
   }
+
   #about .aboutleft,
   #about .aboutright {
     font-size: 14px;
@@ -475,6 +472,9 @@ footer span {
     padding: 20px 0px 20px 0px;
   }
   /* About */
+  #about .text {
+    grid-template-columns: auto;
+  }
   #about .aboutleft,
   #about .aboutright {
     width: 100%;
