@@ -5,11 +5,13 @@
   --main-bg2-color: #eeeeee;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 *,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 body {
@@ -73,7 +75,7 @@ p{
 /* General settings */
 
 .title {
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: bold;
   text-align: center;
   color: var(--main-dark-color);
@@ -308,7 +310,7 @@ p{
 
 .overlayinfo {
   font-size: 1.5em;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: bold;
   transition: 0.2s;
   transform: translateY(1em);
