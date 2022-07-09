@@ -1,10 +1,10 @@
 ---
 title: Subnautica - Review
 date: 2022-07-08 22:05:09
-tags:
+tags: review
 ---
 
-# Subnautica what lurks below
+# what lurks below
 
 ## why this game?
 

@@ -1,6 +1,7 @@
 ---
 title: Hello World!
-subtitle: asdasd
+date: 2022-07-07 22:05:09
+tags: thoughts
 ---
 
 # Well hello there

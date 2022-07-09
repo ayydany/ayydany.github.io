@@ -30,6 +30,9 @@
     ```sh
     $ hexo generate && hexo server
     ```
-hexo 
 
-5. you're good bro
+5. You're good bro
+
+## Special thanks
+
+- Cactus theme (https://github.com/probberechts/hexo-theme-cactus)
