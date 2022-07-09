@@ -10,7 +10,7 @@ tags:
 
 We'll I've just finished Subnautica.
 
-I decided to play it after I've noticed I had the PS5 version for *free* on my PSN account (lol). At the time I has a PS Now sub, so I had the PS4 version of Subnautica, and well it turns out since I **owned** the PS4 version, I could get the PS5 upgrade for free. I'm no longer subbed to PS Now for a long time now and I still have the PS5 version of Subnautica so that's cool. Thanks Sony!
+I decided to play it after I've noticed I had the PS5 version for *free* on my PSN account (lol). At the time I had a PS Now sub, so I had the PS4 version of Subnautica, and well it turns out since I **owned** the PS4 version, I could get the PS5 upgrade for free. I'm no longer subbed to PS Now for a long time now and I still have the PS5 version of Subnautica so that's cool. Thanks Sony!
 
 I've always had this thing with deep sea and what lurks beneath, so since the first time I had heard of this game, I was interest in playing it, even more when I knew it had this survival kind of gameplay. Was literally right up my alley. Even so it took me quite a long time to finally get around to it (about 4 years), and honestly I can't quite put the finger on it, guess I was just busy with other stuff. But damn, am I happy I finally got around to it.
 
@@ -38,11 +38,13 @@ I'm a completionist, so I think on all my future reviews (however many, if any a
 
 For Subnautica, the trophy list is easy enough having a pretty high 35.47% completion rate on PSNProfiles. It was easy, most of the trophies are tied to your own progression. Only one isn't like this, and its the best boy quest (which basically only requires you to hatch it and release it). Who wouldn't do it, he's a good boy.
 
-It is really easy to complete Subnautica, an easy 3/10 in difficulty.
+It is really easy to complete Subnautica, I'd say about a 2/10 in difficulty.
+
+{% asset_img trophy.png cutie %}
 
 ## overall rating?
 
-Rating time! I'm giving this one a solid 🍪🍪🍪🍪🍪 because who's a good boy?
+Rating time! I'm giving this one a solid 🍪🍪🍪🍪 / 5 because who's a good boy?
 
 {% asset_img cuddlefish.webp cutie %}
 

@@ -1,3 +1,5 @@
 ﻿.deploy_git
 .github
 node_modules
+public
+db.json
