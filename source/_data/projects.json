@@ -1,0 +1,32 @@
+[
+    {
+       "name":"Olympics",
+       "url":"http://olympics.ayydany.com/",
+       "desc":"A D3.js powered Olympics Visualization"
+    },
+    {
+       "name":"Grand Hero Farmer",
+       "url":"https://github.com/DanyBoss/GrandHeroFarmer",
+       "desc":"A simple bot application to farm feathers at the speed of light"
+    },
+    {
+       "name":"ubiquitous",
+       "url":"http://ubiquitous.ayydany.com/",
+       "desc":"A minimalistic startpage design"
+    },
+    {
+        "name":"thankful",
+        "url":"http://thankful.ayydany.com/",
+        "desc":"A cute startpage with a smartish searchbar"
+     },
+    {
+       "name":"iRave",
+       "url":"http://irave.ayydany.com/",
+       "desc":"A (old) smartwatch mock up application for Music Festivals"
+    },
+    {
+        "name":"simpsonwave",
+        "url":"http://simpsonwave.ayydany.com/",
+        "desc":"Well this is certainly something uh"
+     }
+]
