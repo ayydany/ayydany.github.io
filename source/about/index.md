@@ -3,14 +3,14 @@ title: "ayydany - About"
 date: 2022-07-08 21:04:53
 ---
 
-I'm Daniel! Also known as either **ayydany** or **DanyBoss**.
+Olá! (Hey!), I'm Daniel! Also known as either **ayydany** or **DanyBoss** online.
 
-I'm from Portugal the land of the old castles and a wonderful egg-tart.
+I'm a geek from Portugal the land known for Port wine and the wonderful custard tarts. It is a chill place.
 
-## TL;DR
+## TL; DR;
 
-- On a more professional side my passion lies with Backend & integration services 😄
-- On a more lifestyle side, I'm big into healthy eating, IF, and calisthenics 💪
-- On a more hobby side, mostly split by some gaming, loads of music, friends and visiting all sort of new places 🏓
+- Professionally, I'd say my passion lies mostly with backend services but currently have been trying some frontend technologies, like vue.js 😄
+- I'm big into healthy eating, intermittent fasting and calisthenics 💪
+- My free time is mostly split by some gaming, listening to music, friends/girlfriend and visiting all sort of new places 🏓
 
 **That's a wrap folks!**
