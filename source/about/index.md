@@ -1,5 +1,5 @@
 ---
-title: ayydany | about
+title: About
 date: 2022-07-08 21:04:53
 ---
 

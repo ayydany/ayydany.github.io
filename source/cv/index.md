@@ -1,5 +1,5 @@
 ---
-title: ayydany | cv
+title: CV
 date: 2022-07-08 21:37:45
 ---
 
