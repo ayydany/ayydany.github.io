@@ -3,8 +3,6 @@ title: "ayydany - About"
 date: 2022-07-08 21:04:53
 ---
 
-# Olá! (Hey!) 
-
 I'm Daniel! Also known as either **ayydany** or **DanyBoss**.
 
 I'm from Portugal the land of the old castles and a wonderful egg-tart.
