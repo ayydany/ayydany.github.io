@@ -1,0 +1,1 @@
+{"rule":"A_NNS","sentence":"^\\QThat's a wrap folks!\\E$"}

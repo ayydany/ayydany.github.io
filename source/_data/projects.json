@@ -1,7 +1,7 @@
 [
     {
        "name":"Olympics",
-       "url":"http://olympics.ayydany.com/",
+       "url":"https://irave.ayydany.com/",
        "desc":"A D3.js powered Olympics Visualization"
     },
     {
@@ -11,22 +11,22 @@
     },
     {
        "name":"ubiquitous",
-       "url":"http://ubiquitous.ayydany.com/",
+       "url":"https://ubiquitous.ayydany.com/",
        "desc":"A minimalistic startpage design"
     },
     {
         "name":"thankful",
-        "url":"http://thankful.ayydany.com/",
+        "url":"https://thankful.ayydany.com/",
         "desc":"A cute startpage with a smartish searchbar"
      },
     {
        "name":"iRave",
-       "url":"http://irave.ayydany.com/",
+       "url":"https://irave.ayydany.com/",
        "desc":"A (old) smartwatch mock up application for Music Festivals"
     },
     {
         "name":"simpsonwave",
-        "url":"http://simpsonwave.ayydany.com/",
+        "url":"https://simpsonwave.ayydany.com/",
         "desc":"Well this is certainly something uh"
      }
 ]

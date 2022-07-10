@@ -1,5 +1,5 @@
 ---
-title: CV
+title: "ayydany - CV"
 date: 2022-07-08 21:37:45
 ---
 
@@ -8,4 +8,4 @@ date: 2022-07-08 21:37:45
 
 [Daniel Carmo - Resume](index/resume.pdf)
 
-As a note, my personal information is censored on this CV, if you'd like to contact me personally just send me an email [here](mailto:me@ayydany.com) and I'll be happy to share it with you.
+As a note, my personal information is censored on this CV, if you'd like to contact me personally just email me [here](mailto:me@ayydany.com), and I'll be happy to share it with you.

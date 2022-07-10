@@ -2,6 +2,11 @@
 # Content
 ##############################################################################
 
+# Link to a page that gives an overview of all your projects.
+# This can be an external link (e.g., to you GitHub profile) or to another
+# page within your website.
+projects_url: /archives/
+
 # Configure the navigation menu.
 # A pair 'Key: url' will result in a link to 'url' with the name 'Key' in the
 # navigation menu. Optionally, you can add translations for the 'Key' in
@@ -26,7 +31,7 @@ social_links:
 
 # Customize the overview with displaying a tagcloud on the index page.
 # Options: https://hexo.io/docs/helpers.html#tagcloud
-tags_overview: false
+tags_overview: true
 
 # Customize the overview with the most recent blog posts on the index page.
 # Options:
@@ -117,13 +122,53 @@ page_width: 56
 # Enable or disable the RSS feed.
 rss: false
 
+# Turn your web pages into graph objects (see http://ogp.me).
+open_graph:
+  fb_app_id:
+  fb_admins:
+  twitter_id:
+  google_plus:
+
 ##############################################################################
 # Plugins
 ##############################################################################
 
+# Enable MathJax support for Latex
+mathjax:
+  enabled: false
+  
+# Fill in your Disqus Comments Shortname to enable Disqus comments.
+disqus:
+  enabled: false
+  shortname: cactus-1
+
+# Fill in your Utterances data to enable Utterances comments
+utterances:
+  enabled: false
+  repo: owner/githubrepo
+  issue_term: pathname
+  label: Comment
+  theme: github-dark
+
 google_analytics:
   enabled: true
   id: UA-119587985-1
+
+# Fill in your Baidu Analytics tracking ID to enable Baidu Analytics.
+baidu_analytics:
+  enabled: false
+  id: 2e6da3c375c8a87f5b664cea6d4cb29c
+
+# Fill in your Cloudflare Analytics tracking ID to enable Cloudflare Analytics.
+cloudflare_analytics:
+  enabled: false
+  id: 0dabb6e21848405483a237e6a7b6ed04
+
+# Fill in your Umami Analytics tracking ID to enable Umami Analytics.
+umami_analytics:
+  enabled: false
+  id: e77e68be-f6e4-4br3-9365-2b76b57cd571
+  host: https://analytics.domain.com
 
 # Fill in you Gravatar email or hash if you want to use your gravatar as the
 # logo and/or favicons of you website.
@@ -131,3 +176,12 @@ google_analytics:
 gravatar:
   email: name@email.com
   hash: d41d8cd98f00b204e9800998ecf8427e
+
+  # loads libraries and styles from CDN instead or relying on local files
+cdn:
+  enable: true
+  jquery: https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js
+  clipboard: https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js
+  font_awesome: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css
+  justified_gallery_css: https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css
+  justified_gallery_js: https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js
