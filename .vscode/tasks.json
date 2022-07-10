@@ -41,7 +41,7 @@
     },
     {
       "label": "Deploy Website",
-      "detail": "hexo watch",
+      "detail": "Deploy Website to GH Pages",
       "type": "shell",
       "group": {
         "kind": "none",
