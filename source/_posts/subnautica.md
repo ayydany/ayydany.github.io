@@ -2,6 +2,7 @@
 title: WHAT LURKS BELOW - Subnautica
 date: 2022-07-08 22:05:09
 tags: reviews
+layout: post
 ---
 
 ## WHY THIS GAME?

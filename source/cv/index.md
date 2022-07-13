@@ -1,6 +1,7 @@
 ---
 title: "ayydany - CV"
-date: 2022-07-08 21:37:45
+date: 2022-07-08 21:37:45~
+layout: page
 ---
 
 [Daniel Carmo - Resume](index/resume.pdf)

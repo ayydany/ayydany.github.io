@@ -1,6 +1,7 @@
 ---
 title: "ayydany - About"
 date: 2022-07-08 21:04:53
+layout: page
 ---
 
 Olá! (Hey!), I'm Daniel! Also known as either **ayydany** or **DanyBoss** online.

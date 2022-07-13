@@ -3,7 +3,12 @@
        "name":"Olympics",
        "url":"https://olympics.ayydany.com/",
        "desc":"A D3.js powered Olympics Visualization"
-    },
+    },    
+    {
+      "name":"iRave",
+      "url":"https://irave.ayydany.com/",
+      "desc":"A (old) smartwatch mock up application for Music Festivals"
+   },
     {
        "name":"Grand Hero Farmer",
        "url":"https://github.com/DanyBoss/GrandHeroFarmer",
@@ -19,11 +24,7 @@
         "url":"https://thankful.ayydany.com/",
         "desc":"A cute startpage with a smartish searchbar"
      },
-    {
-       "name":"iRave",
-       "url":"https://irave.ayydany.com/",
-       "desc":"A (old) smartwatch mock up application for Music Festivals"
-    },
+
     {
         "name":"simpsonwave",
         "url":"https://simpsonwave.ayydany.com/",

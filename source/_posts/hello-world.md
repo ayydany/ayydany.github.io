@@ -2,6 +2,7 @@
 title: Hello World!
 date: 2022-07-07 22:05:09
 tags: thoughts
+layout: post
 ---
 
 Welcome to my new simple blog! I'm Daniel (as you should know) and I'll be posting here some thoughts and most likely some info on what I'm playing currently at the moment.
