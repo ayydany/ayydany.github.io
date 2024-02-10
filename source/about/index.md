@@ -12,6 +12,6 @@ In a nutshell:
 
 - **Backend developer**: My passion lies in building robust and scalable backend services, but I'm also exploring the exciting world of frontend technologies like *Vue.js*.
 - **Health nut**: I prioritize healthy eating, intermittent fasting, and calisthenics to stay energized and focused.
-- **Life enthusiast**: When I'm not coding or fueling my body with healthy eats, you can find me exploring hidden cafes, conquering challenging RPGs with friends, or unwinding to the latest indie music. My lovely girlfriend often joins the adventures too! ️
+- **Life enthusiast**: When I'm not coding or fueling my body with healthy eats, you can find me exploring hidden cafes, conquering challenging RPGs with friends, or unwinding to the latest indie music. My *lovely* girlfriend often joins the adventures too! ️
 
 **That's me in a nutshell!** Feel free to explore my website to learn more about my journey and connect with me.
