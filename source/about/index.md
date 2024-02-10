@@ -4,14 +4,14 @@ date: 2022-07-08 21:04:53
 layout: page
 ---
 
-Olá! (Hey!), I'm Daniel! Also known as either **ayydany** or **DanyBoss** online.
+Olá! (Hey!) I'm Daniel!
 
-I'm a geek from Portugal the land known for Port wine and the wonderful custard tarts. It is a chill place.
+Also known as **ayydany** or **DanyBoss** online, I'm a tech enthusiast from Portugal, the land of delicious Port wine and heavenly custard tarts (pastel de nata, anyone?). 🇵🇹
 
-## TL; DR;
+In a nutshell:
 
-- Professionally, I'd say my passion lies mostly with backend services but currently have been trying some frontend technologies, like vue.js 😄
-- I'm big into healthy eating, intermittent fasting and calisthenics 💪
-- My free time is mostly split by some gaming, listening to music, friends/girlfriend and visiting all sort of new places 🏓
+- **Backend developer**: My passion lies in building robust and scalable backend services, but I'm also exploring the exciting world of frontend technologies like *Vue.js*.
+- **Health nut**: I prioritize healthy eating, intermittent fasting, and calisthenics to stay energized and focused.
+- **Life enthusiast**: When I'm not coding or fueling my body, you can find me gaming, exploring new places with friends and loved ones, or enjoying good music. ️
 
-**That's a wrap folks!**
+**That's me in a nutshell!** Feel free to explore my website to learn more about my journey and connect with me.

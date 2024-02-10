@@ -11,7 +11,7 @@ I've finished this game back in 2022, and It only took 90 minutes to pretty much
 
 {% asset_img gametime.png time %}
 
-Small disclaimed, I am reviewing a game I played almost 2 years ago with only 90 minutes clocked in. This is just a note so that you should ***NOT*** and ***NEVER*** take into consideration what I write in here. Especially if it's going to lead you to either buy or play something. I have a very niche taste in stuff, you could say.
+Small disclaimer, I am reviewing a game I played almost 2 years ago with only 90 minutes clocked in. This is just a note so that you should ***NOT*** and ***NEVER*** take into consideration what I write in here. Especially if it's going to lead you to either buy or play something. I have a very niche taste in stuff, you could say.
 
 With that said, what a trip that was from what I remember. For started that got me into the game originally was the visuals, mixed in with the fast-paced retro FPS gameplay. Man, what a sucker I am for retro FPS games. This one looked excellent from the trailer, seemed like a quick play (which I take into consideration a lot these days) and it's dirt cheap (just 2.99 :RiMoneyEuroCircleLine:) in my country, probably cheaper in yours.
 
