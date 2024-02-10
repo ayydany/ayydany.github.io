@@ -2,32 +2,32 @@
     {
        "name":"Olympics",
        "url":"https://olympics.ayydany.com/",
-       "desc":"A D3.js powered Olympics Visualization"
+       "desc":"Dive into Olympic history and trends with an interactive D3.js visualization, exploring medals, countries, and more."
     },    
     {
-      "name":"iRave",
+      "name":"iRave (2012)",
       "url":"https://irave.ayydany.com/",
-      "desc":"A (old) smartwatch mock up application for Music Festivals"
+      "desc":"Experience music festivals like never before with this innovative smartwatch app mockup (designed in 2012)"
    },
     {
        "name":"Grand Hero Farmer",
        "url":"https://github.com/DanyBoss/GrandHeroFarmer",
-       "desc":"A simple bot application to farm feathers at the speed of light"
+       "desc":"Conquer resource farming at lightning speed with this bot application - it's faster than light!"
     },
     {
        "name":"ubiquitous",
        "url":"https://ubiquitous.ayydany.com/",
-       "desc":"A minimalistic startpage design"
+       "desc":"Minimalism meets functionality in this clean and efficient startpage design. Get organized in style."
     },
     {
         "name":"thankful",
         "url":"https://thankful.ayydany.com/",
-        "desc":"A cute startpage with a smartish searchbar"
+        "desc":"Say \"thanks\" and find what you need with a smile! This cute startpage boasts a \"smartish\" searchbar for effortless browsing."
      },
 
     {
         "name":"simpsonwave",
         "url":"https://simpsonwave.ayydany.com/",
-        "desc":"Well this is certainly something uh"
+        "desc":"Explore the vibrant aesthetics and nostalgia of vaporwave through this unique website experience"
      }
 ]
