@@ -22,12 +22,24 @@ nav:
 # (see https://fontawesome.com/icons?d=gallery&s=brands);
 # only 'mail' is an exception.
 social_links:
-  github: https://github.com/ayydany
-  linkedin: https://www.linkedin.com/in/ayydany
-  twitter: https://twitter.com/ayyydany
-  steam: https://steamcommunity.com/id/ayydany
-  discord: https://discordapp.com/users/116873501150937097
-  mail: mailto:me@ayydany.com
+  -
+    icon: github
+    link: https://github.com/ayydany
+  -
+    icon: linkedin
+    link: https://www.linkedin.com/in/ayydany
+  -
+    icon: twitter
+    link: https://twitter.com/ayyydany
+  -
+    icon: steam
+    link: https://steamcommunity.com/id/ayydany
+  -
+    icon: discord
+    link: https://discordapp.com/users/116873501150937097
+  -
+    icon: mail
+    link: mailto:me@ayydany.com
 
 # Customize the overview with displaying a tagcloud on the index page.
 # Options: https://hexo.io/docs/helpers.html#tagcloud
@@ -182,6 +194,6 @@ cdn:
   enable: true
   jquery: https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js
   clipboard: https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js
-  font_awesome: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css
+  font_awesome: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css
   justified_gallery_css: https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css
   justified_gallery_js: https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js
