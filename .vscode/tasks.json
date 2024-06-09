@@ -2,10 +2,10 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Run website",
-      "detail": "hexo server",
+      "label": "New Page",
+      "detail": "hexo new",
       "type": "shell",
-      "command": "hexo server",
+      "command": "./node_modules/hexo/bin/hexo new post ${input:postName}",
       "isBackground": false,
       "group": {
         "kind": "none",
@@ -13,14 +13,29 @@
       },
       "presentation": {
         "reveal": "always",
-        "panel": "shared",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Run website",
+      "detail": "hexo server",
+      "type": "shell",
+      "command": "./node_modules/hexo/bin/hexo server",
+      "isBackground": false,
+      "group": {
+        "kind": "none",
+        "isDefault": false
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
       }
     },
     {
       "label": "Update Changes",
       "detail": "hexo watch",
       "type": "shell",
-      "command": "hexo generate --watch",
+      "command": "./node_modules/hexo/bin/hexo generate --watch",
       "isBackground": false,
       "group": {
         "kind": "none",
@@ -47,11 +62,19 @@
         "kind": "none",
         "isDefault": false
       },
-      "command": "hexo clean && hexo deploy",
+      "command": "./node_modules/hexo/bin/hexo clean && ./node_modules/hexo/bin/hexo deploy",
       "presentation": {
         "reveal": "always",
         "panel": "new"
       }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "postName",
+      "type": "promptString",
+      "description": "Enter the name of the post",
+      "default": "My New Post"
     }
   ]
 }
