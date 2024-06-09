@@ -1,6 +1,7 @@
 ---
 title: Mushrooms Trip - Post Void 
 date: 2024-01-10 02:03:24
+layout: post
 tags: reviews
 ---
 

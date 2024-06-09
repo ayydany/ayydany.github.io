@@ -1,7 +1,8 @@
 ---
 title: E.M.M.I. Neckbreakers - Metroid Dread
-tags: review
 date: 2024-03-10 16:19:30
+layout: post
+tags: review
 ---
 
 ## Synopsis
